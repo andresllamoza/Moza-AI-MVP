@@ -187,10 +187,10 @@ export const RealTimeDemo: React.FC<RealTimeDemoProps> = ({
           <div className="mb-8">
             <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
               <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-4">
-                  <div className={`p-3 rounded-xl ${steps[currentStep].color} bg-opacity-20`}>
-                    <steps[currentStep].icon className="w-6 h-6" />
-                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className={`p-3 rounded-xl ${steps[currentStep].color} bg-opacity-20`}>
+                      {React.createElement(steps[currentStep].icon, { className: "w-6 h-6" })}
+                    </div>
                   <div>
                     <h3 className="text-lg font-bold text-white">{steps[currentStep].title}</h3>
                     <p className="text-muted-foreground">{steps[currentStep].description}</p>
