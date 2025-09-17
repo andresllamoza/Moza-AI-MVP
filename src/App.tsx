@@ -57,6 +57,9 @@ const App = () => {
                 </div>
               } />
               <Route path="/dashboard" element={<VibrantEnterpriseDashboard />} />
+              <Route path="/reports" element={<VibrantEnterpriseDashboard />} />
+              <Route path="/insights" element={<VibrantEnterpriseDashboard />} />
+              <Route path="/integrations" element={<VibrantEnterpriseDashboard />} />
               <Route path="/dual-dashboard" element={<DualIntelligenceDashboard />} />
               <Route path="/internal-dashboard" element={<MozaIntelligenceDashboard />} />
               <Route path="/old-dashboard" element={
