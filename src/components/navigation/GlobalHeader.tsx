@@ -19,12 +19,76 @@ import {
   Plug,
   MoreHorizontal,
   ArrowLeft,
-  Command
+  Command,
+  LayoutDashboard,
+  BarChart3,
+  Target,
+  TrendingUp,
+  DollarSign,
+  MapPin,
+  Building2,
+  Shield,
+  Zap,
+  AlertTriangle,
+  CheckCircle2,
+  Eye,
+  EyeOff,
+  RefreshCw,
+  Download,
+  Share2,
+  Filter,
+  MessageCircle,
+  ThumbsUp,
+  ThumbsDown,
+  ExternalLink
 } from 'lucide-react';
 import { ProfessionalButton } from '@/components/ui/professional-button';
 import { ProfessionalInput } from '@/components/ui/professional-input';
 import { useNavigationStore, navigationConfig, generateBreadcrumbs } from '@/store/navigationStore';
 import { SmartSearch } from './SmartSearch';
+
+// Icon mapping for dynamic imports
+const iconMap: Record<string, React.ComponentType<any>> = {
+  'LayoutDashboard': LayoutDashboard,
+  'FileText': FileText,
+  'Lightbulb': Lightbulb,
+  'Plug': Plug,
+  'BarChart3': BarChart3,
+  'Target': Target,
+  'TrendingUp': TrendingUp,
+  'DollarSign': DollarSign,
+  'MapPin': MapPin,
+  'Building2': Building2,
+  'Shield': Shield,
+  'Zap': Zap,
+  'AlertTriangle': AlertTriangle,
+  'CheckCircle2': CheckCircle2,
+  'Eye': Eye,
+  'EyeOff': EyeOff,
+  'RefreshCw': RefreshCw,
+  'Download': Download,
+  'Share2': Share2,
+  'Filter': Filter,
+  'MessageCircle': MessageCircle,
+  'ThumbsUp': ThumbsUp,
+  'ThumbsDown': ThumbsDown,
+  'ExternalLink': ExternalLink,
+  'Home': Home,
+  'Star': Star,
+  'Clock': Clock,
+  'HelpCircle': HelpCircle,
+  'Settings': Settings,
+  'User': User,
+  'Bell': Bell,
+  'Search': Search,
+  'Brain': Brain,
+  'Menu': Menu,
+  'X': X,
+  'ChevronDown': ChevronDown,
+  'MoreHorizontal': MoreHorizontal,
+  'ArrowLeft': ArrowLeft,
+  'Command': Command
+};
 
 interface GlobalHeaderProps {
   pageTitle?: string;
@@ -180,7 +244,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
                   >
                     <span className="flex items-center space-x-2">
                       {React.createElement(
-                        require('lucide-react')[item.icon],
+                        iconMap[item.icon] || FileText,
                         { className: 'w-4 h-4' }
                       )}
                       <span>{item.label}</span>
@@ -313,7 +377,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
                 }`}
               >
                 {React.createElement(
-                  require('lucide-react')[item.icon],
+                  iconMap[item.icon] || FileText,
                   { className: 'w-5 h-5' }
                 )}
                 <span className="text-xs">{item.label}</span>
@@ -365,7 +429,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
                   >
                     <span className="flex items-center space-x-3">
                       {React.createElement(
-                        require('lucide-react')[item.icon],
+                        iconMap[item.icon] || FileText,
                         { className: 'w-5 h-5' }
                       )}
                       <span>{item.label}</span>
@@ -429,7 +493,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
                   >
                     <span className="flex items-center space-x-3">
                       {React.createElement(
-                        require('lucide-react')[item.icon],
+                        iconMap[item.icon] || FileText,
                         { className: 'w-4 h-4' }
                       )}
                       <span>{item.label}</span>
