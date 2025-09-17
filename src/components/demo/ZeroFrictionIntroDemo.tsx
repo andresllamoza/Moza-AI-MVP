@@ -30,6 +30,7 @@ import {
   fusedInsightsEngine
 } from '@/services/apiIntegrations';
 import { generateRealisticInsights, generateRealisticCompetitors } from '@/data/realisticDemoData';
+import { demoScenarios, getDemoScenario, generateScenarioInsights } from '@/data/demoScenarios';
 
 interface BusinessInfo {
   name: string;
@@ -181,15 +182,19 @@ const ZeroFrictionIntroDemo: React.FC = () => {
       
       console.log('✅ Analysis complete! Generated insights:', fusedInsights.length);
       
+      // Get scenario-specific insights
+      const scenario = getDemoScenario(businessInfo.industry, businessInfo.zipCode);
+      const scenarioInsights = scenario ? generateScenarioInsights(scenario) : generateRealisticInsights(businessInfo);
+      
       // Convert to display format
-      const displayInsights = generateRealisticInsights(businessInfo).map(insight => ({
+      const displayInsights = scenarioInsights.map(insight => ({
         id: insight.id,
         title: insight.title,
         description: insight.description,
         value: insight.value,
         impact: insight.impact,
-        icon: getIconComponent(insight.icon),
-        color: insight.color,
+        icon: getIconComponent(insight.icon || 'Lightbulb'),
+        color: insight.color || 'text-primary-400',
         confidence: insight.confidence
       }));
       
@@ -198,15 +203,18 @@ const ZeroFrictionIntroDemo: React.FC = () => {
       
     } catch (error) {
       console.error('Analysis error:', error);
-      // Fallback to realistic data
-      const generatedInsights = generateRealisticInsights(businessInfo).map(insight => ({
+      // Fallback to scenario-specific data
+      const scenario = getDemoScenario(businessInfo.industry, businessInfo.zipCode);
+      const scenarioInsights = scenario ? generateScenarioInsights(scenario) : generateRealisticInsights(businessInfo);
+      
+      const generatedInsights = scenarioInsights.map(insight => ({
         id: insight.id,
         title: insight.title,
         description: insight.description,
         value: insight.value,
         impact: insight.impact,
-        icon: getIconComponent(insight.icon),
-        color: insight.color,
+        icon: getIconComponent(insight.icon || 'Lightbulb'),
+        color: insight.color || 'text-primary-400',
         confidence: insight.confidence
       }));
       setInsights(generatedInsights);
