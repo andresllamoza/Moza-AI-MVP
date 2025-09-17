@@ -142,9 +142,15 @@ export const useNavigationStore = create<NavigationState>()(
         favorites: state.favorites,
         activeSection: state.activeSection,
       }),
+      skipHydration: true,
     }
   )
 );
+
+// Hydrate the store after component mount
+if (typeof window !== 'undefined') {
+  useNavigationStore.persist.rehydrate();
+}
 
 // Navigation configuration
 export const navigationConfig = {
