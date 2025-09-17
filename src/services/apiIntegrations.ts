@@ -1,4 +1,4 @@
-// Moza Intelligence Pro - Free API Integration Services
+// MozaWave - Free API Integration Services
 // Real-time data from NewsAPI, Google Places, Social Media, and NLP APIs
 
 export interface NewsArticle {

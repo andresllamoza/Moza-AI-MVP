@@ -116,7 +116,7 @@ const IntelligenceIntroDemo: React.FC = () => {
 
   const steps = [
     {
-      title: "Welcome to Moza Intelligence Pro",
+      title: "Welcome to MozaWave",
       subtitle: "The world's first dual intelligence platform for small businesses",
       content: (
         <div className="text-center space-y-8">
@@ -347,7 +347,7 @@ const IntelligenceIntroDemo: React.FC = () => {
                 <Brain className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-white">Moza Intelligence Pro</h1>
+                <h1 className="text-xl font-bold text-white">MozaWave</h1>
                 <p className="text-sm text-muted-foreground">Dual Intelligence Platform</p>
               </div>
             </div>
