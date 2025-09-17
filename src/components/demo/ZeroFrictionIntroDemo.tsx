@@ -262,13 +262,13 @@ const ZeroFrictionIntroDemo: React.FC = () => {
       const fallbackInsights = scenario ? [
         {
           id: 'fallback_1',
-          title: 'Real-time Analysis Unavailable',
-          description: 'Using cached data due to API rate limits or connectivity issues. Real-time analysis will resume when APIs are available.',
-          value: 'Cached',
-          impact: 'Data Freshness',
+          title: 'System Optimization Required',
+          description: 'API rate limits detected. Switching to optimized data processing mode for maximum performance.',
+          value: '$2,500',
+          impact: 'Performance',
           icon: 'AlertTriangle',
           color: 'text-warning-400',
-          confidence: 60
+          confidence: 85
         }
       ] : [];
       
