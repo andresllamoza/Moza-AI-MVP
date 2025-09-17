@@ -213,14 +213,25 @@ const ZeroFrictionIntroDemo: React.FC = () => {
             transition={{ duration: 0.5, delay: 1 }}
             className="pt-8"
           >
-            <ProfessionalButton
-              onClick={() => setCurrentStep(1)}
-              size="lg"
-              className="px-8 btn-vibrant-primary"
-            >
-              <Play className="w-5 h-5 mr-2" />
-              Start Your Analysis
-            </ProfessionalButton>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <ProfessionalButton
+                onClick={() => setCurrentStep(1)}
+                size="lg"
+                className="px-8 btn-vibrant-primary"
+              >
+                <Play className="w-5 h-5 mr-2" />
+                Start Your Analysis
+              </ProfessionalButton>
+              <ProfessionalButton
+                onClick={() => window.location.href = '/dashboard'}
+                variant="outline"
+                size="lg"
+                className="px-8 btn-vibrant-secondary"
+              >
+                <Rocket className="w-5 h-5 mr-2" />
+                Skip to Dashboard
+              </ProfessionalButton>
+            </div>
           </motion.div>
         </div>
       )
@@ -298,14 +309,14 @@ const ZeroFrictionIntroDemo: React.FC = () => {
             </motion.div>
           )}
 
-          <div className="flex justify-center space-x-4">
+          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <ProfessionalButton
               onClick={() => setCurrentStep(0)}
               variant="outline"
               size="lg"
               className="px-6 btn-vibrant-secondary"
             >
-              Back
+              ← Back
             </ProfessionalButton>
             <ProfessionalButton
               onClick={handleAnalyze}
@@ -315,6 +326,15 @@ const ZeroFrictionIntroDemo: React.FC = () => {
             >
               <Zap className="w-5 h-5 mr-2" />
               Analyze Now
+            </ProfessionalButton>
+            <ProfessionalButton
+              onClick={() => window.location.href = '/dashboard'}
+              variant="outline"
+              size="lg"
+              className="px-6 btn-vibrant-teal"
+            >
+              <Rocket className="w-5 h-5 mr-2" />
+              Skip to Dashboard
             </ProfessionalButton>
           </div>
         </div>
