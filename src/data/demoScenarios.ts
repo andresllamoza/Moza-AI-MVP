@@ -100,15 +100,43 @@ export const demoScenarios: DemoScenario[] = [
 ];
 
 export const getDemoScenario = (industry: string, location?: string): DemoScenario | undefined => {
+  // Normalize industry names for better matching
+  const normalizeIndustry = (industry: string) => {
+    const normalized = industry.toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    
+    // Map common variations to our scenario industries
+    if (normalized.includes('restaurant') || normalized.includes('food')) {
+      return 'restaurant & food service';
+    }
+    if (normalized.includes('real estate') || normalized.includes('realestate')) {
+      return 'real estate';
+    }
+    if (normalized.includes('professional') || normalized.includes('law') || normalized.includes('legal')) {
+      return 'professional services';
+    }
+    if (normalized.includes('home') || normalized.includes('contractor') || normalized.includes('construction')) {
+      return 'home services';
+    }
+    
+    return normalized;
+  };
+
+  const normalizedIndustry = normalizeIndustry(industry);
+  
   if (location) {
+    const normalizedLocation = location.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
     return demoScenarios.find(scenario => 
-      scenario.industry.toLowerCase().includes(industry.toLowerCase()) && 
-      scenario.location.toLowerCase().includes(location.toLowerCase())
+      scenario.industry.toLowerCase().includes(normalizedIndustry) && 
+      (scenario.location.toLowerCase().includes(normalizedLocation) || 
+       scenario.zipCode.includes(location))
     );
   }
   
   return demoScenarios.find(scenario => 
-    scenario.industry.toLowerCase().includes(industry.toLowerCase())
+    scenario.industry.toLowerCase().includes(normalizedIndustry)
   );
 };
 

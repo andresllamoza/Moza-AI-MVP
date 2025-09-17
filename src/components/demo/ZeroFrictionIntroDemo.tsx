@@ -146,7 +146,14 @@ const ZeroFrictionIntroDemo: React.FC = () => {
       
       // Get scenario-specific competitors
       const scenario = getDemoScenario(businessInfo.industry, businessInfo.zipCode);
+      console.log('🔍 Scenario lookup:', { 
+        industry: businessInfo.industry, 
+        zipCode: businessInfo.zipCode, 
+        found: !!scenario,
+        competitors: scenario?.competitors 
+      });
       const competitors = scenario?.competitors || ['Competitor 1', 'Competitor 2', 'Competitor 3'];
+      console.log('🏆 Using competitors:', competitors);
       
       // Step 1: Business Enrichment (Clearbit + Hunter.io)
       console.log('📊 Enriching business data with Clearbit...');
