@@ -30,7 +30,6 @@ import { ProfessionalInput } from '@/components/ui/professional-input';
 import { ProfessionalCard } from '@/components/ui/professional-card';
 import { ActionableIntelligence } from '@/components/ui/actionable-intelligence';
 import { CustomerSuccessTracking } from '@/components/ui/customer-success-tracking';
-import { HabitFormingFeatures } from '@/components/ui/habit-forming-features';
 import { realApiIntegration } from '@/services/realApiIntegration';
 import { demoScenarios, getDemoScenario } from '@/data/demoScenarios';
 import { generateActionableInsights } from '@/data/actionableInsights';
@@ -67,7 +66,6 @@ const ZeroFrictionIntroDemo: React.FC = () => {
   const [showSummary, setShowSummary] = useState(false);
   const [showDebugPanel, setShowDebugPanel] = useState(false);
   const [showCustomerSuccess, setShowCustomerSuccess] = useState(false);
-  const [showHabitFeatures, setShowHabitFeatures] = useState(false);
   const [apiData, setApiData] = useState<any>({});
 
   const industries = [
@@ -954,37 +952,6 @@ const ZeroFrictionIntroDemo: React.FC = () => {
         </motion.div>
       )}
 
-      {/* Habit-Forming Features */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 1.0 }}
-        className="mt-12"
-      >
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-3xl font-bold text-white">🔄 Build Daily Intelligence Habits</h2>
-          <ProfessionalButton
-            onClick={() => setShowHabitFeatures(!showHabitFeatures)}
-            size="lg"
-            variant="outline"
-            className="btn-vibrant-secondary"
-          >
-            {showHabitFeatures ? 'Hide' : 'Show'} Habit Features
-          </ProfessionalButton>
-        </div>
-        
-        {showHabitFeatures && (
-          <HabitFormingFeatures
-            businessName={businessInfo.name}
-            onEnableFeature={(feature) => {
-              console.log(`Enabled feature:`, feature);
-            }}
-            onDisableFeature={(feature) => {
-              console.log(`Disabled feature:`, feature);
-            }}
-          />
-        )}
-      </motion.div>
 
       {/* API Data Display - Show directly on analysis page */}
       {insights.length > 0 && (
