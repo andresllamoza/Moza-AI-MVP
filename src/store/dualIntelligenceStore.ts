@@ -333,7 +333,7 @@ export const useDualIntelligenceStore = create<DualIntelligenceState>()(
       },
       
       getMarketGaps: () => {
-        const { marketOpportunities } = get();
+        const { marketOpportunities = [] } = get();
         return marketOpportunities
           .filter(o => o.competitionLevel === 'low' && o.opportunityScore > 80)
           .sort((a, b) => b.opportunityScore - a.opportunityScore);
@@ -375,7 +375,7 @@ export const useDualIntelligenceStore = create<DualIntelligenceState>()(
       },
       
       getCompetitivePositioning: () => {
-        const { marketBenchmarks, competitors, marketOpportunities } = get();
+        const { marketBenchmarks = [], competitors = [], marketOpportunities = [] } = get();
         
         const ourStrengths = marketBenchmarks
           .filter(b => b.ourValue > b.industryAverage)
@@ -385,7 +385,7 @@ export const useDualIntelligenceStore = create<DualIntelligenceState>()(
           .flatMap(c => c.weaknesses)
           .filter((weakness, index, arr) => arr.indexOf(weakness) === index);
         
-        const marketOpportunities = marketOpportunities
+        const highValueOpportunities = marketOpportunities
           .filter(o => o.opportunityScore > 80)
           .map(o => o.title);
         
@@ -394,21 +394,21 @@ export const useDualIntelligenceStore = create<DualIntelligenceState>()(
         return {
           ourStrengths,
           competitorWeaknesses,
-          marketOpportunities,
+          marketOpportunities: highValueOpportunities,
           threats
         };
       },
       
       getRevenueOptimizationOpportunities: () => {
-        const { dualIntelligenceInsights, marketOpportunities, pricingIntelligence } = get();
+        const { dualIntelligenceInsights, marketOpportunities, pricingIntelligence = [] } = get();
         
         const internal = dualIntelligenceInsights
           .filter(i => i.internalData.revenueImpact > 50000)
           .map(i => i.title);
         
         const competitive = [
-          ...marketOpportunities.filter(o => o.opportunityScore > 80).map(o => o.title),
-          ...pricingIntelligence.filter(p => p.opportunity === 'raise_prices').map(p => p.service)
+          ...(marketOpportunities || []).filter(o => o.opportunityScore > 80).map(o => o.title),
+          ...(pricingIntelligence || []).filter(p => p.opportunity === 'raise_prices').map(p => p.service)
         ];
         
         const combined = dualIntelligenceInsights
@@ -456,7 +456,7 @@ export const useDualIntelligenceStore = create<DualIntelligenceState>()(
       },
       
       getOpportunityAnalysis: () => {
-        const { marketOpportunities } = get();
+        const { marketOpportunities = [] } = get();
         
         const quickWins = marketOpportunities
           .filter(o => o.timeToMarket < 30 && o.investmentRequired === 'low')
