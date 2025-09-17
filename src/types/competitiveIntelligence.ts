@@ -174,6 +174,40 @@ export interface IntelligenceInsight {
   status: 'new' | 'reviewing' | 'implementing' | 'completed' | 'dismissed';
   assignedTo?: string;
   deadline?: Date;
+  
+  // Customer Success Enhancement Fields
+  actionableIntelligence: {
+    specificAction: string; // What exactly should they do?
+    actionSteps: string[]; // 3-5 concrete steps to implement
+    templates: {
+      email?: string;
+      social?: string;
+      website?: string;
+      ad?: string;
+    };
+    successMetrics: {
+      primary: string; // Main metric to track
+      secondary: string[]; // Additional metrics
+      timeframe: string; // When to expect results
+    };
+    resources: {
+      tools: string[]; // Tools they'll need
+      contacts: string[]; // Who to contact
+      budget: string; // Estimated cost
+    };
+  };
+  customerSuccess: {
+    feedbackRating?: number; // 1-5 stars
+    actionTaken?: 'yes' | 'no' | 'planning';
+    resultsLogged?: {
+      revenue?: number;
+      leads?: number;
+      timeSaved?: number;
+      notes?: string;
+    };
+    followUpDate?: Date;
+    successStory?: string;
+  };
 }
 
 export interface MarketBenchmark {

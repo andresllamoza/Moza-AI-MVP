@@ -22,8 +22,12 @@ import {
 import { ProfessionalButton } from '@/components/ui/professional-button';
 import { ProfessionalInput } from '@/components/ui/professional-input';
 import { ProfessionalCard } from '@/components/ui/professional-card';
+import { ActionableIntelligence } from '@/components/ui/actionable-intelligence';
+import { CustomerSuccessTracking } from '@/components/ui/customer-success-tracking';
+import { HabitFormingFeatures } from '@/components/ui/habit-forming-features';
 import { realApiIntegration } from '@/services/realApiIntegration';
 import { demoScenarios, getDemoScenario } from '@/data/demoScenarios';
+import { generateActionableInsights } from '@/data/actionableInsights';
 import { ClientSummaryPage } from './ClientSummaryPage';
 
 interface BusinessInfo {
@@ -52,9 +56,12 @@ const ZeroFrictionIntroDemo: React.FC = () => {
   });
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [insights, setInsights] = useState<IntelligenceInsight[]>([]);
+  const [actionableInsights, setActionableInsights] = useState<any[]>([]);
   const [autoProgress, setAutoProgress] = useState(true);
   const [showSummary, setShowSummary] = useState(false);
   const [showDebugPanel, setShowDebugPanel] = useState(false);
+  const [showCustomerSuccess, setShowCustomerSuccess] = useState(false);
+  const [showHabitFeatures, setShowHabitFeatures] = useState(false);
   const [apiData, setApiData] = useState<any>({});
 
   const industries = [
@@ -235,6 +242,13 @@ const ZeroFrictionIntroDemo: React.FC = () => {
         source: insight.source,
         dataPoints: Math.floor(Math.random() * 50) + 20 // Add realistic data points
       }));
+
+      // Generate actionable insights
+      const generatedActionableInsights = generateActionableInsights(
+        businessInfo.name,
+        businessInfo.industry,
+        businessInfo.zipCode
+      );
       
       // Store all API data for debugging
       setApiData({
@@ -248,6 +262,7 @@ const ZeroFrictionIntroDemo: React.FC = () => {
       });
       
       setInsights(displayInsights);
+      setActionableInsights(generatedActionableInsights);
       setIsAnalyzing(false);
       
       // Show summary page after analysis
@@ -756,6 +771,104 @@ const ZeroFrictionIntroDemo: React.FC = () => {
           </motion.div>
         )}
       </div>
+
+      {/* Actionable Intelligence Section */}
+      {actionableInsights.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-12"
+        >
+          <ProfessionalCard className="p-8 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">🎯 Actionable Intelligence</h2>
+            <p className="text-center text-muted-foreground mb-8">
+              Turn insights into concrete actions with step-by-step guidance
+            </p>
+            
+            <div className="space-y-8">
+              {actionableInsights.slice(0, 2).map((insight, index) => (
+                <ActionableIntelligence
+                  key={insight.id}
+                  insight={insight}
+                  onActionTaken={(insightId, action) => {
+                    console.log(`Action taken for ${insightId}:`, action);
+                  }}
+                  onResultsLogged={(insightId, results) => {
+                    console.log(`Results logged for ${insightId}:`, results);
+                  }}
+                  onFeedback={(insightId, rating) => {
+                    console.log(`Feedback for ${insightId}:`, rating);
+                  }}
+                />
+              ))}
+            </div>
+          </ProfessionalCard>
+        </motion.div>
+      )}
+
+      {/* Customer Success Tracking */}
+      {actionableInsights.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="mt-12"
+        >
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-3xl font-bold text-white">📊 Track Your Success</h2>
+            <ProfessionalButton
+              onClick={() => setShowCustomerSuccess(!showCustomerSuccess)}
+              size="lg"
+              variant="outline"
+              className="btn-vibrant-secondary"
+            >
+              {showCustomerSuccess ? 'Hide' : 'Show'} Success Tracking
+            </ProfessionalButton>
+          </div>
+          
+          {showCustomerSuccess && (
+            <CustomerSuccessTracking
+              insights={actionableInsights}
+              onUpdateSuccess={(insightId, updates) => {
+                console.log(`Success updated for ${insightId}:`, updates);
+              }}
+            />
+          )}
+        </motion.div>
+      )}
+
+      {/* Habit-Forming Features */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 1.0 }}
+        className="mt-12"
+      >
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-3xl font-bold text-white">🔄 Build Daily Intelligence Habits</h2>
+          <ProfessionalButton
+            onClick={() => setShowHabitFeatures(!showHabitFeatures)}
+            size="lg"
+            variant="outline"
+            className="btn-vibrant-secondary"
+          >
+            {showHabitFeatures ? 'Hide' : 'Show'} Habit Features
+          </ProfessionalButton>
+        </div>
+        
+        {showHabitFeatures && (
+          <HabitFormingFeatures
+            businessName={businessInfo.name}
+            onEnableFeature={(feature) => {
+              console.log(`Enabled feature:`, feature);
+            }}
+            onDisableFeature={(feature) => {
+              console.log(`Disabled feature:`, feature);
+            }}
+          />
+        )}
+      </motion.div>
 
       {/* API Data Display - Show directly on analysis page */}
       {insights.length > 0 && (
