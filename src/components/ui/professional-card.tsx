@@ -7,14 +7,14 @@ const cardVariants = cva(
   {
     variants: {
       variant: {
-        default: 'border-neutral-200 bg-white hover:shadow-md hover:-translate-y-1',
-        elevated: 'border-neutral-200 bg-white shadow-lg hover:shadow-xl hover:-translate-y-1',
+        default: 'border-dark-600 bg-dark-800 hover:shadow-md hover:-translate-y-1',
+        elevated: 'border-dark-600 bg-dark-800 shadow-lg hover:shadow-xl hover:-translate-y-1',
         glass: 'border-white/20 bg-white/10 backdrop-blur-md hover:bg-white/20 hover:shadow-lg hover:-translate-y-1',
-        intelligence: 'border-primary-200 bg-gradient-to-br from-primary-50 to-intelligence-50 hover:shadow-lg hover:-translate-y-1',
-        success: 'border-success-200 bg-gradient-to-br from-success-50 to-success-100 hover:shadow-lg hover:-translate-y-1',
-        warning: 'border-warning-200 bg-gradient-to-br from-warning-50 to-warning-100 hover:shadow-lg hover:-translate-y-1',
-        error: 'border-error-200 bg-gradient-to-br from-error-50 to-error-100 hover:shadow-lg hover:-translate-y-1',
-        neutral: 'border-neutral-200 bg-neutral-50 hover:shadow-md hover:-translate-y-1',
+        intelligence: 'border-primary-500/30 bg-gradient-to-br from-primary-500/20 to-primary-600/20 hover:shadow-lg hover:-translate-y-1',
+        success: 'border-success-500/30 bg-gradient-to-br from-success-500/20 to-success-600/20 hover:shadow-lg hover:-translate-y-1',
+        warning: 'border-warning-500/30 bg-gradient-to-br from-warning-500/20 to-warning-600/20 hover:shadow-lg hover:-translate-y-1',
+        error: 'border-red-pink-500/30 bg-gradient-to-br from-red-pink-500/20 to-red-pink-600/20 hover:shadow-lg hover:-translate-y-1',
+        neutral: 'border-dark-600 bg-dark-700 hover:shadow-md hover:-translate-y-1',
       },
       padding: {
         none: 'p-0',
