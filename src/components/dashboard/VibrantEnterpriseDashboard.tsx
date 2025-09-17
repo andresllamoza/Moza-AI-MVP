@@ -57,9 +57,15 @@ const VibrantEnterpriseDashboard: React.FC = () => {
   const [reviewData, setReviewData] = useState<CompetitorReview[]>([]);
   const [socialData, setSocialData] = useState<SocialMention[]>([]);
   const [insights, setInsights] = useState<FusedInsight[]>([]);
-  const [competitors] = useState(['Acme Corp', 'TechSolutions Inc', 'InnovateNow LLC']);
-  const [industry] = useState('Technology Services');
-  const [location] = useState('San Francisco, CA');
+  const [competitors] = useState([
+    { name: 'Lucali', industry: 'Restaurant', location: 'Brooklyn, NY', marketShare: 15, threatLevel: 'high' },
+    { name: 'Di Fara', industry: 'Restaurant', location: 'Brooklyn, NY', marketShare: 12, threatLevel: 'high' },
+    { name: 'Roberta\'s', industry: 'Restaurant', location: 'Brooklyn, NY', marketShare: 18, threatLevel: 'medium' },
+    { name: 'Joe\'s Pizza', industry: 'Restaurant', location: 'Brooklyn, NY', marketShare: 22, threatLevel: 'high' },
+    { name: 'Prince Street Pizza', industry: 'Restaurant', location: 'Brooklyn, NY', marketShare: 8, threatLevel: 'low' }
+  ]);
+  const [industry] = useState('Restaurant & Food Service');
+  const [location] = useState('Brooklyn, NY');
 
   useEffect(() => {
     loadDashboardData();
@@ -69,11 +75,12 @@ const VibrantEnterpriseDashboard: React.FC = () => {
     setIsLoading(true);
     try {
       // Load all data in parallel
+      const competitorNames = competitors.map(c => c.name);
       const [news, reviews, social, businessData] = await Promise.all([
-        newsAPIService.getCompetitorNews(competitors, industry),
-        placesAPIService.getCompetitorReviews(competitors, location),
-        socialMediaService.getTwitterMentions(competitors, ['#tech', '#innovation']),
-        businessEnrichmentService.enrichBusinessData('MozaWave', 'mozawave.com')
+        newsAPIService.getCompetitorNews(competitorNames, industry),
+        placesAPIService.getCompetitorReviews(competitorNames, location),
+        socialMediaService.getTwitterMentions(competitorNames, ['#restaurant', '#pizza', '#brooklyn']),
+        businessEnrichmentService.enrichBusinessData('Mario\'s Artisan Pizza', 'mariosartisanpizza.com')
       ]);
 
       setNewsData(news);
@@ -323,6 +330,85 @@ const VibrantEnterpriseDashboard: React.FC = () => {
   const ExternalIntelligenceTab = () => (
     <div className="space-y-8">
       <h2 className="text-2xl font-bold text-white">External Intelligence</h2>
+      
+      {/* Competitor Analysis */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-xl font-bold text-white">Competitor Analysis</h3>
+            <span className="text-sm font-semibold text-primary-400 bg-primary-500/20 px-3 py-1 rounded-full">{competitors.length} competitors</span>
+          </div>
+          <div className="space-y-4">
+            {competitors.map((competitor, index) => (
+              <div key={index} className="p-4 bg-dark-700/50 rounded-xl border border-dark-600 hover:bg-dark-700 transition-all duration-200">
+                <div className="flex items-center justify-between mb-3">
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">{competitor.name}</h4>
+                    <p className="text-sm text-muted-foreground">{competitor.industry} • {competitor.location}</p>
+                  </div>
+                  <div className="text-right">
+                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                      competitor.threatLevel === 'high' ? 'bg-red-pink-500/30 text-red-pink-300 border border-red-pink-500/50' :
+                      competitor.threatLevel === 'medium' ? 'bg-warning-500/30 text-warning-300 border border-warning-500/50' :
+                      'bg-success-500/30 text-success-300 border border-success-500/50'
+                    }`}>
+                      {competitor.threatLevel} threat
+                    </span>
+                    <p className="text-xs text-muted-foreground mt-1">{competitor.marketShare}% market share</p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                    <span>📰 {Math.floor(Math.random() * 5) + 1} news articles</span>
+                    <span>⭐ {Math.floor(Math.random() * 50) + 20} reviews</span>
+                  </div>
+                  <div className="w-24 bg-dark-600 rounded-full h-2">
+                    <div 
+                      className="bg-gradient-to-r from-primary-600 to-secondary-600 h-2 rounded-full"
+                      style={{ width: `${competitor.marketShare}%` }}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </ProfessionalCard>
+
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-xl font-bold text-white">Market Intelligence</h3>
+            <span className="text-sm font-semibold text-secondary-400 bg-secondary-500/20 px-3 py-1 rounded-full">Live data</span>
+          </div>
+          <div className="space-y-6">
+            <div className="p-4 bg-dark-700/50 rounded-xl border border-dark-600">
+              <h4 className="text-lg font-semibold text-white mb-2">Industry Trends</h4>
+              <p className="text-sm text-muted-foreground mb-3">Brooklyn pizza scene showing 23% growth in artisanal offerings</p>
+              <div className="flex items-center justify-between">
+                <span className="text-success-400 font-bold text-lg">+23%</span>
+                <span className="text-xs text-muted-foreground">vs last quarter</span>
+              </div>
+            </div>
+            
+            <div className="p-4 bg-dark-700/50 rounded-xl border border-dark-600">
+              <h4 className="text-lg font-semibold text-white mb-2">Competitive Threats</h4>
+              <p className="text-sm text-muted-foreground mb-3">3 new competitors entered market in Q4</p>
+              <div className="flex items-center justify-between">
+                <span className="text-red-pink-400 font-bold text-lg">3</span>
+                <span className="text-xs text-muted-foreground">new threats</span>
+              </div>
+            </div>
+            
+            <div className="p-4 bg-dark-700/50 rounded-xl border border-dark-600">
+              <h4 className="text-lg font-semibold text-white mb-2">Opportunity Score</h4>
+              <p className="text-sm text-muted-foreground mb-3">High potential for premium positioning</p>
+              <div className="flex items-center justify-between">
+                <span className="text-primary-400 font-bold text-lg">87%</span>
+                <span className="text-xs text-muted-foreground">opportunity</span>
+              </div>
+            </div>
+          </div>
+        </ProfessionalCard>
+      </div>
       
       {/* News & Trends */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

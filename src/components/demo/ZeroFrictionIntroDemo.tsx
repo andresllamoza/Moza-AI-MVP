@@ -54,6 +54,8 @@ const ZeroFrictionIntroDemo: React.FC = () => {
   const [insights, setInsights] = useState<IntelligenceInsight[]>([]);
   const [autoProgress, setAutoProgress] = useState(true);
   const [showSummary, setShowSummary] = useState(false);
+  const [showDebugPanel, setShowDebugPanel] = useState(false);
+  const [apiData, setApiData] = useState<any>({});
 
   const industries = [
     'Home Services',
@@ -224,6 +226,17 @@ const ZeroFrictionIntroDemo: React.FC = () => {
         color: getColorFromSource(insight.source),
         confidence: insight.confidence
       }));
+      
+      // Store all API data for debugging
+      setApiData({
+        businessEnrichment: businessData,
+        competitorNews: newsInsights,
+        competitorReviews: reviewInsights,
+        yelpReviews: yelpInsights,
+        redditMentions: redditInsights,
+        emailDiscovery: emailData,
+        competitors
+      });
       
       setInsights(displayInsights);
       setIsAnalyzing(false);
@@ -666,6 +679,14 @@ const ZeroFrictionIntroDemo: React.FC = () => {
               </div>
             </div>
             <div className="flex items-center space-x-4">
+              <ProfessionalButton
+                onClick={() => setShowDebugPanel(!showDebugPanel)}
+                size="sm"
+                variant="outline"
+                className="btn-vibrant-secondary"
+              >
+                {showDebugPanel ? 'Hide' : 'Show'} API Data
+              </ProfessionalButton>
               <div className="text-sm text-muted-foreground">
                 Step {currentStep + 1} of {steps.length}
               </div>
@@ -726,6 +747,98 @@ const ZeroFrictionIntroDemo: React.FC = () => {
           </motion.div>
         )}
       </div>
+
+      {/* Debug Panel */}
+      {showDebugPanel && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-dark-800 rounded-2xl border border-dark-600 max-w-4xl w-full max-h-[80vh] overflow-hidden">
+            <div className="p-6 border-b border-dark-700">
+              <div className="flex items-center justify-between">
+                <h3 className="text-2xl font-bold text-white">API Data Debug Panel</h3>
+                <ProfessionalButton
+                  onClick={() => setShowDebugPanel(false)}
+                  size="sm"
+                  variant="outline"
+                  className="btn-vibrant-secondary"
+                >
+                  Close
+                </ProfessionalButton>
+              </div>
+            </div>
+            <div className="p-6 overflow-y-auto max-h-[60vh] space-y-6">
+              {/* Business Enrichment */}
+              <div>
+                <h4 className="text-lg font-semibold text-white mb-3">🏢 Business Enrichment (Clearbit)</h4>
+                <div className="bg-dark-900 rounded-lg p-4">
+                  <pre className="text-sm text-muted-foreground overflow-x-auto">
+                    {JSON.stringify(apiData.businessEnrichment, null, 2)}
+                  </pre>
+                </div>
+              </div>
+
+              {/* Competitor News */}
+              <div>
+                <h4 className="text-lg font-semibold text-white mb-3">📰 Competitor News (NewsAPI)</h4>
+                <div className="bg-dark-900 rounded-lg p-4">
+                  <pre className="text-sm text-muted-foreground overflow-x-auto">
+                    {JSON.stringify(apiData.competitorNews, null, 2)}
+                  </pre>
+                </div>
+              </div>
+
+              {/* Competitor Reviews */}
+              <div>
+                <h4 className="text-lg font-semibold text-white mb-3">⭐ Competitor Reviews (Google Places)</h4>
+                <div className="bg-dark-900 rounded-lg p-4">
+                  <pre className="text-sm text-muted-foreground overflow-x-auto">
+                    {JSON.stringify(apiData.competitorReviews, null, 2)}
+                  </pre>
+                </div>
+              </div>
+
+              {/* Yelp Reviews */}
+              <div>
+                <h4 className="text-lg font-semibold text-white mb-3">🍽️ Yelp Reviews (Yelp Fusion)</h4>
+                <div className="bg-dark-900 rounded-lg p-4">
+                  <pre className="text-sm text-muted-foreground overflow-x-auto">
+                    {JSON.stringify(apiData.yelpReviews, null, 2)}
+                  </pre>
+                </div>
+              </div>
+
+              {/* Reddit Mentions */}
+              <div>
+                <h4 className="text-lg font-semibold text-white mb-3">📱 Reddit Mentions (Reddit API)</h4>
+                <div className="bg-dark-900 rounded-lg p-4">
+                  <pre className="text-sm text-muted-foreground overflow-x-auto">
+                    {JSON.stringify(apiData.redditMentions, null, 2)}
+                  </pre>
+                </div>
+              </div>
+
+              {/* Email Discovery */}
+              <div>
+                <h4 className="text-lg font-semibold text-white mb-3">📧 Email Discovery (Hunter.io)</h4>
+                <div className="bg-dark-900 rounded-lg p-4">
+                  <pre className="text-sm text-muted-foreground overflow-x-auto">
+                    {JSON.stringify(apiData.emailDiscovery, null, 2)}
+                  </pre>
+                </div>
+              </div>
+
+              {/* Competitors List */}
+              <div>
+                <h4 className="text-lg font-semibold text-white mb-3">🏆 Competitors Identified</h4>
+                <div className="bg-dark-900 rounded-lg p-4">
+                  <pre className="text-sm text-muted-foreground overflow-x-auto">
+                    {JSON.stringify(apiData.competitors, null, 2)}
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
