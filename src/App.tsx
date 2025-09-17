@@ -8,6 +8,7 @@ import { AuthProvider } from "@/hooks/use-auth";
 import { AuthGuard } from "@/components/AuthGuard";
 import LandingPage from "./components/demo/LandingPage";
 import IntelligenceIntroDemo from "./components/demo/IntelligenceIntroDemo";
+import ZeroFrictionIntroDemo from "./components/demo/ZeroFrictionIntroDemo";
 import EmailDemo from "./components/demo/EmailDemo";
 import SmartDashboard from "./components/demo/SmartDashboard";
 import ROICalculator from "./components/demo/ROICalculator";
@@ -39,7 +40,8 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
                   <Routes>
-                    <Route path="/" element={<IntelligenceIntroDemo />} />
+                    <Route path="/" element={<ZeroFrictionIntroDemo />} />
+                    <Route path="/old-intro" element={<IntelligenceIntroDemo />} />
                     <Route path="/landing" element={<LandingPage />} />
                     <Route path="/demo" element={
                       <div>
