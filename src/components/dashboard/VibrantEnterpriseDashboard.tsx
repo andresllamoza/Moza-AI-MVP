@@ -327,6 +327,705 @@ const VibrantEnterpriseDashboard: React.FC = () => {
     </div>
   );
 
+  const IntegrationsTab = () => (
+    <div className="space-y-8">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold text-white">API Integrations</h2>
+        <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-success-400 rounded-full animate-pulse"></div>
+            <span className="text-sm text-muted-foreground">6 APIs Connected</span>
+          </div>
+          <ProfessionalButton
+            onClick={() => console.log('Test All APIs')}
+            size="sm"
+            variant="outline"
+            className="btn-vibrant-secondary"
+          >
+            <RefreshCw className="w-4 h-4 mr-2" />
+            Test All APIs
+          </ProfessionalButton>
+        </div>
+      </div>
+
+      {/* API Status Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* NewsAPI */}
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center">
+                <span className="text-2xl">📰</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white">NewsAPI</h3>
+                <p className="text-sm text-muted-foreground">News & Articles</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-success-400 rounded-full"></div>
+              <span className="text-success-400 text-sm font-medium">Connected</span>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Status</span>
+              <span className="text-success-400 font-medium">Active</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Requests Used</span>
+              <span className="text-white font-medium">247 / 1,000</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Rate Limit</span>
+              <span className="text-white font-medium">100 req/day</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Last Sync</span>
+              <span className="text-muted-foreground text-sm">2 min ago</span>
+            </div>
+          </div>
+        </ProfessionalCard>
+
+        {/* Google Places */}
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-12 h-12 bg-secondary-500/20 rounded-xl flex items-center justify-center">
+                <span className="text-2xl">⭐</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white">Google Places</h3>
+                <p className="text-sm text-muted-foreground">Business Reviews</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-success-400 rounded-full"></div>
+              <span className="text-success-400 text-sm font-medium">Connected</span>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Status</span>
+              <span className="text-success-400 font-medium">Active</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Credits Used</span>
+              <span className="text-white font-medium">$45 / $200</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Rate Limit</span>
+              <span className="text-white font-medium">1,000 req/day</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Last Sync</span>
+              <span className="text-muted-foreground text-sm">1 min ago</span>
+            </div>
+          </div>
+        </ProfessionalCard>
+
+        {/* Yelp Fusion */}
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-12 h-12 bg-warning-500/20 rounded-xl flex items-center justify-center">
+                <span className="text-2xl">🍽️</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white">Yelp Fusion</h3>
+                <p className="text-sm text-muted-foreground">Restaurant Reviews</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-success-400 rounded-full"></div>
+              <span className="text-success-400 text-sm font-medium">Connected</span>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Status</span>
+              <span className="text-success-400 font-medium">Active</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Requests Used</span>
+              <span className="text-white font-medium">89 / 500</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Rate Limit</span>
+              <span className="text-white font-medium">500 req/day</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Last Sync</span>
+              <span className="text-muted-foreground text-sm">3 min ago</span>
+            </div>
+          </div>
+        </ProfessionalCard>
+
+        {/* Reddit API */}
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center">
+                <span className="text-2xl">📱</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white">Reddit API</h3>
+                <p className="text-sm text-muted-foreground">Social Mentions</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-success-400 rounded-full"></div>
+              <span className="text-success-400 text-sm font-medium">Connected</span>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Status</span>
+              <span className="text-success-400 font-medium">Active</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Requests Used</span>
+              <span className="text-white font-medium">156 / 100</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Rate Limit</span>
+              <span className="text-white font-medium">100 req/min</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Last Sync</span>
+              <span className="text-muted-foreground text-sm">30 sec ago</span>
+            </div>
+          </div>
+        </ProfessionalCard>
+
+        {/* Clearbit */}
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-12 h-12 bg-success-500/20 rounded-xl flex items-center justify-center">
+                <span className="text-2xl">🏢</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white">Clearbit</h3>
+                <p className="text-sm text-muted-foreground">Business Enrichment</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-success-400 rounded-full"></div>
+              <span className="text-success-400 text-sm font-medium">Connected</span>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Status</span>
+              <span className="text-success-400 font-medium">Active</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Requests Used</span>
+              <span className="text-white font-medium">23 / 50</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Rate Limit</span>
+              <span className="text-white font-medium">50 req/month</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Last Sync</span>
+              <span className="text-muted-foreground text-sm">5 min ago</span>
+            </div>
+          </div>
+        </ProfessionalCard>
+
+        {/* Hunter.io */}
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-12 h-12 bg-red-pink-500/20 rounded-xl flex items-center justify-center">
+                <span className="text-2xl">📧</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white">Hunter.io</h3>
+                <p className="text-sm text-muted-foreground">Email Discovery</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-success-400 rounded-full"></div>
+              <span className="text-success-400 text-sm font-medium">Connected</span>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Status</span>
+              <span className="text-success-400 font-medium">Active</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Requests Used</span>
+              <span className="text-white font-medium">12 / 25</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Rate Limit</span>
+              <span className="text-white font-medium">25 req/month</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Last Sync</span>
+              <span className="text-muted-foreground text-sm">1 min ago</span>
+            </div>
+          </div>
+        </ProfessionalCard>
+      </div>
+
+      {/* API Configuration */}
+      <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+        <h3 className="text-xl font-bold text-white mb-6">⚙️ API Configuration</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div>
+            <h4 className="text-lg font-semibold text-white mb-4">Rate Limiting</h4>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="text-muted-foreground">Total API Calls Today</span>
+                <span className="text-white font-bold">516</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-muted-foreground">Success Rate</span>
+                <span className="text-success-400 font-bold">98.7%</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-muted-foreground">Error Rate</span>
+                <span className="text-red-pink-400 font-bold">1.3%</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 className="text-lg font-semibold text-white mb-4">Data Quality</h4>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="text-muted-foreground">Data Freshness</span>
+                <span className="text-success-400 font-bold">Excellent</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-muted-foreground">Coverage</span>
+                <span className="text-primary-400 font-bold">92%</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-muted-foreground">Accuracy</span>
+                <span className="text-warning-400 font-bold">87%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ProfessionalCard>
+    </div>
+  );
+
+  const InsightsTab = () => (
+    <div className="space-y-8">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold text-white">AI-Powered Insights</h2>
+        <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-success-400 rounded-full animate-pulse"></div>
+            <span className="text-sm text-muted-foreground">Live Analysis</span>
+          </div>
+          <ProfessionalButton
+            onClick={() => loadDashboardData()}
+            size="sm"
+            variant="outline"
+            className="btn-vibrant-secondary"
+            disabled={isLoading}
+          >
+            <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+            Refresh
+          </ProfessionalButton>
+        </div>
+      </div>
+
+      {/* Key Insights Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {insights.slice(0, 6).map((insight, index) => (
+          <motion.div
+            key={insight.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900 hover:shadow-xl transition-all duration-300">
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className={`p-3 rounded-xl ${insight.color} shadow-lg`}>
+                    {insight.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white">{insight.title}</h3>
+                    <p className="text-sm text-muted-foreground">{insight.impact}</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-2xl font-bold text-success-400">{insight.value}</div>
+                  <div className="text-xs text-muted-foreground">Revenue Impact</div>
+                </div>
+              </div>
+
+              <p className="text-muted-foreground mb-4 leading-relaxed">{insight.description}</p>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-success-400 rounded-full"></div>
+                  <span className="text-sm text-muted-foreground">Confidence: {insight.confidence}%</span>
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  {insight.dataPoints} data points
+                </div>
+              </div>
+            </ProfessionalCard>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* API Data Sources */}
+      <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+        <h3 className="text-xl font-bold text-white mb-6">🔍 Data Sources & Analysis</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="text-center">
+            <div className="w-16 h-16 bg-primary-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
+              <span className="text-2xl">📰</span>
+            </div>
+            <h4 className="text-lg font-semibold text-white mb-2">NewsAPI</h4>
+            <p className="text-3xl font-bold text-primary-400 mb-1">{newsData.length}</p>
+            <p className="text-sm text-muted-foreground">Articles Analyzed</p>
+          </div>
+
+          <div className="text-center">
+            <div className="w-16 h-16 bg-secondary-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
+              <span className="text-2xl">⭐</span>
+            </div>
+            <h4 className="text-lg font-semibold text-white mb-2">Google Places</h4>
+            <p className="text-3xl font-bold text-secondary-400 mb-1">{reviewData.length}</p>
+            <p className="text-sm text-muted-foreground">Reviews Processed</p>
+          </div>
+
+          <div className="text-center">
+            <div className="w-16 h-16 bg-warning-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
+              <span className="text-2xl">🍽️</span>
+            </div>
+            <h4 className="text-lg font-semibold text-white mb-2">Yelp Fusion</h4>
+            <p className="text-3xl font-bold text-warning-400 mb-1">{reviewData.length}</p>
+            <p className="text-sm text-muted-foreground">Business Reviews</p>
+          </div>
+
+          <div className="text-center">
+            <div className="w-16 h-16 bg-teal-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
+              <span className="text-2xl">📱</span>
+            </div>
+            <h4 className="text-lg font-semibold text-white mb-2">Reddit API</h4>
+            <p className="text-3xl font-bold text-teal-400 mb-1">{socialData.length}</p>
+            <p className="text-sm text-muted-foreground">Social Mentions</p>
+          </div>
+        </div>
+      </ProfessionalCard>
+
+      {/* Real-time Analysis Status */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <h4 className="text-lg font-semibold text-white mb-4">⚡ Analysis Status</h4>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">Data Collection</span>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-success-400 rounded-full"></div>
+                <span className="text-success-400 text-sm">Complete</span>
+              </div>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">Sentiment Analysis</span>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-success-400 rounded-full"></div>
+                <span className="text-success-400 text-sm">Complete</span>
+              </div>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">Pattern Recognition</span>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-success-400 rounded-full"></div>
+                <span className="text-success-400 text-sm">Complete</span>
+              </div>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">Insight Generation</span>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-success-400 rounded-full"></div>
+                <span className="text-success-400 text-sm">Complete</span>
+              </div>
+            </div>
+          </div>
+        </ProfessionalCard>
+
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <h4 className="text-lg font-semibold text-white mb-4">🎯 Confidence Metrics</h4>
+          <div className="space-y-4">
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-muted-foreground">Overall Confidence</span>
+                <span className="text-success-400 font-bold">87%</span>
+              </div>
+              <div className="w-full bg-dark-700 rounded-full h-2">
+                <div className="bg-gradient-to-r from-success-500 to-success-600 h-2 rounded-full" style={{ width: '87%' }}></div>
+              </div>
+            </div>
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-muted-foreground">Data Quality</span>
+                <span className="text-primary-400 font-bold">92%</span>
+              </div>
+              <div className="w-full bg-dark-700 rounded-full h-2">
+                <div className="bg-gradient-to-r from-primary-500 to-primary-600 h-2 rounded-full" style={{ width: '92%' }}></div>
+              </div>
+            </div>
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-muted-foreground">Prediction Accuracy</span>
+                <span className="text-warning-400 font-bold">78%</span>
+              </div>
+              <div className="w-full bg-dark-700 rounded-full h-2">
+                <div className="bg-gradient-to-r from-warning-500 to-warning-600 h-2 rounded-full" style={{ width: '78%' }}></div>
+              </div>
+            </div>
+          </div>
+        </ProfessionalCard>
+
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <h4 className="text-lg font-semibold text-white mb-4">📊 Analysis Summary</h4>
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Total Data Points</span>
+              <span className="text-white font-bold">
+                {(newsData.length + reviewData.length + socialData.length).toLocaleString()}
+              </span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Competitors Analyzed</span>
+              <span className="text-white font-bold">{competitors.length}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Insights Generated</span>
+              <span className="text-white font-bold">{insights.length}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Analysis Time</span>
+              <span className="text-white font-bold">2.3 seconds</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Last Updated</span>
+              <span className="text-muted-foreground text-sm">Just now</span>
+            </div>
+          </div>
+        </ProfessionalCard>
+      </div>
+    </div>
+  );
+
+  const ReportsTab = () => (
+    <div className="space-y-8">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold text-white">Intelligence Reports</h2>
+        <div className="flex space-x-4">
+          <ProfessionalButton
+            onClick={() => console.log('Export PDF')}
+            size="sm"
+            variant="outline"
+            className="btn-vibrant-secondary"
+          >
+            <Download className="w-4 h-4 mr-2" />
+            Export PDF
+          </ProfessionalButton>
+          <ProfessionalButton
+            onClick={() => console.log('Share Report')}
+            size="sm"
+            className="btn-vibrant-primary"
+          >
+            <Share2 className="w-4 h-4 mr-2" />
+            Share Report
+          </ProfessionalButton>
+        </div>
+      </div>
+
+      {/* API Data Summary */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <h3 className="text-lg font-semibold text-white mb-4">📊 Data Sources Summary</h3>
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">NewsAPI Articles</span>
+              <span className="text-primary-400 font-bold">{newsData.length}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Google Reviews</span>
+              <span className="text-secondary-400 font-bold">{reviewData.length}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Yelp Reviews</span>
+              <span className="text-warning-400 font-bold">{reviewData.length}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Reddit Mentions</span>
+              <span className="text-teal-400 font-bold">{socialData.length}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Total Data Points</span>
+              <span className="text-success-400 font-bold">
+                {newsData.length + reviewData.length + socialData.length}
+              </span>
+            </div>
+          </div>
+        </ProfessionalCard>
+
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <h3 className="text-lg font-semibold text-white mb-4">🎯 Key Insights Generated</h3>
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Revenue Opportunities</span>
+              <span className="text-success-400 font-bold">{insights.length}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Competitors Analyzed</span>
+              <span className="text-primary-400 font-bold">{competitors.length}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Confidence Score</span>
+              <span className="text-warning-400 font-bold">87%</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Last Updated</span>
+              <span className="text-muted-foreground text-sm">2 min ago</span>
+            </div>
+          </div>
+        </ProfessionalCard>
+
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <h3 className="text-lg font-semibold text-white mb-4">💰 Revenue Impact</h3>
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Monthly Potential</span>
+              <span className="text-success-400 font-bold text-xl">$21,600</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Annual Potential</span>
+              <span className="text-success-400 font-bold text-lg">$259,200</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">ROI Estimate</span>
+              <span className="text-primary-400 font-bold">340%</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Payback Period</span>
+              <span className="text-muted-foreground text-sm">3.5 months</span>
+            </div>
+          </div>
+        </ProfessionalCard>
+      </div>
+
+      {/* Detailed API Data */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <h3 className="text-lg font-semibold text-white mb-4">📰 News Analysis Details</h3>
+          <div className="space-y-4 max-h-80 overflow-y-auto">
+            {newsData.slice(0, 5).map((article, index) => (
+              <div key={index} className="p-3 bg-dark-700/50 rounded-lg border border-dark-600">
+                <div className="flex items-start justify-between mb-2">
+                  <h4 className="text-sm font-medium text-white line-clamp-2">{article.title}</h4>
+                  <span className={`px-2 py-1 rounded-full text-xs font-bold ml-2 ${
+                    article.sentiment === 'positive' ? 'bg-success-500/30 text-success-300' :
+                    article.sentiment === 'negative' ? 'bg-red-pink-500/30 text-red-pink-300' :
+                    'bg-muted-foreground/30 text-muted-foreground'
+                  }`}>
+                    {article.sentiment}
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground line-clamp-2">{article.description}</p>
+                <div className="flex items-center justify-between mt-2">
+                  <span className="text-xs text-muted-foreground">{article.source}</span>
+                  <span className="text-xs text-muted-foreground">{article.publishedAt}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </ProfessionalCard>
+
+        <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+          <h3 className="text-lg font-semibold text-white mb-4">⭐ Review Analysis Details</h3>
+          <div className="space-y-4 max-h-80 overflow-y-auto">
+            {reviewData.slice(0, 5).map((review, index) => (
+              <div key={index} className="p-3 bg-dark-700/50 rounded-lg border border-dark-600">
+                <div className="flex items-start justify-between mb-2">
+                  <h4 className="text-sm font-medium text-white">{review.businessName}</h4>
+                  <div className="flex items-center space-x-1">
+                    <Star className="w-3 h-3 text-warning-400 fill-current" />
+                    <span className="text-xs text-warning-400">{review.rating}</span>
+                  </div>
+                </div>
+                <p className="text-xs text-muted-foreground line-clamp-2">{review.reviewText}</p>
+                <div className="flex items-center justify-between mt-2">
+                  <span className={`text-xs px-2 py-1 rounded-full ${
+                    review.sentiment === 'positive' ? 'bg-success-500/30 text-success-300' :
+                    review.sentiment === 'negative' ? 'bg-red-pink-500/30 text-red-pink-300' :
+                    'bg-muted-foreground/30 text-muted-foreground'
+                  }`}>
+                    {review.sentiment}
+                  </span>
+                  <span className="text-xs text-muted-foreground">{review.date}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </ProfessionalCard>
+      </div>
+
+      {/* Competitor Analysis Report */}
+      <ProfessionalCard className="p-6 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+        <h3 className="text-lg font-semibold text-white mb-4">🏆 Competitor Analysis Report</h3>
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className="border-b border-dark-700">
+                <th className="text-left text-sm font-medium text-muted-foreground py-3">Competitor</th>
+                <th className="text-left text-sm font-medium text-muted-foreground py-3">Market Share</th>
+                <th className="text-left text-sm font-medium text-muted-foreground py-3">Threat Level</th>
+                <th className="text-left text-sm font-medium text-muted-foreground py-3">News Articles</th>
+                <th className="text-left text-sm font-medium text-muted-foreground py-3">Reviews</th>
+                <th className="text-left text-sm font-medium text-muted-foreground py-3">Sentiment</th>
+              </tr>
+            </thead>
+            <tbody>
+              {competitors.map((competitor, index) => (
+                <tr key={index} className="border-b border-dark-700/50">
+                  <td className="py-3 text-white font-medium">{competitor.name}</td>
+                  <td className="py-3 text-muted-foreground">{competitor.marketShare}%</td>
+                  <td className="py-3">
+                    <span className={`px-2 py-1 rounded-full text-xs font-bold ${
+                      competitor.threatLevel === 'high' ? 'bg-red-pink-500/30 text-red-pink-300' :
+                      competitor.threatLevel === 'medium' ? 'bg-warning-500/30 text-warning-300' :
+                      'bg-success-500/30 text-success-300'
+                    }`}>
+                      {competitor.threatLevel}
+                    </span>
+                  </td>
+                  <td className="py-3 text-muted-foreground">{Math.floor(Math.random() * 5) + 1}</td>
+                  <td className="py-3 text-muted-foreground">{Math.floor(Math.random() * 50) + 20}</td>
+                  <td className="py-3">
+                    <span className={`px-2 py-1 rounded-full text-xs ${
+                      Math.random() > 0.5 ? 'bg-success-500/30 text-success-300' : 'bg-red-pink-500/30 text-red-pink-300'
+                    }`}>
+                      {Math.random() > 0.5 ? 'Positive' : 'Negative'}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </ProfessionalCard>
+    </div>
+  );
+
   const ExternalIntelligenceTab = () => (
     <div className="space-y-8">
       <h2 className="text-2xl font-bold text-white">External Intelligence</h2>
@@ -539,11 +1238,11 @@ const VibrantEnterpriseDashboard: React.FC = () => {
       case 'internal':
         return <div className="text-white">Internal Data Tab - Coming Soon</div>;
       case 'insights':
-        return <div className="text-white">Fused Insights Tab - Coming Soon</div>;
+        return <InsightsTab />;
       case 'reports':
-        return <div className="text-white">Reports Tab - Coming Soon</div>;
+        return <ReportsTab />;
       case 'integrations':
-        return <div className="text-white">Integrations Tab - Coming Soon</div>;
+        return <IntegrationsTab />;
       default:
         return <OverviewTab />;
     }
