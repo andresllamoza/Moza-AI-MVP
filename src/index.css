@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Premium Moza AI Color System - Darker for Better Visibility */
+    --background: 210 30% 8%;
+    --foreground: 210 20% 98%;
+
+    --card: 210 30% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 210 30% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    /* Deep Electric Blue Primary */
+    --primary: 220 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 191 100% 50%;
+    --primary-light: 220 100% 90%;
+
+    /* Premium Secondary */
+    --secondary: 210 30% 15%;
+    --secondary-foreground: 210 20% 95%;
+
+    /* Sophisticated Muted Tones */
+    --muted: 210 30% 15%;
+    --muted-foreground: 210 16% 70%;
+
+    /* Electric Accent */
+    --accent: 191 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Success Green */
+    --success: 145 100% 39%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning Amber */
+    --warning: 44 100% 50%;
+    --warning-foreground: 222 47% 17%;
+
+    /* Contractor Orange */
+    --urgent: 18 100% 60%;
+    --urgent-foreground: 0 0% 100%;
+
+    /* Industry-Specific Color Palettes */
+    /* Contractors - Construction Orange & Steel Blue */
+    --contractor-primary: 18 100% 60%;
+    --contractor-secondary: 210 100% 45%;
+    --contractor-accent: 35 100% 55%;
+    --contractor-bg: 18 25% 5%;
+
+    /* Hospitality - Luxury Gold & Deep Navy */
+    --hospitality-primary: 44 100% 50%;
+    --hospitality-secondary: 220 50% 20%;
+    --hospitality-accent: 30 100% 65%;
+    --hospitality-bg: 44 30% 5%;
+
+    /* Car Wash - Ocean Blue & Fresh Cyan */
+    --carwash-primary: 200 100% 45%;
+    --carwash-secondary: 190 100% 55%;
+    --carwash-accent: 180 100% 70%;
+    --carwash-bg: 200 30% 5%;
+
+    /* Restaurants - Rich Burgundy & Warm Amber */
+    --restaurant-primary: 345 85% 45%;
+    --restaurant-secondary: 25 100% 60%;
+    --restaurant-accent: 15 100% 70%;
+    --restaurant-bg: 345 25% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 30% 20%;
+    --input: 210 30% 15%;
+    --ring: 220 100% 50%;
+
+    /* Premium Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 100% 50%), hsl(191 100% 50%));
+    --gradient-subtle: linear-gradient(180deg, hsl(210 20% 98%), hsl(210 20% 95%));
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    --gradient-contractor: linear-gradient(135deg, hsl(18 100% 60%), hsl(35 100% 55%));
+    --gradient-hospitality: linear-gradient(135deg, hsl(44 100% 50%), hsl(30 100% 65%));
+    --gradient-carwash: linear-gradient(135deg, hsl(200 100% 45%), hsl(180 100% 70%));
+    --gradient-restaurant: linear-gradient(135deg, hsl(345 85% 45%), hsl(15 100% 70%));
+    
+    /* Premium Shadows & Effects */
+    --shadow-elegant: 0 10px 30px -10px hsl(220 100% 50% / 0.15);
+    --shadow-glow: 0 0 40px hsl(191 100% 50% / 0.25);
+    --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.1);
+    --shadow-contractor: 0 20px 60px -10px hsl(18 100% 60% / 0.3);
+    --shadow-hospitality: 0 20px 60px -10px hsl(44 100% 50% / 0.3);
+    --shadow-carwash: 0 20px 60px -10px hsl(200 100% 45% / 0.3);
+    --shadow-restaurant: 0 20px 60px -10px hsl(345 85% 45% / 0.3);
+    --backdrop-blur: blur(16px) saturate(180%);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark Mode Premium Colors */
+    --background: 222 47% 5%;
+    --foreground: 210 20% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 20% 95%;
+
+    /* Dark Mode Electric Blue */
+    --primary: 191 100% 50%;
+    --primary-foreground: 222 47% 5%;
+    --primary-glow: 220 100% 70%;
+    --primary-light: 220 100% 20%;
+
+    --secondary: 222 47% 15%;
+    --secondary-foreground: 210 20% 95%;
+
+    --muted: 222 47% 15%;
+    --muted-foreground: 215 16% 70%;
+
+    --accent: 220 100% 50%;
+    --accent-foreground: 210 20% 98%;
+
+    --success: 145 100% 45%;
+    --success-foreground: 210 20% 98%;
+
+    --warning: 44 100% 60%;
+    --warning-foreground: 222 47% 5%;
+
+    --urgent: 18 100% 65%;
+    --urgent-foreground: 210 20% 98%;
+
+    /* Industry-Specific Dark Mode Colors */
+    --contractor-primary: 18 100% 65%;
+    --contractor-secondary: 210 100% 50%;
+    --contractor-accent: 35 100% 60%;
+    --contractor-bg: 18 25% 5%;
+
+    --hospitality-primary: 44 100% 55%;
+    --hospitality-secondary: 220 50% 25%;
+    --hospitality-accent: 30 100% 70%;
+    --hospitality-bg: 44 30% 5%;
+
+    --carwash-primary: 200 100% 50%;
+    --carwash-secondary: 190 100% 60%;
+    --carwash-accent: 180 100% 75%;
+    --carwash-bg: 200 30% 5%;
+
+    --restaurant-primary: 345 85% 50%;
+    --restaurant-secondary: 25 100% 65%;
+    --restaurant-accent: 15 100% 75%;
+    --restaurant-bg: 345 25% 5%;
+
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 222 47% 20%;
+    --input: 222 47% 20%;
+    --ring: 191 100% 50%;
+    
+    --sidebar-background: 222 47% 4%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 191 100% 50%;
+    --sidebar-primary-foreground: 222 47% 5%;
+    --sidebar-accent: 222 47% 15%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 222 47% 20%;
+    --sidebar-ring: 191 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+}
