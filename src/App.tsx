@@ -27,6 +27,10 @@ import Reviews from "./pages/Reviews";
 import GoogleProfile from "./pages/GoogleProfile";
 import Settings from "./pages/Settings";
 import Onboarding from "./pages/Onboarding";
+import DashboardPage from "./pages/DashboardPage";
+import ReportsPage from "./pages/ReportsPage";
+import InsightsPage from "./pages/InsightsPage";
+import IntegrationsPage from "./pages/IntegrationsPage";
 import { ContractorsLanding } from "./components/ContractorsLanding";
 import { HospitalityLanding } from "./components/HospitalityLanding";
 import { CarWashLanding } from "./components/CarWashLanding";
@@ -56,10 +60,10 @@ const App = () => {
                   <EmailDemo />
                 </div>
               } />
-              <Route path="/dashboard" element={<VibrantEnterpriseDashboard />} />
-              <Route path="/reports" element={<VibrantEnterpriseDashboard />} />
-              <Route path="/insights" element={<VibrantEnterpriseDashboard />} />
-              <Route path="/integrations" element={<VibrantEnterpriseDashboard />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/reports" element={<ReportsPage />} />
+              <Route path="/insights" element={<InsightsPage />} />
+              <Route path="/integrations" element={<IntegrationsPage />} />
               <Route path="/dual-dashboard" element={<DualIntelligenceDashboard />} />
               <Route path="/internal-dashboard" element={<MozaIntelligenceDashboard />} />
               <Route path="/old-dashboard" element={
