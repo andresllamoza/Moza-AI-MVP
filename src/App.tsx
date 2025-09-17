@@ -9,6 +9,7 @@ import { AuthGuard } from "@/components/AuthGuard";
 import LandingPage from "./components/demo/LandingPage";
 import IntelligenceIntroDemo from "./components/demo/IntelligenceIntroDemo";
 import ZeroFrictionIntroDemo from "./components/demo/ZeroFrictionIntroDemo";
+import { RealTimeDemo } from "./components/demo/RealTimeDemo";
 import EmailDemo from "./components/demo/EmailDemo";
 import SmartDashboard from "./components/demo/SmartDashboard";
 import ROICalculator from "./components/demo/ROICalculator";
@@ -43,6 +44,7 @@ const App = () => (
                     <Route path="/" element={<ZeroFrictionIntroDemo />} />
                     <Route path="/old-intro" element={<IntelligenceIntroDemo />} />
                     <Route path="/landing" element={<LandingPage />} />
+                    <Route path="/real-time-demo" element={<RealTimeDemo businessName="Mario's Artisan Pizza" location="Brooklyn, NY" industry="restaurant" />} />
                     <Route path="/demo" element={
                       <div>
                         <DemoNavigation />

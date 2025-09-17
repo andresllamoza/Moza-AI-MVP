@@ -21,6 +21,7 @@ import {
 import { ProfessionalButton } from '@/components/ui/professional-button';
 import { ProfessionalInput } from '@/components/ui/professional-input';
 import { ProfessionalCard } from '@/components/ui/professional-card';
+import { RealTimeDemo } from './RealTimeDemo';
 
 interface BusinessInfo {
   name: string;
@@ -48,6 +49,7 @@ const ZeroFrictionIntroDemo: React.FC = () => {
   });
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [insights, setInsights] = useState<IntelligenceInsight[]>([]);
+  const [showRealTimeDemo, setShowRealTimeDemo] = useState(false);
   const [autoProgress, setAutoProgress] = useState(true);
 
   const industries = [
@@ -134,12 +136,19 @@ const ZeroFrictionIntroDemo: React.FC = () => {
     setIsAnalyzing(true);
     setCurrentStep(2);
     
-    // Simulate analysis delay
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    
-    const generatedInsights = generateInsights(businessInfo);
-    setInsights(generatedInsights);
-    setIsAnalyzing(false);
+    // Show real-time demo for restaurant industry
+    if (businessInfo.industry.toLowerCase().includes('restaurant') || 
+        businessInfo.industry.toLowerCase().includes('food')) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setShowRealTimeDemo(true);
+      setIsAnalyzing(false);
+    } else {
+      // Simulate analysis delay for other industries
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      const generatedInsights = generateInsights(businessInfo);
+      setInsights(generatedInsights);
+      setIsAnalyzing(false);
+    }
   };
 
   const handleInputChange = (field: keyof BusinessInfo, value: string) => {
@@ -444,6 +453,18 @@ const ZeroFrictionIntroDemo: React.FC = () => {
       )
     }
   ];
+
+  // Show real-time demo for restaurant industry
+  if (showRealTimeDemo) {
+    return (
+      <RealTimeDemo
+        businessName={businessInfo.name}
+        location={`${businessInfo.zipCode}`}
+        industry={businessInfo.industry}
+        onComplete={() => setShowRealTimeDemo(false)}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900">
