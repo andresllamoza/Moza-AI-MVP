@@ -14,6 +14,7 @@ import ROICalculator from "./components/demo/ROICalculator";
 import DemoNavigation from "./components/demo/DemoNavigation";
 import MozaIntelligenceDashboard from "./components/dashboard/MozaIntelligenceDashboard";
 import DualIntelligenceDashboard from "./components/dashboard/DualIntelligenceDashboard";
+import VibrantEnterpriseDashboard from "./components/dashboard/VibrantEnterpriseDashboard";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
@@ -46,7 +47,8 @@ const App = () => (
                         <EmailDemo />
                       </div>
                     } />
-            <Route path="/dashboard" element={<DualIntelligenceDashboard />} />
+            <Route path="/dashboard" element={<VibrantEnterpriseDashboard />} />
+            <Route path="/dual-dashboard" element={<DualIntelligenceDashboard />} />
             <Route path="/internal-dashboard" element={<MozaIntelligenceDashboard />} />
             <Route path="/old-dashboard" element={
               <div>

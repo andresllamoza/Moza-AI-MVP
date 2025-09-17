@@ -4,6 +4,7 @@
 @import './styles/design-system.css';
 @import './styles/enterprise-design-system.css';
 @import './styles/sophisticated-dark.css';
+@import './styles/vibrant-enterprise.css';
 
 @tailwind base;
 @tailwind components;
