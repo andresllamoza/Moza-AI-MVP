@@ -22,15 +22,9 @@ import {
 import { ProfessionalButton } from '@/components/ui/professional-button';
 import { ProfessionalInput } from '@/components/ui/professional-input';
 import { ProfessionalCard } from '@/components/ui/professional-card';
-import { 
-  newsAPIService, 
-  placesAPIService, 
-  socialMediaService, 
-  businessEnrichmentService,
-  fusedInsightsEngine
-} from '@/services/apiIntegrations';
-import { generateRealisticInsights, generateRealisticCompetitors } from '@/data/realisticDemoData';
-import { demoScenarios, getDemoScenario, generateScenarioInsights } from '@/data/demoScenarios';
+import { realApiIntegration } from '@/services/realApiIntegration';
+import { demoScenarios, getDemoScenario } from '@/data/demoScenarios';
+import { ClientSummaryPage } from './ClientSummaryPage';
 
 interface BusinessInfo {
   name: string;
@@ -59,6 +53,7 @@ const ZeroFrictionIntroDemo: React.FC = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [insights, setInsights] = useState<IntelligenceInsight[]>([]);
   const [autoProgress, setAutoProgress] = useState(true);
+  const [showSummary, setShowSummary] = useState(false);
 
   const industries = [
     'Home Services',
@@ -145,80 +140,152 @@ const ZeroFrictionIntroDemo: React.FC = () => {
     setCurrentStep(2);
     
     try {
-      // Simulate real API calls with progress updates
-      console.log('🔍 Starting comprehensive competitive intelligence analysis...');
+      console.log('🔍 Starting REAL API competitive intelligence analysis...');
       
-      // Step 1: Business Enrichment
-      console.log('📊 Enriching business data...');
-      await new Promise(resolve => setTimeout(resolve, 800));
-      const businessData = await businessEnrichmentService.enrichBusinessData(businessInfo.name, `${businessInfo.name.toLowerCase().replace(/\s+/g, '-')}.com`);
-      
-      // Step 2: News API - Competitor mentions
-      console.log('📰 Analyzing competitor news mentions...');
-      await new Promise(resolve => setTimeout(resolve, 600));
-      const newsData = await newsAPIService.getCompetitorNews(['Lucali', 'Di Fara', 'Roberta\'s', 'Joe\'s Pizza'], businessInfo.industry, businessInfo.zipCode);
-      
-      // Step 3: Google Places - Competitor reviews
-      console.log('📍 Analyzing competitor reviews...');
-      await new Promise(resolve => setTimeout(resolve, 700));
-      const placesData = await placesAPIService.getCompetitorReviews(['Lucali', 'Di Fara', 'Roberta\'s'], businessInfo.zipCode);
-      
-      // Step 4: Social Media - Industry discussions
-      console.log('📱 Monitoring social media discussions...');
-      await new Promise(resolve => setTimeout(resolve, 500));
-      const socialData = await socialMediaService.getSocialMentions(businessInfo.industry, businessInfo.zipCode);
-      
-      // Step 5: Fused Intelligence Engine
-      console.log('🧠 Generating fused insights...');
-      await new Promise(resolve => setTimeout(resolve, 900));
-      const fusedInsights = await fusedInsightsEngine.generateFusedInsights({
-        businessName: businessInfo.name,
-        industry: businessInfo.industry,
-        location: businessInfo.zipCode,
-        newsData,
-        placesData,
-        socialData
-      });
-      
-      console.log('✅ Analysis complete! Generated insights:', fusedInsights.length);
-      
-      // Get scenario-specific insights
+      // Get scenario-specific competitors
       const scenario = getDemoScenario(businessInfo.industry, businessInfo.zipCode);
-      const scenarioInsights = scenario ? generateScenarioInsights(scenario) : generateRealisticInsights(businessInfo);
+      const competitors = scenario?.competitors || ['Competitor 1', 'Competitor 2', 'Competitor 3'];
+      
+      // Step 1: Business Enrichment (Clearbit + Hunter.io)
+      console.log('📊 Enriching business data with Clearbit...');
+      await new Promise(resolve => setTimeout(resolve, 800));
+      const businessData = await realApiIntegration.getBusinessEnrichment(
+        businessInfo.name, 
+        `${businessInfo.name.toLowerCase().replace(/\s+/g, '-')}.com`
+      );
+      
+      // Step 2: News API - Real competitor mentions
+      console.log('📰 Analyzing competitor news with NewsAPI...');
+      await new Promise(resolve => setTimeout(resolve, 600));
+      const newsInsights = await realApiIntegration.getCompetitorNews(
+        competitors, 
+        businessInfo.industry, 
+        businessInfo.zipCode
+      );
+      
+      // Step 3: Google Places - Real competitor reviews
+      console.log('📍 Analyzing competitor reviews with Google Places...');
+      await new Promise(resolve => setTimeout(resolve, 700));
+      const reviewInsights = await realApiIntegration.getCompetitorReviews(
+        competitors, 
+        businessInfo.zipCode
+      );
+      
+      // Step 4: Yelp - Real competitor reviews
+      console.log('🍽️ Analyzing competitor reviews with Yelp...');
+      await new Promise(resolve => setTimeout(resolve, 500));
+      const yelpInsights = await realApiIntegration.getYelpReviews(
+        competitors, 
+        businessInfo.zipCode
+      );
+      
+      // Step 5: Reddit - Real industry discussions
+      console.log('📱 Monitoring Reddit discussions...');
+      await new Promise(resolve => setTimeout(resolve, 500));
+      const redditInsights = await realApiIntegration.getRedditMentions(
+        businessInfo.industry, 
+        businessInfo.zipCode, 
+        competitors
+      );
+      
+      // Step 6: Email Discovery (Hunter.io)
+      console.log('📧 Discovering contact information...');
+      await new Promise(resolve => setTimeout(resolve, 400));
+      const emailData = await realApiIntegration.getEmailDiscovery(
+        businessInfo.name,
+        `${businessInfo.name.toLowerCase().replace(/\s+/g, '-')}.com`
+      );
+      
+      console.log('✅ REAL API Analysis complete!');
+      console.log('📊 News insights:', newsInsights.length);
+      console.log('📍 Review insights:', reviewInsights.length);
+      console.log('🍽️ Yelp insights:', yelpInsights.length);
+      console.log('📱 Reddit insights:', redditInsights.length);
+      console.log('📧 Email data:', emailData ? 'Found' : 'Not found');
+      
+      // Combine all real insights
+      const allInsights = [
+        ...newsInsights,
+        ...reviewInsights,
+        ...yelpInsights,
+        ...redditInsights,
+        ...(businessData ? [businessData] : []),
+        ...(emailData ? [emailData] : [])
+      ];
       
       // Convert to display format
-      const displayInsights = scenarioInsights.map(insight => ({
+      const displayInsights = allInsights.map(insight => ({
         id: insight.id,
         title: insight.title,
         description: insight.description,
         value: insight.value,
         impact: insight.impact,
-        icon: getIconComponent(insight.icon || 'Lightbulb'),
-        color: insight.color || 'text-primary-400',
+        icon: getIconComponent(getIconFromSource(insight.source)),
+        color: getColorFromSource(insight.source),
         confidence: insight.confidence
       }));
       
       setInsights(displayInsights);
       setIsAnalyzing(false);
       
+      // Show summary page after analysis
+      setTimeout(() => {
+        setShowSummary(true);
+      }, 2000);
+      
     } catch (error) {
-      console.error('Analysis error:', error);
+      console.error('Real API Analysis error:', error);
       // Fallback to scenario-specific data
       const scenario = getDemoScenario(businessInfo.industry, businessInfo.zipCode);
-      const scenarioInsights = scenario ? generateScenarioInsights(scenario) : generateRealisticInsights(businessInfo);
+      const fallbackInsights = scenario ? [
+        {
+          id: 'fallback_1',
+          title: 'Real-time Analysis Unavailable',
+          description: 'Using cached data due to API rate limits or connectivity issues. Real-time analysis will resume when APIs are available.',
+          value: 'Cached',
+          impact: 'Data Freshness',
+          icon: 'AlertTriangle',
+          color: 'text-warning-400',
+          confidence: 60
+        }
+      ] : [];
       
-      const generatedInsights = scenarioInsights.map(insight => ({
+      const generatedInsights = fallbackInsights.map(insight => ({
         id: insight.id,
         title: insight.title,
         description: insight.description,
         value: insight.value,
         impact: insight.impact,
-        icon: getIconComponent(insight.icon || 'Lightbulb'),
-        color: insight.color || 'text-primary-400',
+        icon: getIconComponent(insight.icon),
+        color: insight.color,
         confidence: insight.confidence
       }));
       setInsights(generatedInsights);
       setIsAnalyzing(false);
+    }
+  };
+
+  const getIconFromSource = (source: string): string => {
+    switch (source) {
+      case 'news_api': return 'BarChart3';
+      case 'google_places': return 'MapPin';
+      case 'yelp': return 'Star';
+      case 'reddit': return 'MessageCircle';
+      case 'clearbit': return 'Building2';
+      case 'hunter': return 'Mail';
+      default: return 'Lightbulb';
+    }
+  };
+
+  const getColorFromSource = (source: string): string => {
+    switch (source) {
+      case 'news_api': return 'text-primary-400';
+      case 'google_places': return 'text-secondary-400';
+      case 'yelp': return 'text-warning-400';
+      case 'reddit': return 'text-teal-400';
+      case 'clearbit': return 'text-success-400';
+      case 'hunter': return 'text-red-pink-400';
+      default: return 'text-primary-400';
     }
   };
 
@@ -558,6 +625,30 @@ const ZeroFrictionIntroDemo: React.FC = () => {
     }
   ];
 
+
+  // Show summary page after analysis
+  if (showSummary) {
+    return (
+      <ClientSummaryPage
+        businessName={businessInfo.name}
+        location={`${businessInfo.zipCode}`}
+        industry={businessInfo.industry}
+        insights={insights}
+        onScheduleCall={() => {
+          // Open calendar booking or contact form
+          window.open('https://calendly.com/mozawave/strategy-call', '_blank');
+        }}
+        onDownloadReport={() => {
+          // Generate and download PDF report
+          console.log('Downloading report...');
+        }}
+        onShareReport={() => {
+          // Share report functionality
+          console.log('Sharing report...');
+        }}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900">
