@@ -232,9 +232,9 @@ const DualIntelligenceDashboard: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-gradient-to-br from-dark-950 via-dark-900 to-dark-800">
       {/* Header */}
-      <div className="bg-white border-b border-neutral-200 sticky top-0 z-50 shadow-sm">
+      <div className="bg-dark-900/80 backdrop-blur-md border-b border-dark-800 sticky top-0 z-50 shadow-xl">
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">

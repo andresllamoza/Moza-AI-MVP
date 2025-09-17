@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/use-auth";
 import { AuthGuard } from "@/components/AuthGuard";
 import LandingPage from "./components/demo/LandingPage";
+import IntelligenceIntroDemo from "./components/demo/IntelligenceIntroDemo";
 import EmailDemo from "./components/demo/EmailDemo";
 import SmartDashboard from "./components/demo/SmartDashboard";
 import ROICalculator from "./components/demo/ROICalculator";
@@ -36,14 +37,15 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/demo" element={
-              <div>
-                <DemoNavigation />
-                <EmailDemo />
-              </div>
-            } />
+                  <Routes>
+                    <Route path="/" element={<IntelligenceIntroDemo />} />
+                    <Route path="/landing" element={<LandingPage />} />
+                    <Route path="/demo" element={
+                      <div>
+                        <DemoNavigation />
+                        <EmailDemo />
+                      </div>
+                    } />
             <Route path="/dashboard" element={<DualIntelligenceDashboard />} />
             <Route path="/internal-dashboard" element={<MozaIntelligenceDashboard />} />
             <Route path="/old-dashboard" element={
