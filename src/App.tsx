@@ -34,15 +34,18 @@ import { RestaurantsLanding } from "./components/RestaurantsLanding";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <AuthProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <AppLayout>
-            <Routes>
+const App = () => {
+  console.log('App component rendering...');
+  
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <AuthProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <AppLayout>
+              <Routes>
               <Route path="/" element={<ZeroFrictionIntroDemo />} />
               <Route path="/old-intro" element={<IntelligenceIntroDemo />} />
               <Route path="/landing" element={<LandingPage />} />
@@ -87,6 +90,7 @@ const App = () => (
       </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
-);
+  );
+};
 
 export default App;
