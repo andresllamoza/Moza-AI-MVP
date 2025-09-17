@@ -787,44 +787,12 @@ const ZeroFrictionIntroDemo: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900">
-      {/* Header */}
-      <div className="border-b border-dark-700 bg-dark-800/80 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-xl flex items-center justify-center shadow-lg">
-                <Brain className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-white">MozaWave</h1>
-                <p className="text-sm text-muted-foreground">Dual Intelligence Platform</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <ProfessionalButton
-                onClick={() => window.location.href = '/'}
-                size="sm"
-                variant="outline"
-                className="btn-vibrant-secondary"
-              >
-                ← Back to Home
-              </ProfessionalButton>
-              <ProfessionalButton
-                onClick={() => window.location.href = '/dashboard'}
-                size="sm"
-                className="btn-vibrant-primary"
-              >
-                View Dashboard
-              </ProfessionalButton>
-              <ProfessionalButton
-                onClick={() => setShowDebugPanel(!showDebugPanel)}
-                size="sm"
-                variant="outline"
-                className="btn-vibrant-secondary"
-              >
-                {showDebugPanel ? 'Hide' : 'Show'} API Data
-              </ProfessionalButton>
+    <div className="min-h-screen">
+      {/* Progress Indicator - Only show on demo steps */}
+      {currentStep < steps.length - 1 && (
+        <div className="bg-dark-800/50 backdrop-blur-sm border-b border-dark-700">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div className="flex items-center justify-between">
               <div className="text-sm text-muted-foreground">
                 Step {currentStep + 1} of {steps.length}
               </div>
@@ -834,10 +802,18 @@ const ZeroFrictionIntroDemo: React.FC = () => {
                   style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
                 />
               </div>
+              <ProfessionalButton
+                onClick={() => setShowDebugPanel(!showDebugPanel)}
+                size="sm"
+                variant="outline"
+                className="btn-vibrant-secondary"
+              >
+                {showDebugPanel ? 'Hide' : 'Show'} API Data
+              </ProfessionalButton>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

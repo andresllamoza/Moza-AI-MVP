@@ -19,12 +19,12 @@ import {
   Plug,
   MoreHorizontal,
   ArrowLeft,
-  Command,
-  K
+  Command
 } from 'lucide-react';
 import { ProfessionalButton } from '@/components/ui/professional-button';
 import { ProfessionalInput } from '@/components/ui/professional-input';
 import { useNavigationStore, navigationConfig, generateBreadcrumbs } from '@/store/navigationStore';
+import { SmartSearch } from './SmartSearch';
 
 interface GlobalHeaderProps {
   pageTitle?: string;
@@ -40,7 +40,6 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
   const location = useLocation();
   const navigate = useNavigate();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,6 +49,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
     breadcrumbs,
     recentPages,
     favorites,
+    searchQuery,
     isMobileMenuOpen,
     activeSection,
     setCurrentPage,
@@ -199,6 +199,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
                   variant="ghost"
                   size="sm"
                   className="text-muted-foreground hover:text-white hover:bg-dark-700"
+                  data-search-trigger
                 >
                   <Search className="w-4 h-4" />
                 </ProfessionalButton>
@@ -206,7 +207,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
                 {/* Search Shortcut Hint */}
                 <div className="hidden lg:flex items-center space-x-1 absolute -bottom-8 right-0 text-xs text-muted-foreground">
                   <Command className="w-3 h-3" />
-                  <K className="w-3 h-3" />
+                  <span className="text-xs bg-dark-700 px-1 py-0.5 rounded">K</span>
                 </div>
               </div>
 
@@ -441,48 +442,11 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
         )}
       </AnimatePresence>
 
-      {/* Search Modal */}
-      <AnimatePresence>
-        {isSearchOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-start justify-center pt-20"
-            onClick={() => setIsSearchOpen(false)}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: -20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -20 }}
-              className="w-full max-w-2xl mx-4 bg-dark-800 rounded-xl border border-dark-700 p-6 shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex items-center space-x-3 mb-4">
-                <Search className="w-5 h-5 text-muted-foreground" />
-                <ProfessionalInput
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search businesses, competitors, insights..."
-                  className="flex-1 bg-dark-900 border-dark-700"
-                  autoFocus
-                />
-                <ProfessionalButton
-                  onClick={() => setIsSearchOpen(false)}
-                  variant="ghost"
-                  size="sm"
-                >
-                  <X className="w-4 h-4" />
-                </ProfessionalButton>
-              </div>
-              
-              <div className="text-sm text-muted-foreground">
-                Press <kbd className="px-2 py-1 bg-dark-700 rounded text-xs">Esc</kbd> to close
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Smart Search Modal */}
+      <SmartSearch 
+        isOpen={isSearchOpen} 
+        onClose={() => setIsSearchOpen(false)} 
+      />
 
       {/* Notifications Dropdown */}
       <AnimatePresence>

@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/use-auth";
 import { AuthGuard } from "@/components/AuthGuard";
+import { AppLayout } from "@/components/layout/AppLayout";
 import LandingPage from "./components/demo/LandingPage";
 import IntelligenceIntroDemo from "./components/demo/IntelligenceIntroDemo";
 import ZeroFrictionIntroDemo from "./components/demo/ZeroFrictionIntroDemo";
@@ -40,46 +41,48 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-                  <Routes>
-                    <Route path="/" element={<ZeroFrictionIntroDemo />} />
-                    <Route path="/old-intro" element={<IntelligenceIntroDemo />} />
-                    <Route path="/landing" element={<LandingPage />} />
-                    <Route path="/real-time-demo" element={<RealTimeDemo businessName="Mario's Artisan Pizza" location="Brooklyn, NY" industry="restaurant" />} />
-                    <Route path="/demo" element={
-                      <div>
-                        <DemoNavigation />
-                        <EmailDemo />
-                      </div>
-                    } />
-            <Route path="/dashboard" element={<VibrantEnterpriseDashboard />} />
-            <Route path="/dual-dashboard" element={<DualIntelligenceDashboard />} />
-            <Route path="/internal-dashboard" element={<MozaIntelligenceDashboard />} />
-            <Route path="/old-dashboard" element={
-              <div>
-                <DemoNavigation />
-                <SmartDashboard />
-              </div>
-            } />
-            <Route path="/roi-calculator" element={
-              <div>
-                <DemoNavigation />
-                <ROICalculator />
-              </div>
-            } />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/contractors" element={<ContractorsLanding />} />
-            <Route path="/hospitality" element={<HospitalityLanding />} />
-            <Route path="/car-wash" element={<CarWashLanding />} />
-            <Route path="/restaurants" element={<RestaurantsLanding />} />
-            <Route path="/old-dashboard" element={<AuthGuard><Dashboard /></AuthGuard>} />
-            <Route path="/leads" element={<AuthGuard><Leads /></AuthGuard>} />
-            <Route path="/reviews" element={<AuthGuard><Reviews /></AuthGuard>} />
-            <Route path="/google-profile" element={<AuthGuard><GoogleProfile /></AuthGuard>} />
-            <Route path="/settings" element={<AuthGuard><Settings /></AuthGuard>} />
-            <Route path="/onboarding" element={<AuthGuard><Onboarding /></AuthGuard>} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <AppLayout>
+            <Routes>
+              <Route path="/" element={<ZeroFrictionIntroDemo />} />
+              <Route path="/old-intro" element={<IntelligenceIntroDemo />} />
+              <Route path="/landing" element={<LandingPage />} />
+              <Route path="/real-time-demo" element={<RealTimeDemo businessName="Mario's Artisan Pizza" location="Brooklyn, NY" industry="restaurant" />} />
+              <Route path="/demo" element={
+                <div>
+                  <DemoNavigation />
+                  <EmailDemo />
+                </div>
+              } />
+              <Route path="/dashboard" element={<VibrantEnterpriseDashboard />} />
+              <Route path="/dual-dashboard" element={<DualIntelligenceDashboard />} />
+              <Route path="/internal-dashboard" element={<MozaIntelligenceDashboard />} />
+              <Route path="/old-dashboard" element={
+                <div>
+                  <DemoNavigation />
+                  <SmartDashboard />
+                </div>
+              } />
+              <Route path="/roi-calculator" element={
+                <div>
+                  <DemoNavigation />
+                  <ROICalculator />
+                </div>
+              } />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/contractors" element={<ContractorsLanding />} />
+              <Route path="/hospitality" element={<HospitalityLanding />} />
+              <Route path="/car-wash" element={<CarWashLanding />} />
+              <Route path="/restaurants" element={<RestaurantsLanding />} />
+              <Route path="/old-dashboard" element={<AuthGuard><Dashboard /></AuthGuard>} />
+              <Route path="/leads" element={<AuthGuard><Leads /></AuthGuard>} />
+              <Route path="/reviews" element={<AuthGuard><Reviews /></AuthGuard>} />
+              <Route path="/google-profile" element={<AuthGuard><GoogleProfile /></AuthGuard>} />
+              <Route path="/settings" element={<AuthGuard><Settings /></AuthGuard>} />
+              <Route path="/onboarding" element={<AuthGuard><Onboarding /></AuthGuard>} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AppLayout>
         </BrowserRouter>
       </AuthProvider>
     </TooltipProvider>
