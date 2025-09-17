@@ -17,7 +17,13 @@ import {
   Sparkles,
   Star,
   Rocket,
-  AlertTriangle
+  AlertTriangle,
+  Building2,
+  Scale,
+  Home,
+  Heart,
+  Laptop,
+  Dumbbell
 } from 'lucide-react';
 import { ProfessionalButton } from '@/components/ui/professional-button';
 import { ProfessionalInput } from '@/components/ui/professional-input';
@@ -656,6 +662,101 @@ const ZeroFrictionIntroDemo: React.FC = () => {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </ProfessionalButton>
             </div>
+
+            {/* Try Another Demo Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="mt-12"
+            >
+              <ProfessionalCard className="p-8 border border-dark-600 bg-gradient-to-br from-dark-800 to-dark-900">
+                <h3 className="text-2xl font-bold text-white mb-6 text-center">Try Other Industry Demos</h3>
+                <p className="text-center text-muted-foreground mb-8">
+                  See how MozaWave works across different industries and locations
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <ProfessionalButton
+                    onClick={() => {
+                      setBusinessInfo({ name: 'Austin Elite Properties', zipCode: '78701', industry: 'Real Estate' });
+                      setCurrentStep(0);
+                    }}
+                    variant="outline"
+                    className="h-20 flex-col space-y-2 btn-vibrant-secondary"
+                  >
+                    <Building2 className="w-6 h-6" />
+                    <span className="font-medium">Real Estate</span>
+                    <span className="text-xs text-muted-foreground">Austin, TX</span>
+                  </ProfessionalButton>
+                  
+                  <ProfessionalButton
+                    onClick={() => {
+                      setBusinessInfo({ name: 'Bay Area Legal Group', zipCode: '94102', industry: 'Professional Services' });
+                      setCurrentStep(0);
+                    }}
+                    variant="outline"
+                    className="h-20 flex-col space-y-2 btn-vibrant-secondary"
+                  >
+                    <Scale className="w-6 h-6" />
+                    <span className="font-medium">Legal Services</span>
+                    <span className="text-xs text-muted-foreground">San Francisco, CA</span>
+                  </ProfessionalButton>
+                  
+                  <ProfessionalButton
+                    onClick={() => {
+                      setBusinessInfo({ name: 'Miami Home Solutions', zipCode: '33101', industry: 'Home Services' });
+                      setCurrentStep(0);
+                    }}
+                    variant="outline"
+                    className="h-20 flex-col space-y-2 btn-vibrant-secondary"
+                  >
+                    <Home className="w-6 h-6" />
+                    <span className="font-medium">Home Services</span>
+                    <span className="text-xs text-muted-foreground">Miami, FL</span>
+                  </ProfessionalButton>
+                  
+                  <ProfessionalButton
+                    onClick={() => {
+                      setBusinessInfo({ name: 'Chicago Wellness Center', zipCode: '60601', industry: 'Healthcare' });
+                      setCurrentStep(0);
+                    }}
+                    variant="outline"
+                    className="h-20 flex-col space-y-2 btn-vibrant-secondary"
+                  >
+                    <Heart className="w-6 h-6" />
+                    <span className="font-medium">Healthcare</span>
+                    <span className="text-xs text-muted-foreground">Chicago, IL</span>
+                  </ProfessionalButton>
+                  
+                  <ProfessionalButton
+                    onClick={() => {
+                      setBusinessInfo({ name: 'Seattle Tech Solutions', zipCode: '98101', industry: 'Technology' });
+                      setCurrentStep(0);
+                    }}
+                    variant="outline"
+                    className="h-20 flex-col space-y-2 btn-vibrant-secondary"
+                  >
+                    <Laptop className="w-6 h-6" />
+                    <span className="font-medium">Technology</span>
+                    <span className="text-xs text-muted-foreground">Seattle, WA</span>
+                  </ProfessionalButton>
+                  
+                  <ProfessionalButton
+                    onClick={() => {
+                      setBusinessInfo({ name: 'Denver Fitness Hub', zipCode: '80202', industry: 'Fitness' });
+                      setCurrentStep(0);
+                    }}
+                    variant="outline"
+                    className="h-20 flex-col space-y-2 btn-vibrant-secondary"
+                  >
+                    <Dumbbell className="w-6 h-6" />
+                    <span className="font-medium">Fitness</span>
+                    <span className="text-xs text-muted-foreground">Denver, CO</span>
+                  </ProfessionalButton>
+                </div>
+              </ProfessionalCard>
+            </motion.div>
           </div>
         </div>
       )
@@ -703,6 +804,21 @@ const ZeroFrictionIntroDemo: React.FC = () => {
               </div>
             </div>
             <div className="flex items-center space-x-4">
+              <ProfessionalButton
+                onClick={() => window.location.href = '/'}
+                size="sm"
+                variant="outline"
+                className="btn-vibrant-secondary"
+              >
+                ← Back to Home
+              </ProfessionalButton>
+              <ProfessionalButton
+                onClick={() => window.location.href = '/dashboard'}
+                size="sm"
+                className="btn-vibrant-primary"
+              >
+                View Dashboard
+              </ProfessionalButton>
               <ProfessionalButton
                 onClick={() => setShowDebugPanel(!showDebugPanel)}
                 size="sm"
