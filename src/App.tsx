@@ -31,6 +31,9 @@ import DashboardPage from "./pages/DashboardPage";
 import ReportsPage from "./pages/ReportsPage";
 import InsightsPage from "./pages/InsightsPage";
 import IntegrationsPage from "./pages/IntegrationsPage";
+import ServicesPage from "./pages/ServicesPage";
+import CompetitorTrackerPage from "./pages/CompetitorTrackerPage";
+import ReviewManagerPage from "./pages/ReviewManagerPage";
 import { ContractorsLanding } from "./components/ContractorsLanding";
 import { HospitalityLanding } from "./components/HospitalityLanding";
 import { CarWashLanding } from "./components/CarWashLanding";
@@ -63,6 +66,9 @@ const App = () => {
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/reports" element={<ReportsPage />} />
               <Route path="/insights" element={<InsightsPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services/competitor-tracker" element={<CompetitorTrackerPage />} />
+              <Route path="/services/review-manager" element={<ReviewManagerPage />} />
               <Route path="/integrations" element={<IntegrationsPage />} />
               <Route path="/dual-dashboard" element={<DualIntelligenceDashboard />} />
               <Route path="/internal-dashboard" element={<MozaIntelligenceDashboard />} />

@@ -158,6 +158,7 @@ export const navigationConfig = {
     { label: 'Dashboard', path: '/dashboard', icon: 'LayoutDashboard', section: 'dashboard' },
     { label: 'Reports', path: '/reports', icon: 'FileText', section: 'reports' },
     { label: 'Insights', path: '/insights', icon: 'Lightbulb', section: 'insights' },
+    { label: 'Services', path: '/services', icon: 'Settings', section: 'services' },
     { label: 'Integrations', path: '/integrations', icon: 'Plug', section: 'integrations' },
   ],
   secondaryNav: [
