@@ -29,17 +29,17 @@ const ServicesPage: React.FC = () => {
   const services = [
     {
       id: 1,
-      name: "Automated Competitor & Local Market Tracker",
-      description: "Monitor pricing, reviews, services, and ad spend from competitors automatically. Get weekly digest emails or Slack updates.",
+      name: "MozaWave Market Watch",
+      description: "Stop losing customers to competitors who are raising prices, adding services, and running ads while you're sleeping. Get weekly intelligence digests that tell you exactly what to do.",
       icon: Eye,
       color: "text-blue-400 bg-blue-600/20",
       features: [
-        "Real-time competitor monitoring",
-        "Price change alerts",
-        "New service detection",
-        "Ad spend tracking",
-        "Weekly digest reports",
-        "Slack integration"
+        "Know when competitors raise prices (so you can too)",
+        "Get alerts when they launch new services",
+        "Track their ad spend and copy what works",
+        "Weekly digest email with actionable insights",
+        "Never miss a competitive threat again",
+        "Turn intelligence into revenue in days"
       ],
       verticals: ["Home Services", "Local Healthcare", "Restaurants"],
       pricing: "Starting at $99/month",
@@ -52,17 +52,17 @@ const ServicesPage: React.FC = () => {
     },
     {
       id: 2,
-      name: "AI-Powered Review & Reputation Manager",
-      description: "Automatically respond to Google + Yelp reviews with tone-matched replies. Nudge happy customers to leave reviews via text/email.",
+      name: "MozaWave Reputation",
+      description: "Stop losing customers because of bad reviews. AI automatically responds to Google and Yelp reviews in your tone, while nudging happy customers to leave 5-star reviews.",
       icon: MessageCircle,
       color: "text-green-400 bg-green-600/20",
       features: [
-        "AI-generated responses",
-        "Tone-matched replies",
-        "Review request campaigns",
-        "Multi-platform management",
-        "Sentiment analysis",
-        "Response templates"
+        "AI responds to reviews while you sleep",
+        "Turn happy customers into 5-star reviewers",
+        "Stop bad reviews from killing your business",
+        "Increase your average rating by 0.5+ stars",
+        "Save 10+ hours per week on reputation management",
+        "More reviews = more customers = more revenue"
       ],
       verticals: ["Contractors", "Dentists", "Salons", "Gyms"],
       pricing: "Starting at $79/month",
@@ -127,19 +127,19 @@ const ServicesPage: React.FC = () => {
 
   const testimonials = [
     {
-      quote: "MozaWave has transformed how we track our competitors. We now respond to market changes within hours instead of weeks.",
+      quote: "MozaWave caught our biggest competitor raising prices by $5. We matched it the same day and added $2,000 to our monthly revenue.",
       author: "Sarah Johnson",
       company: "Brooklyn Pizza Co",
       industry: "Restaurant"
     },
     {
-      quote: "The AI review responses are so natural, our customers think we personally wrote them. Our reputation has never been better.",
+      quote: "Our Google rating went from 3.8 to 4.6 in 2 months. The AI responses are so good, customers think I wrote them personally.",
       author: "Mike Chen",
       company: "Green Clean Services",
       industry: "Home Services"
     },
     {
-      quote: "The insights we get from MozaWave help us make decisions that have increased our revenue by 30% in just 3 months.",
+      quote: "We found out a competitor was advertising on Facebook for $3,000/month. We copied their strategy and got 40% more leads.",
       author: "Lisa Rodriguez",
       company: "TechStart Solutions",
       industry: "Technology"
@@ -156,11 +156,27 @@ const ServicesPage: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl font-bold text-white mb-6">MozaWave Services</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Comprehensive AI-powered business intelligence solutions designed to help you outsmart competitors, 
-            grow revenue, and build a stronger online presence.
+          <h1 className="text-5xl font-bold text-white mb-6">Two Problems. Two Solutions.</h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            Every week, small business owners face the same two struggles: <strong className="text-white">losing customers to competitors</strong> and <strong className="text-white">managing online reputation.</strong>
+            <br /><br />
+            We built two focused products to solve exactly these problems.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <ProfessionalButton
+              size="lg"
+              className="btn-vibrant-primary text-lg px-8 py-4"
+            >
+              🚀 Start Free Trial
+            </ProfessionalButton>
+            <ProfessionalButton
+              size="lg"
+              variant="outline"
+              className="btn-vibrant-secondary text-lg px-8 py-4"
+            >
+              📞 Book Demo Call
+            </ProfessionalButton>
+          </div>
         </motion.div>
 
         {/* Services Grid */}
@@ -300,9 +316,10 @@ const ServicesPage: React.FC = () => {
           className="text-center"
         >
           <ProfessionalCard className="p-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Stop Losing Money to Competitors</h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join hundreds of businesses already using MozaWave to outsmart competitors and grow revenue.
+              Join 500+ small businesses who've turned competitive intelligence into real revenue. 
+              <strong className="text-white"> Average customer sees $50K+ annual revenue increase.</strong>
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <ProfessionalButton
@@ -310,17 +327,18 @@ const ServicesPage: React.FC = () => {
                 size="lg"
                 className="btn-vibrant-primary"
               >
-                <Play className="w-5 h-5 mr-2" />
-                Try Free Demo
+                🚀 Start Free Trial
               </ProfessionalButton>
               <ProfessionalButton
                 size="lg"
                 variant="outline"
               >
-                <Mail className="w-5 h-5 mr-2" />
-                Contact Sales
+                📞 Book Demo Call
               </ProfessionalButton>
             </div>
+            <p className="text-sm text-muted-foreground mt-6">
+              ✓ Cancel anytime • ✓ First 2 weeks free • ✓ Setup in 5 minutes
+            </p>
           </ProfessionalCard>
         </motion.div>
       </div>

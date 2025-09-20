@@ -361,13 +361,35 @@ const ZeroFrictionIntroDemo: React.FC = () => {
             <Brain className="w-12 h-12 text-white" />
           </motion.div>
           
-          <div className="space-y-4">
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Intelligence That Drives Revenue
+          <div className="space-y-6">
+            <h1 className="text-5xl font-bold bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
+              Stop Losing Customers
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Discover hidden opportunities, outsmart competitors, and unlock growth potential 
-              with AI-powered business intelligence.
+            <h2 className="text-3xl font-semibold text-white">
+              to Your Competitors
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Every week, your competitors are stealing customers while you're flying blind. 
+              <strong className="text-white"> MozaWave gives you the intelligence to fight back.</strong>
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <ProfessionalButton
+                size="lg"
+                className="btn-vibrant-primary text-lg px-8 py-4"
+              >
+                🚀 Start Free Trial
+              </ProfessionalButton>
+              <ProfessionalButton
+                size="lg"
+                variant="outline"
+                className="btn-vibrant-secondary text-lg px-8 py-4"
+              >
+                📞 Book Demo Call
+              </ProfessionalButton>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              ✓ Cancel anytime • ✓ First 2 weeks free • ✓ Setup in 5 minutes
             </p>
           </div>
 
@@ -380,8 +402,8 @@ const ZeroFrictionIntroDemo: React.FC = () => {
               <div className="w-16 h-16 mx-auto bg-gradient-to-r from-success-500 to-success-600 rounded-xl flex items-center justify-center shadow-lg hover:shadow-glow transition-all duration-300">
                 <Target className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-white">Competitive Edge</h3>
-              <p className="text-sm text-muted-foreground">Beat competitors with real-time intelligence</p>
+              <h3 className="text-lg font-semibold text-white">Stop Losing Customers</h3>
+              <p className="text-sm text-muted-foreground">Know competitor moves before they hurt you</p>
             </motion.div>
             <motion.div 
               className="text-center space-y-3"
@@ -391,8 +413,8 @@ const ZeroFrictionIntroDemo: React.FC = () => {
               <div className="w-16 h-16 mx-auto bg-gradient-to-r from-secondary-500 to-secondary-600 rounded-xl flex items-center justify-center shadow-lg hover:shadow-glow-secondary transition-all duration-300">
                 <TrendingUp className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-white">Revenue Growth</h3>
-              <p className="text-sm text-muted-foreground">Identify opportunities worth $100K+</p>
+              <h3 className="text-lg font-semibold text-white">Grow Revenue Fast</h3>
+              <p className="text-sm text-muted-foreground">Turn insights into $100K+ opportunities</p>
             </motion.div>
             <motion.div 
               className="text-center space-y-3"
@@ -402,8 +424,8 @@ const ZeroFrictionIntroDemo: React.FC = () => {
               <div className="w-16 h-16 mx-auto bg-gradient-to-r from-teal-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg hover:shadow-glow-teal transition-all duration-300">
                 <Shield className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-white">Market Protection</h3>
-              <p className="text-sm text-muted-foreground">Stay ahead of threats and changes</p>
+              <h3 className="text-lg font-semibold text-white">Fix Your Reputation</h3>
+              <p className="text-sm text-muted-foreground">AI handles reviews while you sleep</p>
             </motion.div>
           </div>
 

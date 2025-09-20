@@ -271,9 +271,9 @@ const ReviewManagerPage: React.FC = () => {
               <MessageCircle className="w-8 h-8 text-primary-400" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-white">AI-Powered Review & Reputation Manager</h1>
+              <h1 className="text-4xl font-bold text-white">MozaWave Reputation</h1>
               <p className="text-xl text-muted-foreground">
-                Automatically respond to reviews and manage your online reputation
+                Stop losing customers because of bad reviews. AI automatically responds while nudging happy customers to leave 5-star reviews
               </p>
             </div>
           </div>

@@ -195,9 +195,9 @@ const CompetitorTrackerPage: React.FC = () => {
               <Eye className="w-8 h-8 text-primary-400" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-white">Automated Competitor & Local Market Tracker</h1>
+              <h1 className="text-4xl font-bold text-white">MozaWave Market Watch</h1>
               <p className="text-xl text-muted-foreground">
-                Monitor pricing, reviews, services, and ad spend from competitors automatically
+                Stop losing customers to competitors who are raising prices, adding services, and running ads while you're sleeping
               </p>
             </div>
           </div>
