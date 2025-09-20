@@ -15,21 +15,66 @@ import {
   CheckCircle2,
   AlertTriangle,
   Clock,
-  MapPin,
-  Building2,
-  Users,
-  Calendar,
   Settings,
   Play,
   Pause,
-  RefreshCw
+  RefreshCw,
+  Plus,
+  Search,
+  Building2,
+  MapPin
 } from 'lucide-react';
 import { ProfessionalButton } from '@/components/ui/professional-button';
 import { ProfessionalCard } from '@/components/ui/professional-card';
 import { ProfessionalInput } from '@/components/ui/professional-input';
+import { competitorTrackerAPI } from '@/services/competitorTrackerApi';
 
 const CompetitorTrackerPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchLocation, setSearchLocation] = useState('');
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+
+  // API Integration Functions
+  const handleSearchCompetitors = async () => {
+    if (!searchQuery.trim() || !searchLocation.trim()) {
+      alert('Please enter both search query and location');
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const results = await competitorTrackerAPI.searchCompetitors(searchQuery, searchLocation);
+      setSearchResults(results);
+    } catch (error) {
+      console.error('Error searching competitors:', error);
+      alert('Error searching competitors. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleAddCompetitor = async (competitor: any) => {
+    // In a real implementation, this would save to your database
+    console.log('Adding competitor to tracking:', competitor);
+    alert(`${competitor.name} has been added to competitor tracking!`);
+  };
+
+  const handleRefreshCompetitor = async (competitorId: string) => {
+    setIsLoading(true);
+    try {
+      // In a real implementation, this would refresh the competitor data
+      console.log('Refreshing competitor data for:', competitorId);
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
+      alert('Competitor data refreshed successfully!');
+    } catch (error) {
+      console.error('Error refreshing competitor:', error);
+      alert('Error refreshing competitor data. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const trackedCompetitors = [
     {
@@ -274,63 +319,129 @@ const CompetitorTrackerPage: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           {activeTab === 'overview' && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Quick Actions */}
+            <div className="space-y-8">
+              {/* Search Section */}
               <ProfessionalCard className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-6">Quick Actions</h3>
-                <div className="space-y-4">
-                  <ProfessionalButton className="w-full justify-start btn-vibrant-primary">
-                    <Plus className="w-5 h-5 mr-3" />
-                    Add New Competitor
-                  </ProfessionalButton>
-                  <ProfessionalButton variant="outline" className="w-full justify-start">
-                    <Settings className="w-5 h-5 mr-3" />
-                    Configure Alerts
-                  </ProfessionalButton>
-                  <ProfessionalButton variant="outline" className="w-full justify-start">
-                    <Mail className="w-5 h-5 mr-3" />
-                    Setup Email Digest
-                  </ProfessionalButton>
-                  <ProfessionalButton variant="outline" className="w-full justify-start">
-                    <Slack className="w-5 h-5 mr-3" />
-                    Connect Slack
-                  </ProfessionalButton>
+                <h3 className="text-xl font-semibold text-white mb-6">Search & Add Competitors</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <ProfessionalInput
+                    placeholder="Search for competitors (e.g., 'pizza restaurants')"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                  <ProfessionalInput
+                    placeholder="Location (e.g., 'Brooklyn, NY')"
+                    value={searchLocation}
+                    onChange={(e) => setSearchLocation(e.target.value)}
+                  />
                 </div>
+                <ProfessionalButton
+                  onClick={handleSearchCompetitors}
+                  disabled={isLoading || !searchQuery.trim() || !searchLocation.trim()}
+                  className="btn-vibrant-primary"
+                >
+                  {isLoading ? (
+                    <>
+                      <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                      Searching...
+                    </>
+                  ) : (
+                    <>
+                      <Search className="w-4 h-4 mr-2" />
+                      Search Competitors
+                    </>
+                  )}
+                </ProfessionalButton>
+
+                {/* Search Results */}
+                {searchResults.length > 0 && (
+                  <div className="mt-6">
+                    <h4 className="text-lg font-semibold text-white mb-4">Search Results</h4>
+                    <div className="space-y-3">
+                      {searchResults.slice(0, 5).map((result) => (
+                        <div key={result.id} className="flex items-center justify-between p-3 bg-dark-700/50 rounded-lg">
+                          <div>
+                            <p className="text-white font-medium">{result.name}</p>
+                            <p className="text-sm text-muted-foreground">{result.address}</p>
+                            <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                              <span>⭐ {result.rating}/5</span>
+                              <span>📝 {result.reviewCount} reviews</span>
+                              {result.priceLevel && <span>💰 {result.priceLevel}/4</span>}
+                            </div>
+                          </div>
+                          <ProfessionalButton
+                            size="sm"
+                            onClick={() => handleAddCompetitor(result)}
+                            className="btn-vibrant-primary"
+                          >
+                            <Plus className="w-4 h-4 mr-2" />
+                            Track
+                          </ProfessionalButton>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </ProfessionalCard>
 
-              {/* Recent Activity */}
-              <ProfessionalCard className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-6">Recent Activity</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3 p-3 bg-dark-700/50 rounded-lg">
-                    <div className="p-2 bg-red-600/20 rounded-lg">
-                      <AlertTriangle className="w-4 h-4 text-red-400" />
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Quick Actions */}
+                <ProfessionalCard className="p-6">
+                  <h3 className="text-xl font-semibold text-white mb-6">Quick Actions</h3>
+                  <div className="space-y-4">
+                    <ProfessionalButton className="w-full justify-start btn-vibrant-primary">
+                      <Plus className="w-5 h-5 mr-3" />
+                      Add New Competitor
+                    </ProfessionalButton>
+                    <ProfessionalButton variant="outline" className="w-full justify-start">
+                      <Settings className="w-5 h-5 mr-3" />
+                      Configure Alerts
+                    </ProfessionalButton>
+                    <ProfessionalButton variant="outline" className="w-full justify-start">
+                      <Mail className="w-5 h-5 mr-3" />
+                      Setup Email Digest
+                    </ProfessionalButton>
+                    <ProfessionalButton variant="outline" className="w-full justify-start">
+                      <Slack className="w-5 h-5 mr-3" />
+                      Connect Slack
+                    </ProfessionalButton>
+                  </div>
+                </ProfessionalCard>
+
+                {/* Recent Activity */}
+                <ProfessionalCard className="p-6">
+                  <h3 className="text-xl font-semibold text-white mb-6">Recent Activity</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-3 p-3 bg-dark-700/50 rounded-lg">
+                      <div className="p-2 bg-red-600/20 rounded-lg">
+                        <AlertTriangle className="w-4 h-4 text-red-400" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-white text-sm">Brooklyn Pizza Co increased delivery fees</p>
+                        <p className="text-muted-foreground text-xs">2 hours ago</p>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <p className="text-white text-sm">Brooklyn Pizza Co increased delivery fees</p>
-                      <p className="text-muted-foreground text-xs">2 hours ago</p>
+                    <div className="flex items-center space-x-3 p-3 bg-dark-700/50 rounded-lg">
+                      <div className="p-2 bg-success-600/20 rounded-lg">
+                        <CheckCircle2 className="w-4 h-4 text-success-400" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-white text-sm">Green Clean Services added new service</p>
+                        <p className="text-muted-foreground text-xs">4 hours ago</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-3 p-3 bg-dark-700/50 rounded-lg">
+                      <div className="p-2 bg-warning-600/20 rounded-lg">
+                        <Bell className="w-4 h-4 text-warning-400" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-white text-sm">Weekly digest sent successfully</p>
+                        <p className="text-muted-foreground text-xs">1 day ago</p>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-3 p-3 bg-dark-700/50 rounded-lg">
-                    <div className="p-2 bg-success-600/20 rounded-lg">
-                      <CheckCircle2 className="w-4 h-4 text-success-400" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-white text-sm">Green Clean Services added new service</p>
-                      <p className="text-muted-foreground text-xs">4 hours ago</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3 p-3 bg-dark-700/50 rounded-lg">
-                    <div className="p-2 bg-warning-600/20 rounded-lg">
-                      <Bell className="w-4 h-4 text-warning-400" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-white text-sm">Weekly digest sent successfully</p>
-                      <p className="text-muted-foreground text-xs">1 day ago</p>
-                    </div>
-                  </div>
-                </div>
-              </ProfessionalCard>
+                </ProfessionalCard>
+              </div>
             </div>
           )}
 
@@ -410,8 +521,13 @@ const CompetitorTrackerPage: React.FC = () => {
                         <Settings className="w-4 h-4 mr-2" />
                         Configure
                       </ProfessionalButton>
-                      <ProfessionalButton size="sm" variant="outline">
-                        <RefreshCw className="w-4 h-4 mr-2" />
+                      <ProfessionalButton 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => handleRefreshCompetitor(competitor.id.toString())}
+                        disabled={isLoading}
+                      >
+                        <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
                         Refresh
                       </ProfessionalButton>
                     </div>

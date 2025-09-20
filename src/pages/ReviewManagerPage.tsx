@@ -33,12 +33,67 @@ import {
 import { ProfessionalButton } from '@/components/ui/professional-button';
 import { ProfessionalCard } from '@/components/ui/professional-card';
 import { ProfessionalInput } from '@/components/ui/professional-input';
+import { reviewManagerAPI } from '@/services/reviewManagerApi';
 
 const ReviewManagerPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [selectedReview, setSelectedReview] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [reviewsData, setReviewsData] = useState<any[]>([]);
+  const [aiResponse, setAiResponse] = useState<any>(null);
 
-  const reviews = [
+  // API Integration Functions
+  const handleLoadReviews = async () => {
+    setIsLoading(true);
+    try {
+      const reviews = await reviewManagerAPI.getReviews();
+      setReviewsData(reviews);
+    } catch (error) {
+      console.error('Error loading reviews:', error);
+      alert('Error loading reviews. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleGenerateAIResponse = async (reviewText: string, rating: number) => {
+    setIsLoading(true);
+    try {
+      const response = await reviewManagerAPI.generateAIResponse(reviewText, rating);
+      setAiResponse(response);
+    } catch (error) {
+      console.error('Error generating AI response:', error);
+      alert('Error generating AI response. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleReplyToReview = async (reviewId: string, replyText: string) => {
+    setIsLoading(true);
+    try {
+      const success = await reviewManagerAPI.replyToReview(reviewId, replyText);
+      if (success) {
+        alert('Reply sent successfully!');
+        // Refresh reviews
+        await handleLoadReviews();
+      } else {
+        alert('Failed to send reply. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error replying to review:', error);
+      alert('Error replying to review. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Load reviews on component mount
+  React.useEffect(() => {
+    handleLoadReviews();
+  }, []);
+
+  const reviews = reviewsData.length > 0 ? reviewsData : [
     {
       id: 1,
       platform: "Google",
@@ -397,6 +452,79 @@ const ReviewManagerPage: React.FC = () => {
                 </div>
               </ProfessionalCard>
 
+              {/* AI Response Display */}
+              {aiResponse && (
+                <ProfessionalCard className="p-6 mb-6 border-2 border-primary-600/50">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <div className="p-2 bg-primary-600/20 rounded-lg">
+                      <Bot className="w-5 h-5 text-primary-400" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-white">AI-Generated Response</h3>
+                    <span className="px-2 py-1 bg-primary-600/20 text-primary-400 text-xs rounded-full">
+                      {Math.round(aiResponse.confidence * 100)}% confidence
+                    </span>
+                  </div>
+                  
+                  <div className="mb-4">
+                    <p className="text-muted-foreground mb-2">Suggested Response:</p>
+                    <div className="p-4 bg-dark-700/50 rounded-lg">
+                      <p className="text-white">{aiResponse.response}</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4 mb-4">
+                    <div>
+                      <p className="text-sm text-muted-foreground">Sentiment</p>
+                      <p className="text-white capitalize">{aiResponse.sentiment}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Tone</p>
+                      <p className="text-white capitalize">{aiResponse.tone}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Confidence</p>
+                      <p className="text-white">{Math.round(aiResponse.confidence * 100)}%</p>
+                    </div>
+                  </div>
+
+                  {aiResponse.suggestedActions && (
+                    <div className="mb-4">
+                      <p className="text-sm text-muted-foreground mb-2">Suggested Actions:</p>
+                      <ul className="space-y-1">
+                        {aiResponse.suggestedActions.map((action: string, index: number) => (
+                          <li key={index} className="flex items-center space-x-2 text-sm text-muted-foreground">
+                            <Target className="w-3 h-3 text-primary-400" />
+                            <span>{action}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  <div className="flex space-x-2">
+                    <ProfessionalButton 
+                      size="sm" 
+                      className="btn-vibrant-primary"
+                      onClick={() => {
+                        // In a real implementation, this would send the response
+                        alert('AI response copied! You can now paste it as your reply.');
+                      }}
+                    >
+                      <Send className="w-4 h-4 mr-2" />
+                      Use This Response
+                    </ProfessionalButton>
+                    <ProfessionalButton 
+                      size="sm" 
+                      variant="outline"
+                      onClick={() => setAiResponse(null)}
+                    >
+                      <X className="w-4 h-4 mr-2" />
+                      Dismiss
+                    </ProfessionalButton>
+                  </div>
+                </ProfessionalCard>
+              )}
+
               {/* Reviews List */}
               {reviews.map((review) => (
                 <ProfessionalCard key={review.id} className="p-6">
@@ -460,9 +588,14 @@ const ReviewManagerPage: React.FC = () => {
                           <Edit className="w-4 h-4 mr-2" />
                           Write Response
                         </ProfessionalButton>
-                        <ProfessionalButton size="sm" variant="outline">
+                        <ProfessionalButton 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => handleGenerateAIResponse(review.text, review.rating)}
+                          disabled={isLoading}
+                        >
                           <Bot className="w-4 h-4 mr-2" />
-                          Auto-Respond
+                          {isLoading ? 'Generating...' : 'AI Response'}
                         </ProfessionalButton>
                       </div>
                     </div>
