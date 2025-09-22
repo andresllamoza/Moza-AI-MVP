@@ -60,7 +60,7 @@ const App = () => {
           <BrowserRouter>
             <AppLayout>
               <Routes>
-              <Route path="/" element={<ZeroFrictionIntroDemo />} />
+              <Route path="/" element={<WorkingOnePage />} />
               <Route path="/old-intro" element={<IntelligenceIntroDemo />} />
               <Route path="/landing" element={<LandingPage />} />
               <Route path="/real-time-demo" element={<RealTimeDemo businessName="Mario's Artisan Pizza" location="Brooklyn, NY" industry="restaurant" />} />

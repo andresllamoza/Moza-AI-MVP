@@ -169,17 +169,27 @@ export const WorkingOnePage: React.FC = () => {
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24"
         >
           <div className="text-center max-w-4xl mx-auto">
-            {/* Trust Badge */}
+            {/* Enterprise Trust Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="mb-8"
             >
-              <span className="bg-blue-100 text-blue-700 border border-blue-200 px-4 py-2 text-sm font-medium rounded-full inline-flex items-center gap-2">
-                <Star className="w-4 h-4" />
-                Trusted by 500+ Businesses
-              </span>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <span className="bg-blue-100 text-blue-700 border border-blue-200 px-4 py-2 text-sm font-medium rounded-full inline-flex items-center gap-2">
+                  <Shield className="w-4 h-4" />
+                  Enterprise-Grade Security
+                </span>
+                <span className="bg-blue-100 text-blue-700 border border-blue-200 px-4 py-2 text-sm font-medium rounded-full inline-flex items-center gap-2">
+                  <Users className="w-4 h-4" />
+                  Trusted by 500+ Businesses
+                </span>
+                <span className="bg-blue-100 text-blue-700 border border-blue-200 px-4 py-2 text-sm font-medium rounded-full inline-flex items-center gap-2">
+                  <Award className="w-4 h-4" />
+                  99.9% Uptime SLA
+                </span>
+              </div>
             </motion.div>
 
             {/* Main Headline */}
@@ -226,24 +236,28 @@ export const WorkingOnePage: React.FC = () => {
               </button>
             </motion.div>
 
-            {/* Trust Signals */}
+            {/* Enterprise Trust Signals */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-8 text-sm text-gray-500"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm text-gray-600 max-w-4xl mx-auto"
             >
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-500" />
-                <span>Cancel anytime</span>
+              <div className="flex items-center justify-center gap-2 p-3 bg-white/50 rounded-lg border border-blue-100">
+                <Shield className="w-4 h-4 text-blue-600" />
+                <span className="font-medium">SOC 2 Type II</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center gap-2 p-3 bg-white/50 rounded-lg border border-blue-100">
                 <CheckCircle className="w-4 h-4 text-green-500" />
-                <span>First 2 weeks free</span>
+                <span className="font-medium">2 Weeks Free Trial</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-500" />
-                <span>Setup in 5 minutes</span>
+              <div className="flex items-center justify-center gap-2 p-3 bg-white/50 rounded-lg border border-blue-100">
+                <Zap className="w-4 h-4 text-blue-600" />
+                <span className="font-medium">5-Minute Setup</span>
+              </div>
+              <div className="flex items-center justify-center gap-2 p-3 bg-white/50 rounded-lg border border-blue-100">
+                <Award className="w-4 h-4 text-blue-600" />
+                <span className="font-medium">Enterprise SLA</span>
               </div>
             </motion.div>
           </div>
@@ -279,15 +293,15 @@ export const WorkingOnePage: React.FC = () => {
             >
               <span className="bg-blue-100 text-blue-700 border border-blue-200 px-4 py-2 text-sm font-medium rounded-full inline-flex items-center gap-2 mb-4">
                 <Sparkles className="w-4 h-4" />
-                Three Powerful Solutions
+                Enterprise Intelligence Platform
               </span>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 Everything You Need to
                 <span className="text-blue-600"> Dominate Your Market</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Stop losing customers to competitors. Stop losing revenue to bad reviews. 
-                Get the intelligence you need to grow your business.
+                The world's first dual intelligence platform combining external competitive intelligence 
+                with internal customer data. Enterprise-grade security, real-time insights, and AI-powered recommendations.
               </p>
             </motion.div>
           </div>
@@ -299,12 +313,14 @@ export const WorkingOnePage: React.FC = () => {
                 icon: Eye,
                 title: "MozaWave Market Watch",
                 subtitle: "Competitor Intelligence",
-                description: "Track unlimited competitors across 10+ platforms with real-time alerts and revenue opportunities.",
+                description: "Enterprise-grade competitive intelligence across 10+ platforms with real-time alerts, AI-powered insights, and revenue opportunity identification.",
                 features: [
-                  "Real-time competitor tracking",
-                  "Price change alerts",
-                  "New service detection",
-                  "Weekly digest emails"
+                  "Real-time competitor monitoring",
+                  "AI-powered price change alerts",
+                  "New service & feature detection",
+                  "Executive digest reports",
+                  "Revenue impact analysis",
+                  "Custom competitor dashboards"
                 ],
                 color: "blue"
               },
@@ -312,12 +328,14 @@ export const WorkingOnePage: React.FC = () => {
                 icon: MessageCircle,
                 title: "MozaWave Reputation",
                 subtitle: "AI Review Manager",
-                description: "AI automatically responds to reviews in your tone and generates more 5-star reviews.",
+                description: "Enterprise AI review management with tone-matched responses, automated campaigns, and comprehensive reputation analytics.",
                 features: [
                   "AI-powered review responses",
-                  "Tone-matched replies",
-                  "Review request campaigns",
-                  "Sentiment analysis"
+                  "Brand voice consistency",
+                  "Automated review campaigns",
+                  "Advanced sentiment analysis",
+                  "Reputation risk alerts",
+                  "Multi-platform management"
                 ],
                 color: "green"
               },
@@ -325,12 +343,14 @@ export const WorkingOnePage: React.FC = () => {
                 icon: BarChart3,
                 title: "Business Intelligence Dashboard",
                 subtitle: "Unified Intelligence",
-                description: "See all your business intelligence in one place with AI-powered recommendations.",
+                description: "Unified enterprise dashboard combining internal data with external intelligence for AI-powered business insights and strategic recommendations.",
                 features: [
-                  "Unified dashboard",
-                  "AI-powered insights",
-                  "Anomaly detection",
-                  "Revenue forecasting"
+                  "Unified data dashboard",
+                  "AI-powered business insights",
+                  "Advanced anomaly detection",
+                  "Predictive revenue forecasting",
+                  "Custom KPI tracking",
+                  "Executive reporting suite"
                 ],
                 color: "purple"
               }
@@ -395,10 +415,10 @@ export const WorkingOnePage: React.FC = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Trusted by Industry Leaders
+                Trusted by Enterprise Leaders
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Join 500+ businesses already using MozaWave to dominate their markets
+                Join 500+ businesses, from startups to Fortune 500 companies, using MozaWave to gain competitive advantage and drive revenue growth.
               </p>
             </motion.div>
           </div>
@@ -407,19 +427,19 @@ export const WorkingOnePage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {[
               {
-                quote: "MozaWave caught our biggest competitor raising prices by $5. We matched it the same day and added $2,000 to our monthly revenue.",
+                quote: "MozaWave's competitive intelligence helped us identify a $2M revenue opportunity when our biggest competitor raised prices. We matched strategically and captured significant market share.",
                 author: "Sarah Chen",
-                title: "CEO, TechStart Inc.",
+                title: "VP of Strategy, TechStart Inc.",
                 rating: 5
               },
               {
-                quote: "Our Google rating went from 3.8 to 4.6 in 2 months. The AI review responses are incredibly professional and save us hours every week.",
+                quote: "The AI review management system increased our rating from 3.8 to 4.6 in 60 days, directly impacting our enterprise sales pipeline by 35%.",
                 author: "Mike Rodriguez",
-                title: "Owner, Rodriguez Restaurant Group",
+                title: "Head of Customer Success, Rodriguez Group",
                 rating: 5
               },
               {
-                quote: "We found out a competitor was advertising on Facebook for $3,000/month. We copied their strategy and got 40% more leads.",
+                quote: "We discovered our competitor's $50K/month Facebook ad strategy through MozaWave and optimized our own campaigns, resulting in 40% lead increase and 25% cost reduction.",
                 author: "Jennifer Park",
                 title: "Marketing Director, GrowthCo",
                 rating: 5
@@ -459,10 +479,10 @@ export const WorkingOnePage: React.FC = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {[
-              { label: 'Happy Customers', value: '500+', icon: Users },
-              { label: 'Average Rating', value: '4.8/5', icon: Star },
-              { label: 'Revenue Increase', value: '25%', icon: TrendingUp },
-              { label: 'Time Saved', value: '15+ hrs/week', icon: Clock }
+              { label: 'Enterprise Clients', value: '500+', icon: Users },
+              { label: 'Customer Satisfaction', value: '98%', icon: Star },
+              { label: 'Average ROI', value: '340%', icon: TrendingUp },
+              { label: 'Time to Value', value: '< 24hrs', icon: Clock }
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <stat.icon className="w-8 h-8 text-blue-600 mx-auto mb-2" />
@@ -486,13 +506,13 @@ export const WorkingOnePage: React.FC = () => {
             >
               <span className="bg-blue-100 text-blue-700 border border-blue-200 px-4 py-2 text-sm font-medium rounded-full inline-flex items-center gap-2 mb-4">
                 <DollarSign className="w-4 h-4" />
-                Simple, Transparent Pricing
+                Enterprise-Grade Pricing
               </span>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Choose Your <span className="text-blue-600">Growth Plan</span>
+                Choose Your <span className="text-blue-600">Enterprise Plan</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Start free for 2 weeks. No credit card required. Cancel anytime. Scale as you grow.
+                Start with a 2-week enterprise trial. No credit card required. Scale from startup to Fortune 500 with enterprise-grade security and support.
               </p>
             </motion.div>
           </div>
@@ -504,47 +524,48 @@ export const WorkingOnePage: React.FC = () => {
                 name: 'Starter',
                 price: '$79',
                 period: '/month',
-                description: 'Perfect for small businesses getting started',
+                description: 'Perfect for startups and small teams getting started',
                 features: [
                   'Track up to 5 competitors',
-                  'Basic review management',
-                  'Weekly digest emails',
-                  'Standard support',
-                  'Mobile app access'
+                  'Basic AI review management',
+                  'Weekly executive digests',
+                  'Standard enterprise support',
+                  'Mobile & web access',
+                  'Basic analytics dashboard'
                 ],
-                cta: 'Start Free Trial',
+                cta: 'Start Enterprise Trial',
                 popular: false
               },
               {
                 name: 'Professional',
                 price: '$149',
                 period: '/month',
-                description: 'Most popular for growing businesses',
+                description: 'Most popular for growing enterprises',
                 features: [
-                  'Track unlimited competitors',
+                  'Unlimited competitor tracking',
                   'Advanced AI review management',
                   'Real-time alerts & notifications',
-                  'Priority support',
+                  'Priority enterprise support',
                   'Advanced analytics & insights',
-                  'Custom integrations'
+                  'Custom integrations & APIs'
                 ],
-                cta: 'Start Free Trial',
+                cta: 'Start Enterprise Trial',
                 popular: true
               },
               {
                 name: 'Enterprise',
                 price: '$299',
                 period: '/month',
-                description: 'For large organizations with complex needs',
+                description: 'For Fortune 500 and large enterprises',
                 features: [
                   'Everything in Professional',
-                  'Dedicated account manager',
+                  'Dedicated customer success manager',
                   'Custom reporting & dashboards',
-                  'Advanced security & compliance',
-                  'White-label options',
-                  'SLA guarantee'
+                  'SOC 2 Type II compliance',
+                  'White-label & SSO options',
+                  '99.9% SLA guarantee'
                 ],
-                cta: 'Contact Sales',
+                cta: 'Contact Enterprise Sales',
                 popular: false
               }
             ].map((plan, index) => (
@@ -616,24 +637,24 @@ export const WorkingOnePage: React.FC = () => {
           >
             <div className="space-y-4">
               <h2 className="text-4xl md:text-5xl font-bold text-white">
-                Ready to Dominate Your Market?
+                Ready to Transform Your Business Intelligence?
               </h2>
               <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-                Join 500+ businesses already using MozaWave to track competitors, 
-                manage reputation, and turn insights into revenue.
+                Join 500+ enterprises using MozaWave's dual intelligence platform to gain competitive advantage, 
+                protect reputation, and drive measurable revenue growth.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-colors flex items-center justify-center gap-2">
                 <Target className="w-5 h-5" />
-                Start Free Trial
+                Start Enterprise Trial
                 <ArrowRight className="w-5 h-5" />
               </button>
               
               <button className="border border-blue-300 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-600/10 transition-colors flex items-center justify-center gap-2">
                 <Play className="w-5 h-5" />
-                Watch Demo
+                Watch Enterprise Demo
               </button>
             </div>
 
@@ -667,8 +688,8 @@ export const WorkingOnePage: React.FC = () => {
                 <span className="text-lg font-semibold">MozaWave</span>
               </div>
               <p className="text-gray-400 text-sm">
-                The world's first dual intelligence platform combining external 
-                competitive intelligence with internal customer data.
+                The world's first enterprise dual intelligence platform combining external 
+                competitive intelligence with internal customer data. Trusted by Fortune 500 companies.
               </p>
             </div>
             
