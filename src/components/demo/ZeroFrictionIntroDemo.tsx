@@ -18,7 +18,6 @@ import {
   Star,
   Rocket,
   AlertTriangle,
-  Building2,
   Scale,
   Home,
   Heart,

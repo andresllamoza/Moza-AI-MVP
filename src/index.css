@@ -16,29 +16,29 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Premium Moza AI Color System - Darker for Better Visibility */
-    --background: 210 30% 8%;
-    --foreground: 210 20% 98%;
+    /* Enterprise-Grade FAANG-Inspired Color System */
+    --background: 220 30% 97%;
+    --foreground: 215 25% 15%;
 
-    --card: 210 30% 12%;
-    --card-foreground: 210 20% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
 
-    --popover: 210 30% 12%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
 
-    /* Deep Electric Blue Primary */
-    --primary: 220 100% 50%;
+    /* Professional Blue - Google-inspired */
+    --primary: 214 100% 47%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 191 100% 50%;
-    --primary-light: 220 100% 90%;
+    --primary-glow: 214 100% 47%;
+    --primary-light: 214 100% 95%;
 
-    /* Premium Secondary */
-    --secondary: 210 30% 15%;
-    --secondary-foreground: 210 20% 95%;
+    /* Neutral Secondary - Stripe-inspired */
+    --secondary: 210 15% 96%;
+    --secondary-foreground: 215 25% 20%;
 
-    /* Sophisticated Muted Tones */
-    --muted: 210 30% 15%;
-    --muted-foreground: 210 16% 70%;
+    /* Soft Muted Tones - Notion-inspired */
+    --muted: 210 10% 95%;
+    --muted-foreground: 215 15% 45%;
 
     /* Electric Accent */
     --accent: 191 100% 50%;
@@ -81,26 +81,26 @@ All colors MUST be HSL.
     --restaurant-accent: 15 100% 70%;
     --restaurant-bg: 345 25% 5%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 85% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 30% 20%;
-    --input: 210 30% 15%;
-    --ring: 220 100% 50%;
+    --border: 210 15% 90%;
+    --input: 210 10% 98%;
+    --ring: 214 100% 47%;
 
-    /* Premium Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(220 100% 50%), hsl(191 100% 50%));
-    --gradient-subtle: linear-gradient(180deg, hsl(210 20% 98%), hsl(210 20% 95%));
-    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    /* Enterprise Gradients - FAANG-inspired */
+    --gradient-primary: linear-gradient(135deg, hsl(214 100% 47%), hsl(214 95% 52%));
+    --gradient-subtle: linear-gradient(180deg, hsl(220 30% 99%), hsl(220 20% 97%));
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
     --gradient-contractor: linear-gradient(135deg, hsl(18 100% 60%), hsl(35 100% 55%));
     --gradient-hospitality: linear-gradient(135deg, hsl(44 100% 50%), hsl(30 100% 65%));
     --gradient-carwash: linear-gradient(135deg, hsl(200 100% 45%), hsl(180 100% 70%));
     --gradient-restaurant: linear-gradient(135deg, hsl(345 85% 45%), hsl(15 100% 70%));
     
-    /* Premium Shadows & Effects */
-    --shadow-elegant: 0 10px 30px -10px hsl(220 100% 50% / 0.15);
-    --shadow-glow: 0 0 40px hsl(191 100% 50% / 0.25);
-    --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.1);
+    /* Enterprise Shadows & Effects - Professional depth */
+    --shadow-elegant: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --shadow-glow: 0 4px 14px 0 rgba(214, 100, 47, 0.15);
+    --shadow-glass: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     --shadow-contractor: 0 20px 60px -10px hsl(18 100% 60% / 0.3);
     --shadow-hospitality: 0 20px 60px -10px hsl(44 100% 50% / 0.3);
     --shadow-carwash: 0 20px 60px -10px hsl(200 100% 45% / 0.3);
