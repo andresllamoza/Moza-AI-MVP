@@ -38,6 +38,7 @@ import { ContractorsLanding } from "./components/ContractorsLanding";
 import { HospitalityLanding } from "./components/HospitalityLanding";
 import { CarWashLanding } from "./components/CarWashLanding";
 import { RestaurantsLanding } from "./components/RestaurantsLanding";
+import DemoLauncherPage from "./pages/DemoLauncherPage";
 
 const queryClient = new QueryClient();
 
@@ -89,6 +90,7 @@ const App = () => {
               <Route path="/hospitality" element={<HospitalityLanding />} />
               <Route path="/car-wash" element={<CarWashLanding />} />
               <Route path="/restaurants" element={<RestaurantsLanding />} />
+              <Route path="/demo-center" element={<DemoLauncherPage />} />
               <Route path="/old-dashboard" element={<AuthGuard><Dashboard /></AuthGuard>} />
               <Route path="/leads" element={<AuthGuard><Leads /></AuthGuard>} />
               <Route path="/reviews" element={<AuthGuard><Reviews /></AuthGuard>} />
