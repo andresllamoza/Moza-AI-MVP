@@ -271,7 +271,7 @@ export const ActionableIntelligence: React.FC<ActionableIntelligenceProps> = ({
             <ProfessionalButton
               onClick={() => onActionTaken(insight.id, 'yes')}
               size="sm"
-              variant={insight.customerSuccess.actionTaken === 'yes' ? 'default' : 'outline'}
+              variant={insight.customerSuccess.actionTaken === 'yes' ? 'primary' : 'outline'}
               className={insight.customerSuccess.actionTaken === 'yes' ? 'btn-vibrant-primary' : 'btn-vibrant-secondary'}
             >
               <CheckCircle2 className="w-4 h-4 mr-1" />
@@ -280,7 +280,7 @@ export const ActionableIntelligence: React.FC<ActionableIntelligenceProps> = ({
             <ProfessionalButton
               onClick={() => onActionTaken(insight.id, 'planning')}
               size="sm"
-              variant={insight.customerSuccess.actionTaken === 'planning' ? 'default' : 'outline'}
+              variant={insight.customerSuccess.actionTaken === 'planning' ? 'primary' : 'outline'}
               className={insight.customerSuccess.actionTaken === 'planning' ? 'btn-vibrant-primary' : 'btn-vibrant-secondary'}
             >
               <Calendar className="w-4 h-4 mr-1" />
@@ -289,7 +289,7 @@ export const ActionableIntelligence: React.FC<ActionableIntelligenceProps> = ({
             <ProfessionalButton
               onClick={() => onActionTaken(insight.id, 'no')}
               size="sm"
-              variant={insight.customerSuccess.actionTaken === 'no' ? 'default' : 'outline'}
+              variant={insight.customerSuccess.actionTaken === 'no' ? 'secondary' : 'outline'}
               className={insight.customerSuccess.actionTaken === 'no' ? 'btn-vibrant-secondary' : 'btn-vibrant-secondary'}
             >
               <AlertCircle className="w-4 h-4 mr-1" />

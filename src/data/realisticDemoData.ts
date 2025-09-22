@@ -247,6 +247,6 @@ export const generateRealisticInsights = (businessInfo: any): RealisticInsight[]
   return realisticNYCRestaurantData.insights;
 };
 
-export const generateRealisticCompetitors = (): CompetitorAnalysis[] => {
-  return realisticNYCRestaurantData.competitors;
+export const generateRealisticCompetitors = () => {
+  return realisticNYCRestaurantData.competitors as CompetitorAnalysis[];
 };
