@@ -42,6 +42,8 @@ import DemoLauncherPage from "./pages/DemoLauncherPage";
 import EnhancedLandingPage from "./pages/EnhancedLandingPage";
 import OnePageLanding from "./pages/OnePageLanding";
 import Account from "./pages/Account";
+import TestPage from "./pages/TestPage";
+import SimpleOnePage from "./pages/SimpleOnePage";
 
 const queryClient = new QueryClient();
 
@@ -98,6 +100,8 @@ const App = () => {
               <Route path="/enhanced" element={<EnhancedLandingPage />} />
               <Route path="/onepage" element={<OnePageLanding />} />
               <Route path="/account" element={<Account />} />
+              <Route path="/test" element={<TestPage />} />
+              <Route path="/simple" element={<SimpleOnePage />} />
               <Route path="/old-dashboard" element={<AuthGuard><Dashboard /></AuthGuard>} />
               <Route path="/leads" element={<AuthGuard><Leads /></AuthGuard>} />
               <Route path="/reviews" element={<AuthGuard><Reviews /></AuthGuard>} />
