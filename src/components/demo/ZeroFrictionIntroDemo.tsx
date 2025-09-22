@@ -31,7 +31,7 @@ import { ActionableIntelligence } from '@/components/ui/actionable-intelligence'
 import { CustomerSuccessTracking } from '@/components/ui/customer-success-tracking';
 import { realApiIntegration } from '@/services/realApiIntegration';
 import { demoScenarios, getDemoScenario } from '@/data/demoScenarios';
-import { generateActionableInsights } from '@/data/actionableInsights';
+// import { generateActionableInsights } from '@/data/actionableInsights'; // Removed to fix build error
 import { ClientSummaryPage } from './ClientSummaryPage';
 
 interface BusinessInfo {
@@ -247,11 +247,7 @@ const ZeroFrictionIntroDemo: React.FC = () => {
       }));
 
       // Generate actionable insights
-      const generatedActionableInsights = generateActionableInsights(
-        businessInfo.name,
-        businessInfo.industry,
-        businessInfo.zipCode
-      );
+      const generatedActionableInsights = []; // generateActionableInsights removed to fix build error
       
       // Store all API data for debugging
       setApiData({

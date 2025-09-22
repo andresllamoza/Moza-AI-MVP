@@ -16,10 +16,6 @@ interface GoogleReview {
     comment: string;
     updateTime: string;
   };
-  reviewReply?: {
-    comment: string;
-    updateTime: string;
-  };
 }
 
 interface AIResponse {

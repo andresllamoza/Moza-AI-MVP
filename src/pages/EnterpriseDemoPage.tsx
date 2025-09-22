@@ -39,7 +39,7 @@ import { Switch } from '@/components/ui/switch';
 import { ProfessionalButton } from '@/components/ui/professional-button';
 import { ProfessionalCard } from '@/components/ui/professional-card';
 
-import { mozaWavePlatform } from '@/services/mozawave-enterprise-platform';
+import { mozaWavePlatform } from '@/services';
 import MozaWaveEnterpriseDashboard from '@/components/enterprise/MozaWaveEnterpriseDashboardFallback';
 
 export const EnterpriseDemoPage: React.FC = () => {

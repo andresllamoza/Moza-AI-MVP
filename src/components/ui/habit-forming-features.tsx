@@ -171,7 +171,7 @@ export const HabitFormingFeatures: React.FC<HabitFormingFeaturesProps> = ({
                   <ProfessionalButton
                     onClick={() => toggleFeature(feature.id)}
                     size="sm"
-                    variant={isEnabled ? 'default' : 'outline'}
+                    variant={isEnabled ? 'primary' : 'outline'}
                     className={isEnabled ? 'btn-vibrant-primary' : 'btn-vibrant-secondary'}
                   >
                     {isEnabled ? 'Enabled' : 'Enable'}

@@ -123,26 +123,26 @@ const ReportsPage: React.FC = () => {
                   placeholder="Search reports..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  icon={Search}
+                  leftIcon={<Search className="w-4 h-4" />}
                 />
               </div>
               <div className="flex gap-2">
                 <ProfessionalButton
-                  variant={filterStatus === 'all' ? 'default' : 'outline'}
+                  variant={filterStatus === 'all' ? 'primary' : 'outline'}
                   onClick={() => setFilterStatus('all')}
                   size="sm"
                 >
                   All
                 </ProfessionalButton>
                 <ProfessionalButton
-                  variant={filterStatus === 'completed' ? 'default' : 'outline'}
+                  variant={filterStatus === 'completed' ? 'primary' : 'outline'}
                   onClick={() => setFilterStatus('completed')}
                   size="sm"
                 >
                   Completed
                 </ProfessionalButton>
                 <ProfessionalButton
-                  variant={filterStatus === 'in-progress' ? 'default' : 'outline'}
+                  variant={filterStatus === 'in-progress' ? 'primary' : 'outline'}
                   onClick={() => setFilterStatus('in-progress')}
                   size="sm"
                 >

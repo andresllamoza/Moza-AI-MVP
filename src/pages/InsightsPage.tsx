@@ -210,33 +210,33 @@ const InsightsPage: React.FC = () => {
                   placeholder="Search insights..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  icon={Search}
+                  leftIcon={<Search className="w-4 h-4" />}
                 />
               </div>
               <div className="flex gap-2">
                 <ProfessionalButton
-                  variant={filterCategory === 'all' ? 'default' : 'outline'}
+                  variant={filterCategory === 'all' ? 'primary' : 'outline'}
                   onClick={() => setFilterCategory('all')}
                   size="sm"
                 >
                   All
                 </ProfessionalButton>
                 <ProfessionalButton
-                  variant={filterCategory === 'pricing' ? 'default' : 'outline'}
+                  variant={filterCategory === 'pricing' ? 'primary' : 'outline'}
                   onClick={() => setFilterCategory('pricing')}
                   size="sm"
                 >
                   Pricing
                 </ProfessionalButton>
                 <ProfessionalButton
-                  variant={filterCategory === 'marketing' ? 'default' : 'outline'}
+                  variant={filterCategory === 'marketing' ? 'primary' : 'outline'}
                   onClick={() => setFilterCategory('marketing')}
                   size="sm"
                 >
                   Marketing
                 </ProfessionalButton>
                 <ProfessionalButton
-                  variant={filterCategory === 'operations' ? 'default' : 'outline'}
+                  variant={filterCategory === 'operations' ? 'primary' : 'outline'}
                   onClick={() => setFilterCategory('operations')}
                   size="sm"
                 >

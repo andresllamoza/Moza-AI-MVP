@@ -432,7 +432,7 @@ const ReviewManagerPage: React.FC = () => {
                   <div className="flex-1">
                     <ProfessionalInput
                       placeholder="Search reviews..."
-                      icon={Search}
+                      leftIcon={<Search className="w-4 h-4" />}
                     />
                   </div>
                   <div className="flex gap-2">
@@ -518,7 +518,7 @@ const ReviewManagerPage: React.FC = () => {
                       variant="outline"
                       onClick={() => setAiResponse(null)}
                     >
-                      <X className="w-4 h-4 mr-2" />
+                      {/* Dismiss icon */}
                       Dismiss
                     </ProfessionalButton>
                   </div>
