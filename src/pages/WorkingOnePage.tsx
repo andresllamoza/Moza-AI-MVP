@@ -32,6 +32,8 @@ import {
 } from 'lucide-react';
 
 export const WorkingOnePage: React.FC = () => {
+  // Version 2.0 - Enterprise One-Scroll Design
+  console.log('WorkingOnePage loaded - Enterprise One-Scroll Design');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const { scrollYProgress } = useScroll();
