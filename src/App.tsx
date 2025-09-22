@@ -61,6 +61,7 @@ const App = () => {
             <AppLayout>
               <Routes>
               <Route path="/" element={<WorkingOnePage />} />
+              <Route path="/home" element={<WorkingOnePage />} />
               <Route path="/old-intro" element={<IntelligenceIntroDemo />} />
               <Route path="/landing" element={<LandingPage />} />
               <Route path="/real-time-demo" element={<RealTimeDemo businessName="Mario's Artisan Pizza" location="Brooklyn, NY" industry="restaurant" />} />
