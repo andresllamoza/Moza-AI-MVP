@@ -44,6 +44,7 @@ import OnePageLanding from "./pages/OnePageLanding";
 import Account from "./pages/Account";
 import TestPage from "./pages/TestPage";
 import SimpleOnePage from "./pages/SimpleOnePage";
+import WorkingOnePage from "./pages/WorkingOnePage";
 
 const queryClient = new QueryClient();
 
@@ -102,6 +103,7 @@ const App = () => {
               <Route path="/account" element={<Account />} />
               <Route path="/test" element={<TestPage />} />
               <Route path="/simple" element={<SimpleOnePage />} />
+              <Route path="/working" element={<WorkingOnePage />} />
               <Route path="/old-dashboard" element={<AuthGuard><Dashboard /></AuthGuard>} />
               <Route path="/leads" element={<AuthGuard><Leads /></AuthGuard>} />
               <Route path="/reviews" element={<AuthGuard><Reviews /></AuthGuard>} />
