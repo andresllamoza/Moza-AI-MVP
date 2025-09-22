@@ -212,76 +212,75 @@ export const ClientSummaryPage: React.FC<ClientSummaryProps> = ({
         </motion.div>
 
 
-        {/* Action Buttons */}
+        {/* Action Buttons - Clean Design */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.2 }}
-          className="text-center space-y-6"
+          className="text-center space-y-8"
         >
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <ProfessionalButton
-              onClick={onScheduleCall}
-              size="lg"
-              className="px-8 btn-vibrant-primary"
-            >
-              <Calendar className="w-5 h-5 mr-2" />
-              Schedule Strategy Call
-            </ProfessionalButton>
+          {/* Primary Actions */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-white mb-6">Ready to Turn These Insights Into Revenue?</h3>
             
-            <ProfessionalButton
-              onClick={onDownloadReport}
-              variant="outline"
-              size="lg"
-              className="px-8 btn-vibrant-secondary"
-            >
-              <Download className="w-5 h-5 mr-2" />
-              Download Full Report
-            </ProfessionalButton>
-            
-            <ProfessionalButton
-              onClick={onShareReport}
-              variant="outline"
-              size="lg"
-              className="px-8 btn-vibrant-teal"
-            >
-              <Share2 className="w-5 h-5 mr-2" />
-              Share with Team
-            </ProfessionalButton>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
-            <ProfessionalButton
-              onClick={() => window.location.href = '/'}
-              size="lg"
-              variant="outline"
-              className="px-8 btn-vibrant-secondary"
-            >
-              ← Back to Home
-            </ProfessionalButton>
-            <ProfessionalButton
-              onClick={() => window.location.href = '/dashboard'}
-              size="lg"
-              variant="outline"
-              className="px-8 btn-vibrant-secondary"
-            >
-              View Full Dashboard
-            </ProfessionalButton>
-            <ProfessionalButton
-              onClick={() => window.location.reload()}
-              size="lg"
-              variant="outline"
-              className="px-8 btn-vibrant-secondary"
-            >
-              Try Another Demo
-            </ProfessionalButton>
+            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+              <ProfessionalButton
+                onClick={onScheduleCall}
+                size="lg"
+                className="px-8 btn-vibrant-primary"
+              >
+                <Calendar className="w-5 h-5 mr-2" />
+                Schedule Strategy Call
+              </ProfessionalButton>
+              
+              <ProfessionalButton
+                onClick={() => window.location.href = '/dashboard'}
+                variant="outline"
+                size="lg"
+                className="px-8 border-slate-600 text-slate-300 hover:bg-slate-700"
+              >
+                <ExternalLink className="w-5 h-5 mr-2" />
+                View Full Dashboard
+              </ProfessionalButton>
+            </div>
           </div>
 
-          <div className="text-center">
-            <p className="text-muted-foreground text-sm mb-4">
-              Ready to turn these insights into revenue?
-            </p>
-            <div className="flex justify-center space-x-6 text-xs text-muted-foreground">
+          {/* Secondary Actions */}
+          <div className="flex justify-center space-x-8">
+            <button
+              onClick={onDownloadReport}
+              className="flex items-center space-x-2 text-slate-400 hover:text-white transition-colors"
+            >
+              <Download className="w-4 h-4" />
+              <span className="text-sm">Download Report</span>
+            </button>
+            
+            <button
+              onClick={onShareReport}
+              className="flex items-center space-x-2 text-slate-400 hover:text-white transition-colors"
+            >
+              <Share2 className="w-4 h-4" />
+              <span className="text-sm">Share</span>
+            </button>
+            
+            <button
+              onClick={() => window.location.href = '/'}
+              className="flex items-center space-x-2 text-slate-400 hover:text-white transition-colors"
+            >
+              <span className="text-sm">← Back to Home</span>
+            </button>
+            
+            <button
+              onClick={() => window.location.reload()}
+              className="flex items-center space-x-2 text-slate-400 hover:text-white transition-colors"
+            >
+              <span className="text-sm">Try Another Demo</span>
+            </button>
+          </div>
+
+          {/* Trust Signals */}
+          <div className="text-center pt-6 border-t border-slate-700">
+            <div className="flex justify-center space-x-8 text-xs text-slate-400">
               <div className="flex items-center space-x-1">
                 <Zap className="w-3 h-3 text-warning-400" />
                 <span>Real-time Updates</span>

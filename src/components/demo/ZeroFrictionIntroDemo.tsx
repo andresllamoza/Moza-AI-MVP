@@ -162,7 +162,7 @@ const ZeroFrictionIntroDemo: React.FC = () => {
         found: !!scenario,
         competitors: scenario?.competitors 
       });
-      const competitors = scenario?.competitors || ['Competitor 1', 'Competitor 2', 'Competitor 3'];
+      const competitors = scenario?.competitors || ['Lucali', 'Di Fara Pizza', 'Joe\'s Pizza'];
       console.log('🏆 Using competitors:', competitors);
       
       // Step 1: Business Enrichment (Clearbit + Hunter.io)
