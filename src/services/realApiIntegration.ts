@@ -628,11 +628,11 @@ class RealApiIntegration {
 
 // Export singleton instance
 export const realApiIntegration = new RealApiIntegration({
-  newsApiKey: process.env.VITE_NEWS_API_KEY || 'YOUR_NEWS_API_KEY',
-  googlePlacesKey: process.env.VITE_GOOGLE_PLACES_KEY || 'YOUR_GOOGLE_PLACES_KEY',
-  yelpApiKey: process.env.VITE_YELP_API_KEY || 'YOUR_YELP_API_KEY',
-  redditClientId: process.env.VITE_REDDIT_CLIENT_ID || 'YOUR_REDDIT_CLIENT_ID',
-  redditClientSecret: process.env.VITE_REDDIT_CLIENT_SECRET || 'YOUR_REDDIT_CLIENT_SECRET',
-  clearbitApiKey: process.env.VITE_CLEARBIT_API_KEY || 'YOUR_CLEARBIT_API_KEY',
-  hunterApiKey: process.env.VITE_HUNTER_API_KEY || 'YOUR_HUNTER_API_KEY'
+  newsApiKey: import.meta.env.VITE_NEWS_API_KEY || 'YOUR_NEWS_API_KEY',
+  googlePlacesKey: import.meta.env.VITE_GOOGLE_PLACES_KEY || 'YOUR_GOOGLE_PLACES_KEY',
+  yelpApiKey: import.meta.env.VITE_YELP_API_KEY || 'YOUR_YELP_API_KEY',
+  redditClientId: import.meta.env.VITE_REDDIT_CLIENT_ID || 'YOUR_REDDIT_CLIENT_ID',
+  redditClientSecret: import.meta.env.VITE_REDDIT_CLIENT_SECRET || 'YOUR_REDDIT_CLIENT_SECRET',
+  clearbitApiKey: import.meta.env.VITE_CLEARBIT_API_KEY || 'YOUR_CLEARBIT_API_KEY',
+  hunterApiKey: import.meta.env.VITE_HUNTER_API_KEY || 'YOUR_HUNTER_API_KEY'
 });

@@ -27,7 +27,7 @@ const inputVariants = cva(
 );
 
 export interface ProfessionalInputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
     VariantProps<typeof inputVariants> {
   label?: string;
   error?: string;
@@ -77,7 +77,7 @@ const ProfessionalInput = React.forwardRef<HTMLInputElement, ProfessionalInputPr
           <input
             id={inputId}
             className={cn(
-              inputVariants({ variant: inputVariant, size, className }),
+              inputVariants({ variant: inputVariant, size: size as "sm" | "default" | "lg", className }),
               leftIcon && 'pl-10',
               rightIcon && 'pr-10'
             )}

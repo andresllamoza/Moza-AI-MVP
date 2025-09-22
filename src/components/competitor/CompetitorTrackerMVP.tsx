@@ -270,7 +270,7 @@ const CompetitorTrackerMVP: React.FC = () => {
               placeholder="Search changes..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              icon={Search}
+              leftIcon={<Search className="w-4 h-4" />}
               className="w-64"
             />
             <select

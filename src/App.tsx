@@ -17,7 +17,7 @@ import ROICalculator from "./components/demo/ROICalculator";
 import DemoNavigation from "./components/demo/DemoNavigation";
 import MozaIntelligenceDashboard from "./components/dashboard/MozaIntelligenceDashboard";
 import DualIntelligenceDashboard from "./components/dashboard/DualIntelligenceDashboard";
-import VibrantEnterpriseDashboard from "./components/dashboard/VibrantEnterpriseDashboard";
+import VibrantEnterpriseDashboard from "./components/dashboard/VibrantEnterpriseDashboardFallback";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";

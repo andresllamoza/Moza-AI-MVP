@@ -295,9 +295,9 @@ export interface PlatformConfig {
 
 // Default Platform Configuration
 export const defaultPlatformConfig: PlatformConfig = {
-  apiBaseUrl: process.env.REACT_APP_API_URL || 'https://api.mozawave.com',
-  wsBaseUrl: process.env.REACT_APP_WS_URL || 'wss://api.mozawave.com',
-  environment: (process.env.NODE_ENV as any) || 'development',
+  apiBaseUrl: import.meta.env.VITE_API_URL || 'https://api.mozawave.com',
+  wsBaseUrl: import.meta.env.VITE_WS_URL || 'wss://api.mozawave.com',
+  environment: (import.meta.env.MODE as any) || 'development',
   features: {
     marketWatch: true,
     reputation: true,

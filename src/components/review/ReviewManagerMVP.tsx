@@ -220,7 +220,7 @@ const ReviewManagerMVP: React.FC = () => {
               placeholder="Search reviews..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              icon={Search}
+              leftIcon={<Search className="w-4 h-4" />}
             />
           </div>
           <div className="flex gap-2">

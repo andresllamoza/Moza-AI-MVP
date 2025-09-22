@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { GlobalHeader } from '@/components/navigation/GlobalHeader';
+// import { GlobalHeader } from '@/components/navigation/GlobalHeader';
 import { MobileBottomNav } from '@/components/navigation/MobileBottomNav';
 import { FloatingActionButton } from '@/components/navigation/FloatingActionButton';
 
@@ -26,13 +26,8 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900">
-      {shouldShowHeader && (
-        <GlobalHeader 
-          pageTitle={pageTitle} 
-          showBreadcrumbs={shouldShowBreadcrumbs}
-        />
-      )}
-      <main className={`${shouldShowHeader ? 'pt-0' : ''} pb-20 lg:pb-0`}>
+      {/* Header temporarily disabled */}
+      <main className="pb-20 lg:pb-0">
         {children}
       </main>
       <MobileBottomNav />

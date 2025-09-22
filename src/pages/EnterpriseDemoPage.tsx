@@ -40,7 +40,7 @@ import { ProfessionalButton } from '@/components/ui/professional-button';
 import { ProfessionalCard } from '@/components/ui/professional-card';
 
 import { mozaWavePlatform } from '@/services/mozawave-enterprise-platform';
-import { MozaWaveEnterpriseDashboard } from '@/components/enterprise/MozaWaveEnterpriseDashboard';
+import MozaWaveEnterpriseDashboard from '@/components/enterprise/MozaWaveEnterpriseDashboardFallback';
 
 export const EnterpriseDemoPage: React.FC = () => {
   const [isPlatformRunning, setIsPlatformRunning] = useState(false);
@@ -182,10 +182,7 @@ export const EnterpriseDemoPage: React.FC = () => {
 
           <TabsContent value="dashboard">
             {isPlatformRunning ? (
-              <MozaWaveEnterpriseDashboard 
-                organizationId="demo-org"
-                userId="demo-user"
-              />
+              <MozaWaveEnterpriseDashboard />
             ) : (
               <div className="text-center py-16">
                 <div className="p-4 rounded-full bg-slate-700/50 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
