@@ -43,6 +43,11 @@ interface DemoOption {
 
 export const DemoLauncherPage: React.FC = () => {
   const [selectedDemo, setSelectedDemo] = React.useState<string | null>(null);
+  
+  // Debug logging
+  React.useEffect(() => {
+    console.log('DemoLauncherPage loaded successfully');
+  }, []);
 
   const demoOptions: DemoOption[] = [
     {

@@ -91,6 +91,7 @@ const App = () => {
               <Route path="/car-wash" element={<CarWashLanding />} />
               <Route path="/restaurants" element={<RestaurantsLanding />} />
               <Route path="/demo-center" element={<DemoLauncherPage />} />
+              <Route path="/test-demo" element={<DemoLauncherPage />} />
               <Route path="/old-dashboard" element={<AuthGuard><Dashboard /></AuthGuard>} />
               <Route path="/leads" element={<AuthGuard><Leads /></AuthGuard>} />
               <Route path="/reviews" element={<AuthGuard><Reviews /></AuthGuard>} />
