@@ -13,7 +13,8 @@ import {
   Clock,
   Users,
   Zap,
-  ArrowRight
+  ArrowRight,
+  Brain
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -25,6 +26,7 @@ import { ProfessionalCard } from '@/components/ui/professional-card';
 
 import { DemoWalkthrough } from '@/components/demo/DemoWalkthrough';
 import { CompleteProductDemo } from '@/components/demo/CompleteProductDemo';
+import { StrategicCompetitiveAnalysis } from '@/components/demo/StrategicCompetitiveAnalysis';
 
 interface DemoOption {
   id: string;
@@ -60,6 +62,30 @@ export const DemoLauncherPage: React.FC = () => {
       ],
       bestFor: 'Full product presentation',
       component: <CompleteProductDemo onComplete={() => setSelectedDemo(null)} />
+    },
+    {
+      id: 'strategic-analysis',
+      title: 'Strategic Competitive Analysis',
+      description: 'Deep competitor strategy analysis with actionable recommendations for your business',
+      duration: '5-6 minutes',
+      audience: 'C-Level Executives, Strategy Teams',
+      icon: <Brain className="h-8 w-8" />,
+      color: 'purple',
+      features: [
+        'Competitor strategy breakdown',
+        'SWOT analysis for each competitor',
+        'Strategic recommendations',
+        'ROI projections',
+        'Implementation roadmaps'
+      ],
+      bestFor: 'Strategic planning and competitive intelligence',
+      component: <StrategicCompetitiveAnalysis 
+        businessName="Mario's Artisan Pizza" 
+        industry="Restaurant & Food Service" 
+        location="Brooklyn, NY"
+        competitors={['Lucali', 'Di Fara Pizza', 'Joe\'s Pizza']}
+        onComplete={() => setSelectedDemo(null)} 
+      />
     },
     {
       id: 'walkthrough',

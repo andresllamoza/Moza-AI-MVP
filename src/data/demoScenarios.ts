@@ -145,20 +145,49 @@ export const getRandomDemoScenario = (): DemoScenario => {
   return demoScenarios[randomIndex];
 };
 
-// Industry-specific competitor data
+// Industry-specific competitor data with realistic business names
 export const industryCompetitors = {
   'Restaurant & Food Service': {
     'Brooklyn, NY': ['Lucali', 'Di Fara Pizza', 'Roberta\'s', 'Joe\'s Pizza', 'Prince Street Pizza'],
-    'Beverly Hills, CA': ['Spago', 'Nobu', 'Catch LA', 'The Ivy', 'Madeo']
+    'Beverly Hills, CA': ['Spago', 'Nobu', 'Catch LA', 'The Ivy', 'Madeo'],
+    'Austin, TX': ['Franklin Barbecue', 'Uchi', 'Odd Duck', 'Barley Swine', 'La Barbecue'],
+    'Chicago, IL': ['Alinea', 'Girl & The Goat', 'Au Cheval', 'Portillo\'s', 'Lou Malnati\'s'],
+    'Miami, FL': ['Joe\'s Stone Crab', 'Versailles', 'La Sandwicherie', 'Garcia\'s Seafood', 'Havana Harry\'s']
   },
   'Real Estate': {
-    'Miami, FL': ['Coldwell Banker', 'Douglas Elliman', 'Compass', 'Sotheby\'s', 'Brown Harris Stevens']
+    'Miami, FL': ['Coldwell Banker', 'Douglas Elliman', 'Compass', 'Sotheby\'s', 'Brown Harris Stevens'],
+    'Beverly Hills, CA': ['The Agency', 'Hilton & Hyland', 'Coldwell Banker', 'Rodeo Realty', 'Compass'],
+    'Austin, TX': ['Keller Williams', 'Compass', 'Coldwell Banker', 'Realty Austin', 'RE/MAX'],
+    'Chicago, IL': ['@properties', 'Coldwell Banker', 'Berkshire Hathaway', 'RE/MAX', 'Keller Williams'],
+    'Brooklyn, NY': ['Corcoran', 'Compass', 'Douglas Elliman', 'Brown Harris Stevens', 'Coldwell Banker']
   },
   'Professional Services': {
-    'New York, NY': ['Skadden', 'Cravath', 'Sullivan & Cromwell', 'Latham & Watkins', 'Kirkland & Ellis']
+    'New York, NY': ['Skadden', 'Cravath', 'Sullivan & Cromwell', 'Latham & Watkins', 'Kirkland & Ellis'],
+    'Los Angeles, CA': ['Latham & Watkins', 'Gibson Dunn', 'O\'Melveny', 'Munger Tolles', 'Quinn Emanuel'],
+    'Chicago, IL': ['Kirkland & Ellis', 'Sidley Austin', 'Baker McKenzie', 'Jenner & Block', 'Mayer Brown'],
+    'Miami, FL': ['Greenberg Traurig', 'Akerman', 'Holland & Knight', 'White & Case', 'Morgan Lewis'],
+    'Austin, TX': ['Vinson & Elkins', 'Baker Botts', 'Norton Rose Fulbright', 'Jackson Walker', 'Haynes Boone']
   },
   'Home Services': {
-    'Austin, TX': ['Toll Brothers', 'KB Home', 'PulteGroup', 'Lennar', 'D.R. Horton']
+    'Austin, TX': ['Toll Brothers', 'KB Home', 'PulteGroup', 'Lennar', 'D.R. Horton'],
+    'Los Angeles, CA': ['Toll Brothers', 'KB Home', 'Lennar', 'PulteGroup', 'Shea Homes'],
+    'Chicago, IL': ['PulteGroup', 'Lennar', 'KB Home', 'Toll Brothers', 'Meritage Homes'],
+    'Miami, FL': ['Lennar', 'PulteGroup', 'KB Home', 'Toll Brothers', 'Meritage Homes'],
+    'Brooklyn, NY': ['Toll Brothers', 'Lennar', 'PulteGroup', 'KB Home', 'Meritage Homes']
+  },
+  'Contractors': {
+    'Austin, TX': ['Toll Brothers', 'KB Home', 'PulteGroup', 'Lennar', 'D.R. Horton'],
+    'Los Angeles, CA': ['Toll Brothers', 'KB Home', 'Lennar', 'PulteGroup', 'Shea Homes'],
+    'Chicago, IL': ['PulteGroup', 'Lennar', 'KB Home', 'Toll Brothers', 'Meritage Homes'],
+    'Miami, FL': ['Lennar', 'PulteGroup', 'KB Home', 'Toll Brothers', 'Meritage Homes'],
+    'Brooklyn, NY': ['Toll Brothers', 'Lennar', 'PulteGroup', 'KB Home', 'Meritage Homes']
+  },
+  'Law Offices': {
+    'New York, NY': ['Skadden', 'Cravath', 'Sullivan & Cromwell', 'Latham & Watkins', 'Kirkland & Ellis'],
+    'Los Angeles, CA': ['Latham & Watkins', 'Gibson Dunn', 'O\'Melveny', 'Munger Tolles', 'Quinn Emanuel'],
+    'Chicago, IL': ['Kirkland & Ellis', 'Sidley Austin', 'Baker McKenzie', 'Jenner & Block', 'Mayer Brown'],
+    'Miami, FL': ['Greenberg Traurig', 'Akerman', 'Holland & Knight', 'White & Case', 'Morgan Lewis'],
+    'Austin, TX': ['Vinson & Elkins', 'Baker Botts', 'Norton Rose Fulbright', 'Jackson Walker', 'Haynes Boone']
   }
 };
 
