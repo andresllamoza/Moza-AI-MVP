@@ -1,5 +1,6 @@
 // Working One-Page Landing Design inspired by Google, Salesforce, and HubSpot
 // Clean, professional, blue-focused Moza brand with smooth scrolling sections
+// Updated: Enterprise-level SaaS platform with one-scroll design
 
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
