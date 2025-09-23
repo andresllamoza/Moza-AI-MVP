@@ -95,9 +95,9 @@
 
 /* Enhanced Button System */
 .btn-vibrant-primary {
-  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-600));
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: white;
-  border: none;
+  border: 1px solid #2563eb;
   padding: var(--space-3) var(--space-6);
   border-radius: var(--radius-lg);
   font-weight: 600;
@@ -105,13 +105,14 @@
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3);
 }
 
 .btn-vibrant-primary:hover {
-  background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-700));
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-xl);
+  box-shadow: 0 6px 20px 0 rgba(37, 99, 235, 0.4);
+  border-color: #1d4ed8;
 }
 
 .btn-vibrant-primary:active {

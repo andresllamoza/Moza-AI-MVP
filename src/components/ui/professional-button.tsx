@@ -7,10 +7,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-sm hover:from-primary-700 hover:to-primary-800 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm',
+        primary: 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-sm hover:from-blue-700 hover:to-blue-800 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm border border-blue-600',
         secondary: 'bg-secondary-100 text-secondary-900 border border-secondary-200 hover:bg-secondary-200 hover:shadow-sm hover:-translate-y-0.5 active:translate-y-0',
-        outline: 'border border-neutral-300 bg-transparent text-neutral-700 hover:bg-neutral-50 hover:border-neutral-400 hover:shadow-sm hover:-translate-y-0.5 active:translate-y-0',
-        ghost: 'text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900',
+        outline: 'border border-slate-600 bg-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white hover:shadow-sm hover:-translate-y-0.5 active:translate-y-0',
+        ghost: 'text-slate-400 hover:bg-slate-700 hover:text-white',
         destructive: 'bg-error-500 text-white shadow-sm hover:bg-error-600 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm',
         success: 'bg-success-500 text-white shadow-sm hover:bg-success-600 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm',
         warning: 'bg-warning-500 text-white shadow-sm hover:bg-warning-600 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm',
