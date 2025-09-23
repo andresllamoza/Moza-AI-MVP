@@ -1,8 +1,34 @@
 {
   "name": "mozawave",
-  "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
+  "description": "AI-Powered Business Intelligence Platform for Competitive Analysis, Reputation Management, and Market Insights",
   "type": "module",
+  "private": false,
+  "keywords": [
+    "business-intelligence",
+    "competitive-analysis",
+    "reputation-management",
+    "ai-powered",
+    "saas",
+    "react",
+    "typescript",
+    "supabase",
+    "real-time-analytics"
+  ],
+  "homepage": "https://github.com/andresllamoza/Moza-AI-MVP#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresllamoza/Moza-AI-MVP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/andresllamoza/Moza-AI-MVP/issues"
+  },
+  "author": {
+    "name": "MozaWave Team",
+    "email": "hello@mozawave.ai",
+    "url": "https://mozawave.ai"
+  },
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
