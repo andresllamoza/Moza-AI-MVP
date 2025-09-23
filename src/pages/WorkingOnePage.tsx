@@ -3,7 +3,8 @@
 // Updated: Enterprise-level SaaS platform with one-scroll design
 
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import {
   ArrowRight,
   Play,
@@ -30,18 +31,35 @@ import {
   ArrowDown,
   ExternalLink
 } from 'lucide-react';
+import AuthModal from '../components/auth/AuthModal';
 
 export const WorkingOnePage: React.FC = () => {
   // Version 2.0 - Enterprise One-Scroll Design
   console.log('🚀 WorkingOnePage loaded - Enterprise One-Scroll Design');
   console.log('📍 Current route:', window.location.pathname);
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [showAuthModal, setShowAuthModal] = useState(false);
   const { scrollYProgress } = useScroll();
   
   // Transform scroll progress for parallax effects
   const heroY = useTransform(scrollYProgress, [0, 0.5], [0, -100]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  // Authentication handlers
+  const handleGetStarted = () => {
+    setShowAuthModal(true);
+  };
+
+  const handleSignIn = () => {
+    setShowAuthModal(true);
+  };
+
+  const handleAuthSuccess = () => {
+    setShowAuthModal(false);
+    navigate('/dashboard');
+  };
 
   // Track scroll position for navigation highlighting
   useEffect(() => {
@@ -112,10 +130,16 @@ export const WorkingOnePage: React.FC = () => {
 
             {/* CTA Buttons - Salesforce Style */}
             <div className="hidden md:flex items-center gap-3">
-              <button className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
+              <button 
+                onClick={handleSignIn}
+                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+              >
                 Sign In
               </button>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+              <button 
+                onClick={handleGetStarted}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+              >
                 Start Free Trial
               </button>
             </div>
@@ -154,10 +178,16 @@ export const WorkingOnePage: React.FC = () => {
                 </button>
               ))}
               <div className="pt-4 border-t border-gray-200 space-y-3">
-                <button className="w-full text-left text-gray-600 hover:text-gray-900 py-2">
+                <button 
+                  onClick={handleSignIn}
+                  className="w-full text-left text-gray-600 hover:text-gray-900 py-2"
+                >
                   Sign In
                 </button>
-                <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                <button 
+                  onClick={handleGetStarted}
+                  className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium"
+                >
                   Start Free Trial
                 </button>
               </div>
@@ -228,7 +258,10 @@ export const WorkingOnePage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
             >
-              <button className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
+              <button 
+                onClick={handleGetStarted}
+                className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+              >
                 <Target className="w-5 h-5" />
                 Start Free Trial
                 <ArrowRight className="w-5 h-5" />
@@ -733,6 +766,17 @@ export const WorkingOnePage: React.FC = () => {
           </div>
         </div>
       </footer>
+
+      {/* Authentication Modal */}
+      <AnimatePresence>
+        {showAuthModal && (
+          <AuthModal
+            isOpen={showAuthModal}
+            onClose={() => setShowAuthModal(false)}
+            onSuccess={handleAuthSuccess}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

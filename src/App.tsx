@@ -18,6 +18,7 @@ import DemoNavigation from "./components/demo/DemoNavigation";
 import MozaIntelligenceDashboard from "./components/dashboard/MozaIntelligenceDashboard";
 import DualIntelligenceDashboard from "./components/dashboard/DualIntelligenceDashboard";
 import VibrantEnterpriseDashboard from "./components/dashboard/VibrantEnterpriseDashboardFallback";
+import PersonalizedDashboard from "./components/dashboard/PersonalizedDashboard";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
@@ -45,6 +46,7 @@ import Account from "./pages/Account";
 import TestPage from "./pages/TestPage";
 import SimpleOnePage from "./pages/SimpleOnePage";
 import WorkingOnePage from "./pages/WorkingOnePage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -60,32 +62,64 @@ const App = () => {
           <BrowserRouter>
             <AppLayout>
               <Routes>
-              {/* Main Routes */}
+              {/* MAIN ROUTE - Demo Flow Only (FAANG-Level Design) */}
               <Route path="/" element={<WorkingOnePage />} />
-              <Route path="/account" element={<Account />} />
               
-              {/* Dashboard & Analytics */}
-              <Route path="/dashboard" element={<DashboardPage />} />
-              <Route path="/reports" element={<ReportsPage />} />
-              <Route path="/insights" element={<InsightsPage />} />
-              <Route path="/integrations" element={<IntegrationsPage />} />
+              {/* AUTHENTICATED USER ROUTES - Protected with FAANG-level security */}
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <PersonalizedDashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="/reports" element={
+                <ProtectedRoute>
+                  <ReportsPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/insights" element={
+                <ProtectedRoute>
+                  <InsightsPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/integrations" element={
+                <ProtectedRoute>
+                  <IntegrationsPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/services" element={
+                <ProtectedRoute>
+                  <ServicesPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/services/competitor-tracker" element={
+                <ProtectedRoute>
+                  <CompetitorTrackerPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/services/review-manager" element={
+                <ProtectedRoute>
+                  <ReviewManagerPage />
+                </ProtectedRoute>
+              } />
               
-              {/* Services */}
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/services/competitor-tracker" element={<CompetitorTrackerPage />} />
-              <Route path="/services/review-manager" element={<ReviewManagerPage />} />
+              {/* ACCOUNT MANAGEMENT */}
+              <Route path="/account" element={
+                <ProtectedRoute>
+                  <Account />
+                </ProtectedRoute>
+              } />
               
-              {/* Industry Landing Pages */}
+              {/* PUBLIC DEMO ROUTES */}
+              <Route path="/demo-center" element={<DemoLauncherPage />} />
+              <Route path="/real-time-demo" element={<RealTimeDemo businessName="Mario's Artisan Pizza" location="Brooklyn, NY" industry="restaurant" />} />
+              
+              {/* INDUSTRY LANDING PAGES (Public) */}
               <Route path="/contractors" element={<ContractorsLanding />} />
               <Route path="/hospitality" element={<HospitalityLanding />} />
               <Route path="/car-wash" element={<CarWashLanding />} />
               <Route path="/restaurants" element={<RestaurantsLanding />} />
               
-              {/* Demo & Testing */}
-              <Route path="/demo-center" element={<DemoLauncherPage />} />
-              <Route path="/real-time-demo" element={<RealTimeDemo businessName="Mario's Artisan Pizza" location="Brooklyn, NY" industry="restaurant" />} />
-              
-              {/* Legacy/Development Routes */}
+              {/* LEGACY/DEVELOPMENT ROUTES */}
               <Route path="/auth" element={<Auth />} />
               <Route path="/test" element={<TestPage />} />
               <Route path="/old-dashboard" element={<AuthGuard><Dashboard /></AuthGuard>} />
@@ -94,7 +128,8 @@ const App = () => {
               <Route path="/google-profile" element={<AuthGuard><GoogleProfile /></AuthGuard>} />
               <Route path="/settings" element={<AuthGuard><Settings /></AuthGuard>} />
               <Route path="/onboarding" element={<AuthGuard><Onboarding /></AuthGuard>} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              
+              {/* CATCH-ALL ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AppLayout>
