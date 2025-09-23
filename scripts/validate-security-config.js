@@ -1,8 +1,8 @@
 // Security Configuration Validator for MozaWave
 // Validates that security configurations are properly set up
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 console.log('🔍 Validating Security Configuration...');
 
