@@ -60,51 +60,34 @@ const App = () => {
           <BrowserRouter>
             <AppLayout>
               <Routes>
+              {/* Main Routes */}
               <Route path="/" element={<WorkingOnePage />} />
-              <Route path="/home" element={<WorkingOnePage />} />
-              <Route path="/old-intro" element={<IntelligenceIntroDemo />} />
-              <Route path="/landing" element={<LandingPage />} />
-              <Route path="/real-time-demo" element={<RealTimeDemo businessName="Mario's Artisan Pizza" location="Brooklyn, NY" industry="restaurant" />} />
-              <Route path="/demo" element={
-                <div>
-                  <DemoNavigation />
-                  <EmailDemo />
-                </div>
-              } />
+              <Route path="/account" element={<Account />} />
+              
+              {/* Dashboard & Analytics */}
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/reports" element={<ReportsPage />} />
               <Route path="/insights" element={<InsightsPage />} />
+              <Route path="/integrations" element={<IntegrationsPage />} />
+              
+              {/* Services */}
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/services/competitor-tracker" element={<CompetitorTrackerPage />} />
               <Route path="/services/review-manager" element={<ReviewManagerPage />} />
-              <Route path="/integrations" element={<IntegrationsPage />} />
-              <Route path="/dual-dashboard" element={<DualIntelligenceDashboard />} />
-              <Route path="/internal-dashboard" element={<MozaIntelligenceDashboard />} />
-              <Route path="/old-dashboard" element={
-                <div>
-                  <DemoNavigation />
-                  <SmartDashboard />
-                </div>
-              } />
-              <Route path="/roi-calculator" element={
-                <div>
-                  <DemoNavigation />
-                  <ROICalculator />
-                </div>
-              } />
-              <Route path="/auth" element={<Auth />} />
+              
+              {/* Industry Landing Pages */}
               <Route path="/contractors" element={<ContractorsLanding />} />
               <Route path="/hospitality" element={<HospitalityLanding />} />
               <Route path="/car-wash" element={<CarWashLanding />} />
               <Route path="/restaurants" element={<RestaurantsLanding />} />
+              
+              {/* Demo & Testing */}
               <Route path="/demo-center" element={<DemoLauncherPage />} />
-              <Route path="/test-demo" element={<DemoLauncherPage />} />
-              <Route path="/enhanced" element={<EnhancedLandingPage />} />
-              <Route path="/onepage" element={<OnePageLanding />} />
-              <Route path="/account" element={<Account />} />
+              <Route path="/real-time-demo" element={<RealTimeDemo businessName="Mario's Artisan Pizza" location="Brooklyn, NY" industry="restaurant" />} />
+              
+              {/* Legacy/Development Routes */}
+              <Route path="/auth" element={<Auth />} />
               <Route path="/test" element={<TestPage />} />
-              <Route path="/simple" element={<SimpleOnePage />} />
-              <Route path="/working" element={<WorkingOnePage />} />
               <Route path="/old-dashboard" element={<AuthGuard><Dashboard /></AuthGuard>} />
               <Route path="/leads" element={<AuthGuard><Leads /></AuthGuard>} />
               <Route path="/reviews" element={<AuthGuard><Reviews /></AuthGuard>} />

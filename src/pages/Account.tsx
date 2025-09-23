@@ -7,7 +7,7 @@ export const Account: React.FC = () => {
 
   useEffect(() => {
     // Redirect to the main one-page landing
-    navigate('/onepage', { replace: true });
+    navigate('/', { replace: true });
   }, [navigate]);
 
   return (

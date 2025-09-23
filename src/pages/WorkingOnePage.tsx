@@ -33,7 +33,8 @@ import {
 
 export const WorkingOnePage: React.FC = () => {
   // Version 2.0 - Enterprise One-Scroll Design
-  console.log('WorkingOnePage loaded - Enterprise One-Scroll Design');
+  console.log('🚀 WorkingOnePage loaded - Enterprise One-Scroll Design');
+  console.log('📍 Current route:', window.location.pathname);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const { scrollYProgress } = useScroll();
