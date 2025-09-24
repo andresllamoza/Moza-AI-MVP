@@ -53,6 +53,7 @@ import { DesignSystemDemo } from "./pages/DesignSystemDemo";
 import { StableEnterpriseLanding } from "./pages/StableEnterpriseLanding";
 import { SecurityDashboard } from "./components/security/SecurityDashboard";
 import { SecurityPage } from "./pages/SecurityPage";
+import { IndustryDemoPage } from "./pages/IndustryDemoPage";
 
 const queryClient = new QueryClient();
 
@@ -130,6 +131,7 @@ const App = () => {
               
               {/* PUBLIC DEMO ROUTES */}
               <Route path="/demo-center" element={<DemoLauncherPage />} />
+              <Route path="/industry-selector" element={<IndustryDemoPage />} />
               <Route path="/design-system" element={<DesignSystemDemo />} />
               <Route path="/original-landing" element={<WorkingOnePage />} />
               <Route path="/real-time-demo" element={<RealTimeDemo businessName="Mario's Artisan Pizza" location="Brooklyn, NY" industry="restaurant" />} />

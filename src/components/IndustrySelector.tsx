@@ -1,196 +1,334 @@
-import React, { useState, useRef } from 'react';
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Hammer, Hotel, Car, UtensilsCrossed, Sparkles, TrendingUp } from "lucide-react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  ArrowRight, 
+  TrendingUp, 
+  Shield, 
+  Users, 
+  CheckCircle,
+  Loader2,
+  Star,
+  Building2,
+  Wrench,
+  Smartphone
+} from 'lucide-react';
 
-const industries = [
+interface IndustryCard {
+  id: string;
+  icon: React.ReactNode;
+  headline: string;
+  previewMetrics: string;
+  sampleInsight: string;
+  valueProp: string;
+  cta: string;
+  competitors: string[];
+  color: string;
+  gradient: string;
+}
+
+const industries: IndustryCard[] = [
   {
-    icon: Hammer,
-    title: "General Contractors",
-    description: "Stop losing jobs to slow responses. AI that captures, qualifies, and schedules contractor leads 24/7.",
-    href: "/contractors",
-    gradient: "from-orange-500 to-amber-500",
-    shadowColor: "shadow-contractor",
-    stats: { projects: "2,500+", leads: "300%", time: "40%" },
-    features: ["Project Tracking", "Lead Scoring", "Bid Management"]
+    id: 'restaurants',
+    icon: <Building2 className="w-8 h-8" />,
+    headline: "Restaurant & Food Service Intelligence",
+    previewMetrics: "Track 12+ competitors like Olive Garden, Applebee's, Chili's",
+    sampleInsight: "Chili's 2-for-$25 promotion detected - revenue impact analysis ready",
+    valueProp: "Never miss a competitor's promotion or price change again",
+    cta: "See Restaurant Demo",
+    competitors: ["Olive Garden", "Applebee's", "Chili's", "Outback", "Red Lobster", "Buffalo Wild Wings"],
+    color: "from-orange-500 to-red-500",
+    gradient: "bg-gradient-to-br from-orange-500/10 to-red-500/10"
   },
   {
-    icon: Hotel,
-    title: "Hospitality",
-    description: "Enhance guest experience with instant AI responses. Handle reservations, complaints, and inquiries 24/7.",
-    href: "/hospitality", 
-    gradient: "from-amber-500 to-yellow-500",
-    shadowColor: "shadow-hospitality",
-    stats: { bookings: "5,000+", satisfaction: "98%", response: "24/7" },
-    features: ["Guest Communication", "Booking Automation", "Review Management"]
+    id: 'home-services',
+    icon: <Wrench className="w-8 h-8" />,
+    headline: "Home Services Competitive Intelligence",
+    previewMetrics: "Monitor Roto-Rooter, Benjamin Franklin Plumbing, Mr. Rooter + more",
+    sampleInsight: "Emergency service rates increased 25% - pricing opportunity detected",
+    valueProp: "Dominate your service area with real-time competitor insights",
+    cta: "See Home Services Demo",
+    competitors: ["Roto-Rooter", "Benjamin Franklin", "Mr. Rooter", "ServiceTitan", "Angi", "HomeAdvisor"],
+    color: "from-blue-500 to-cyan-500",
+    gradient: "bg-gradient-to-br from-blue-500/10 to-cyan-500/10"
   },
   {
-    icon: Car,
-    title: "Car Washes",
-    description: "Automate bookings, manage memberships, and increase customer retention with intelligent follow-up.",
-    href: "/carwash",
-    gradient: "from-blue-500 to-cyan-500",
-    shadowColor: "shadow-carwash",
-    stats: { customers: "10k+", retention: "85%", automation: "24/7" },
-    features: ["Queue Management", "Subscription Billing", "Customer Alerts"]
-  },
-  {
-    icon: UtensilsCrossed,
-    title: "Restaurants",
-    description: "Handle reservations, takeout orders, and customer inquiries. Turn every interaction into a booking.",
-    href: "/restaurants",
-    gradient: "from-red-500 to-pink-500",
-    shadowColor: "shadow-restaurant",
-    stats: { orders: "50k+", efficiency: "60%", reviews: "4.8★" },
-    features: ["Order Automation", "Customer Support", "Feedback Management"]
+    id: 'electronics',
+    icon: <Smartphone className="w-8 h-8" />,
+    headline: "Electronics Retail Market Intelligence",
+    previewMetrics: "Compete with Best Buy, Target, Amazon pricing + inventory",
+    sampleInsight: "iPhone prices dropped 10% at Best Buy - price match recommended",
+    valueProp: "Stay competitive against big box stores and online giants",
+    cta: "See Retail Demo",
+    competitors: ["Best Buy", "Target", "Amazon", "Walmart", "Costco", "Micro Center"],
+    color: "from-purple-500 to-pink-500",
+    gradient: "bg-gradient-to-br from-purple-500/10 to-pink-500/10"
   }
 ];
 
-export function IndustrySelector() {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const containerRef = useRef<HTMLDivElement>(null);
+interface IndustrySelectorProps {
+  onIndustrySelect: (industry: string) => void;
+}
 
-  const handleMouseMove = (e: React.MouseEvent, index: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    setMousePosition({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-    setHoveredCard(index);
+export const IndustrySelector: React.FC<IndustrySelectorProps> = ({ onIndustrySelect }) => {
+  const [selectedIndustry, setSelectedIndustry] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+
+  const handleIndustryClick = async (industryId: string) => {
+    setSelectedIndustry(industryId);
+    setLoading(true);
+    
+    // Simulate loading process with progress indicators
+    const loadingSteps = [
+      "Analyzing market data...",
+      "Loading competitor information...",
+      "Generating insights...",
+      "Preparing your dashboard..."
+    ];
+    
+    for (let i = 0; i < loadingSteps.length; i++) {
+      await new Promise(resolve => setTimeout(resolve, 800));
+      if (i === loadingSteps.length - 1) {
+        setLoading(false);
+        onIndustrySelect(industryId);
+      }
+    }
   };
 
-  return (
-    <section className="py-32 relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-primary/5" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.05),transparent_50%)]" />
-      
-      {/* Floating background elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-48 h-48 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000" />
-
-      <div className="container mx-auto px-4 relative z-10" ref={containerRef}>
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm border border-primary/20 rounded-full px-6 py-3 mb-8">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Industry-Specific Solutions</span>
+  if (loading && selectedIndustry) {
+    const industry = industries.find(i => i.id === selectedIndustry);
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center p-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="max-w-2xl w-full"
+        >
+          <div className="text-center mb-8">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <Loader2 className="w-8 h-8 text-white" />
+            </motion.div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">
+              Analyzing {industry?.headline.split(' ')[0]} Market
+            </h2>
+            <p className="text-gray-600">Loading competitor data and generating insights...</p>
           </div>
-          
-          <h2 className="text-5xl md:text-7xl font-extrabold bg-gradient-primary bg-clip-text text-transparent mb-8 leading-tight">
-            Built for Your
-            <br />
-            <span className="relative">
-              Industry
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-primary rounded-full" />
-            </span>
-          </h2>
-          
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            Our AI platform adapts to your specific industry with specialized workflows, 
-            custom automation, and proven results across thousands of businesses.
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-          {/* Cursor follower effect */}
-          {hoveredCard !== null && (
-            <div 
-              className="absolute w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none transition-all duration-500 z-0"
-              style={{
-                left: mousePosition.x - 192,
-                top: mousePosition.y - 192,
-              }}
-            />
-          )}
-
-          {industries.map((industry, index) => {
-            const Icon = industry.icon;
-            const isHovered = hoveredCard === index;
-            
-            return (
-              <div 
-                key={index} 
-                className={`group relative overflow-hidden bg-card/50 backdrop-blur-sm border border-primary/10 hover:border-primary/30 rounded-2xl transition-all duration-500 hover:scale-105 z-10 ${
-                  isHovered ? industry.shadowColor : 'hover:shadow-elegant'
-                }`}
-                onMouseMove={(e) => handleMouseMove(e, index)}
-                onMouseLeave={() => setHoveredCard(null)}
-              >
-                {/* Gradient overlay on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${industry.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`} />
-                
-                <div className="p-8 relative z-10">
-                  {/* Icon with animated background */}
-                  <div className="relative mb-6">
-                    <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${industry.gradient} p-0.5 group-hover:scale-110 transition-transform duration-300`}>
-                      <div className="w-full h-full bg-card rounded-3xl flex items-center justify-center">
-                        <Icon className="w-10 h-10 text-foreground group-hover:scale-110 transition-transform duration-300" />
-                      </div>
-                    </div>
-                    
-                    {/* Floating badge */}
-                    <div className="absolute -top-2 -right-2 bg-primary/10 backdrop-blur-sm border border-primary/20 rounded-full px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <TrendingUp className="w-3 h-3 text-primary" />
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
-                    {industry.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
-                    {industry.description}
-                  </p>
-
-                  {/* Feature highlights */}
-                  <div className="space-y-2 mb-6">
-                    {industry.features.map((feature, fIndex) => (
-                      <div key={fIndex} className="flex items-center gap-2 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="w-1 h-1 bg-primary rounded-full" />
-                        <span className="text-xs text-muted-foreground">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Stats preview */}
-                  <div className="grid grid-cols-3 gap-2 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                    {Object.entries(industry.stats).map(([key, value], sIndex) => (
-                      <div key={sIndex} className="text-center p-2 bg-muted/50 rounded-lg">
-                        <div className="text-sm font-bold text-primary">{value}</div>
-                        <div className="text-xs text-muted-foreground capitalize">{key}</div>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <Link to={industry.href}>
-                    <Button 
-                      variant="outline" 
-                      className={`group-hover:bg-gradient-to-r ${industry.gradient} group-hover:text-white group-hover:border-transparent transition-all duration-300 w-full group-hover:shadow-lg`}
-                    >
-                      Explore Solutions
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Call-to-action section */}
-        <div className="text-center mt-20">
-          <div className="inline-flex items-center gap-4 bg-card/50 backdrop-blur-sm border border-primary/20 rounded-2xl p-6 shadow-elegant">
-            <div className="text-sm text-muted-foreground">
-              Don't see your industry? We customize solutions for any business.
+          <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-200">
+            <div className="space-y-4">
+              {[
+                "Analyzing market data...",
+                "Loading competitor information...", 
+                "Generating insights...",
+                "Preparing your dashboard..."
+              ].map((step, index) => (
+                <motion.div
+                  key={step}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.5 }}
+                  className="flex items-center space-x-3"
+                >
+                  <motion.div
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ 
+                      duration: 1, 
+                      repeat: Infinity, 
+                      delay: index * 0.5 
+                    }}
+                    className="w-3 h-3 bg-blue-500 rounded-full"
+                  />
+                  <span className="text-gray-700">{step}</span>
+                </motion.div>
+              ))}
             </div>
-            <Button variant="outline" size="sm" className="hover:bg-primary hover:text-primary-foreground" asChild>
-              <Link to="/onboarding">Contact Sales</Link>
-            </Button>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-12 px-4">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6"
+          >
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <Star className="w-4 h-4" />
+              Trusted by 2,847+ businesses nationwide
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Choose Your Industry
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Get instant competitive intelligence tailored to your business. 
+              See how MozaWave helps companies like yours dominate their market.
+            </p>
+          </motion.div>
+
+          {/* Credibility Badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-500"
+          >
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-green-500" />
+              <span>As seen in TechCrunch</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-green-500" />
+              <span>Featured in Forbes</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Shield className="w-4 h-4 text-blue-500" />
+              <span>SOC 2 Compliant</span>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Industry Cards */}
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          {industries.map((industry, index) => (
+            <motion.div
+              key={industry.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              onHoverStart={() => setHoveredCard(industry.id)}
+              onHoverEnd={() => setHoveredCard(null)}
+              onClick={() => handleIndustryClick(industry.id)}
+              className="group cursor-pointer"
+            >
+              <div className={`
+                relative bg-white rounded-2xl p-8 shadow-lg border border-gray-200 
+                hover:shadow-2xl transition-all duration-300 h-full
+                ${hoveredCard === industry.id ? 'transform -translate-y-2' : ''}
+              `}>
+                {/* Industry Icon */}
+                <div className={`
+                  w-16 h-16 rounded-2xl bg-gradient-to-r ${industry.color} 
+                  flex items-center justify-center text-white mb-6
+                  group-hover:scale-110 transition-transform duration-300
+                `}>
+                  {industry.icon}
+                </div>
+
+                {/* Headline */}
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  {industry.headline}
+                </h3>
+
+                {/* Preview Metrics */}
+                <div className="mb-4">
+                  <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
+                    <TrendingUp className="w-4 h-4 text-blue-500" />
+                    <span className="font-medium">Live Metrics:</span>
+                  </div>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    {industry.previewMetrics}
+                  </p>
+                </div>
+
+                {/* Sample Insight */}
+                <div className={`${industry.gradient} rounded-lg p-4 mb-6`}>
+                  <div className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                    <span>Real-time Insight:</span>
+                  </div>
+                  <p className="text-sm text-gray-600 italic">
+                    "{industry.sampleInsight}"
+                  </p>
+                </div>
+
+                {/* Value Proposition */}
+                <p className="text-gray-700 mb-6 text-sm leading-relaxed">
+                  {industry.valueProp}
+                </p>
+
+                {/* CTA Button */}
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`
+                    w-full py-3 px-6 rounded-lg font-medium text-white
+                    bg-gradient-to-r ${industry.color} hover:shadow-lg
+                    transition-all duration-300 flex items-center justify-center gap-2
+                    group-hover:shadow-xl
+                  `}
+                >
+                  {industry.cta}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+
+                {/* Competitor Logos on Hover */}
+                <AnimatePresence>
+                  {hoveredCard === industry.id && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      className="absolute bottom-4 left-4 right-4"
+                    >
+                      <div className="bg-gray-50 rounded-lg p-3">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Users className="w-4 h-4 text-gray-500" />
+                          <span className="text-xs font-medium text-gray-600">
+                            Tracking Competitors:
+                          </span>
+                        </div>
+                        <div className="flex flex-wrap gap-1">
+                          {industry.competitors.map((competitor, idx) => (
+                            <motion.span
+                              key={competitor}
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: idx * 0.05 }}
+                              className="text-xs bg-white px-2 py-1 rounded border text-gray-600"
+                            >
+                              {competitor}
+                            </motion.span>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="text-center"
+        >
+          <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Not sure which industry fits you best?
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Our AI automatically detects your industry and competitors once you start using MozaWave.
+            </p>
+            <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300">
+              Start Free Trial - AI Will Detect Your Industry
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    </div>
   );
-}
+};
