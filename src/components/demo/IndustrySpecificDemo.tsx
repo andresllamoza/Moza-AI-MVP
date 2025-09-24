@@ -12,8 +12,11 @@ import {
   Smartphone,
   Star,
   Clock,
-  Target
+  Target,
+  Play,
+  Eye
 } from 'lucide-react';
+import { VisualDemoSystem } from './VisualDemoSystem';
 
 interface IndustryData {
   id: string;
@@ -195,6 +198,7 @@ export const IndustrySpecificDemo: React.FC<IndustrySpecificDemoProps> = ({
 }) => {
   const [loading, setLoading] = useState(true);
   const [currentInsight, setCurrentInsight] = useState(0);
+  const [showVisualDemo, setShowVisualDemo] = useState(false);
   const data = industryData[industry];
 
   useEffect(() => {
@@ -229,6 +233,10 @@ export const IndustrySpecificDemo: React.FC<IndustrySpecificDemoProps> = ({
         </div>
       </div>
     );
+  }
+
+  if (showVisualDemo) {
+    return <VisualDemoSystem industry={industry} onClose={() => setShowVisualDemo(false)} />;
   }
 
   if (loading) {
@@ -275,9 +283,18 @@ export const IndustrySpecificDemo: React.FC<IndustrySpecificDemoProps> = ({
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-2 text-sm text-green-600">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              Live Data
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setShowVisualDemo(true)}
+                className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300"
+              >
+                <Play className="w-4 h-4" />
+                Launch Visual Demo
+              </button>
+              <div className="flex items-center gap-2 text-sm text-green-600">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                Live Data
+              </div>
             </div>
           </div>
         </div>
@@ -445,9 +462,18 @@ export const IndustrySpecificDemo: React.FC<IndustrySpecificDemoProps> = ({
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
               Join 2,847+ businesses already using MozaWave to dominate their market with real-time competitive intelligence.
             </p>
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
-              Start Your Free Trial
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                Start Your Free Trial
+              </button>
+              <button 
+                onClick={() => setShowVisualDemo(true)}
+                className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-600 transition-colors flex items-center justify-center gap-2"
+              >
+                <Eye className="w-4 h-4" />
+                Watch Full Demo
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>

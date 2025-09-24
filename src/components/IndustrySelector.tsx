@@ -256,20 +256,32 @@ export const IndustrySelector: React.FC<IndustrySelectorProps> = ({ onIndustrySe
                   {industry.valueProp}
                 </p>
 
-                {/* CTA Button */}
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`
-                    w-full py-3 px-6 rounded-lg font-medium text-white
-                    bg-gradient-to-r ${industry.color} hover:shadow-lg
-                    transition-all duration-300 flex items-center justify-center gap-2
-                    group-hover:shadow-xl
-                  `}
-                >
-                  {industry.cta}
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
+                {/* CTA Buttons */}
+                <div className="space-y-3">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`
+                      w-full py-3 px-6 rounded-lg font-medium text-white
+                      bg-gradient-to-r ${industry.color} hover:shadow-lg
+                      transition-all duration-300 flex items-center justify-center gap-2
+                      group-hover:shadow-xl
+                    `}
+                  >
+                    {industry.cta}
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </motion.button>
+                  
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => onIndustrySelect(industry.id)}
+                    className="w-full py-2 px-6 rounded-lg font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    <Eye className="w-4 h-4" />
+                    Launch Visual Demo
+                  </motion.button>
+                </div>
 
                 {/* Competitor Logos on Hover */}
                 <AnimatePresence>
