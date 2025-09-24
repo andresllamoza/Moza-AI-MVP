@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/use-auth";
 import { AuthGuard } from "@/components/AuthGuard";
 import { AppLayout } from "@/components/layout/AppLayout";
+import { ThemeProvider } from "@/hooks/use-theme";
 import LandingPage from "./components/demo/LandingPage";
 import IntelligenceIntroDemo from "./components/demo/IntelligenceIntroDemo";
 import ZeroFrictionIntroDemo from "./components/demo/ZeroFrictionIntroDemo";
@@ -19,6 +20,7 @@ import MozaIntelligenceDashboard from "./components/dashboard/MozaIntelligenceDa
 import DualIntelligenceDashboard from "./components/dashboard/DualIntelligenceDashboard";
 import VibrantEnterpriseDashboard from "./components/dashboard/VibrantEnterpriseDashboardFallback";
 import PersonalizedDashboard from "./components/dashboard/PersonalizedDashboard";
+import { MozaWaveDashboard } from "./components/dashboard/MozaWaveDashboard";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
@@ -47,6 +49,10 @@ import TestPage from "./pages/TestPage";
 import SimpleOnePage from "./pages/SimpleOnePage";
 import WorkingOnePage from "./pages/WorkingOnePage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import { DesignSystemDemo } from "./pages/DesignSystemDemo";
+import { StableEnterpriseLanding } from "./pages/StableEnterpriseLanding";
+import { SecurityDashboard } from "./components/security/SecurityDashboard";
+import { SecurityPage } from "./pages/SecurityPage";
 
 const queryClient = new QueryClient();
 
@@ -55,20 +61,26 @@ const App = () => {
   
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <AuthProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <AppLayout>
+      <ThemeProvider defaultTheme="system" storageKey="mozawave-theme">
+        <TooltipProvider>
+          <AuthProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <AppLayout>
               <Routes>
-              {/* MAIN ROUTE - Demo Flow Only (FAANG-Level Design) */}
-              <Route path="/" element={<WorkingOnePage />} />
+              {/* MAIN ROUTE - Stable Enterprise Landing (Salesforce-Style) */}
+              <Route path="/" element={<StableEnterpriseLanding />} />
               
               {/* AUTHENTICATED USER ROUTES - Protected with FAANG-level security */}
               <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <PersonalizedDashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="/modern-dashboard" element={
+                <ProtectedRoute>
+                  <MozaWaveDashboard />
                 </ProtectedRoute>
               } />
               <Route path="/reports" element={
@@ -109,8 +121,17 @@ const App = () => {
                 </ProtectedRoute>
               } />
               
+              {/* SECURITY MANAGEMENT */}
+              <Route path="/security" element={
+                <ProtectedRoute>
+                  <SecurityPage />
+                </ProtectedRoute>
+              } />
+              
               {/* PUBLIC DEMO ROUTES */}
               <Route path="/demo-center" element={<DemoLauncherPage />} />
+              <Route path="/design-system" element={<DesignSystemDemo />} />
+              <Route path="/original-landing" element={<WorkingOnePage />} />
               <Route path="/real-time-demo" element={<RealTimeDemo businessName="Mario's Artisan Pizza" location="Brooklyn, NY" industry="restaurant" />} />
               
               {/* INDUSTRY LANDING PAGES (Public) */}
@@ -136,6 +157,7 @@ const App = () => {
         </BrowserRouter>
       </AuthProvider>
     </TooltipProvider>
+      </ThemeProvider>
   </QueryClientProvider>
   );
 };

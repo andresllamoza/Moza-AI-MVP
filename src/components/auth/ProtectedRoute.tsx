@@ -6,7 +6,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, Lock, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { useAuth } from '../../hooks/use-auth';
-import AuthModal from './AuthModal';
+import { AuthModal } from './AuthModal';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;

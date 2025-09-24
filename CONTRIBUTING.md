@@ -2,170 +2,96 @@
 
 Thank you for your interest in contributing to MozaWave! This document provides guidelines and information for contributors.
 
-## 📋 Table of Contents
+## Code of Conduct
 
-- [Code of Conduct](#code-of-conduct)
-- [Getting Started](#getting-started)
-- [Development Workflow](#development-workflow)
-- [Coding Standards](#coding-standards)
-- [Pull Request Process](#pull-request-process)
-- [Issue Reporting](#issue-reporting)
-- [Feature Requests](#feature-requests)
+By participating in this project, you agree to abide by our Code of Conduct. Please read and follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-## 🤝 Code of Conduct
-
-This project follows a code of conduct that we expect all contributors to adhere to:
-
-- **Be respectful** and inclusive in all interactions
-- **Be constructive** when providing feedback
-- **Be patient** with newcomers and learning processes
-- **Be professional** in all communications
-
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
-- **Node.js** 18+ and npm
-- **Git** for version control
-- **VS Code** (recommended) with extensions:
-  - ES7+ React/Redux/React-Native snippets
-  - Tailwind CSS IntelliSense
-  - TypeScript Importer
+- Node.js 18 or higher
+- npm or yarn package manager
+- Git
+- Basic knowledge of React, TypeScript, and Tailwind CSS
 
-### Setup
+### Development Setup
 
-1. **Fork and clone** the repository
+1. **Fork the repository** on GitHub
+2. **Clone your fork** locally:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/Moza-AI-MVP.git
-   cd Moza-AI-MVP
+   git clone https://github.com/YOUR_USERNAME/MozaWave.git
+   cd MozaWave
    ```
-
-2. **Install dependencies**
+3. **Install dependencies**:
    ```bash
    npm install
    ```
-
-3. **Create a branch** for your feature
+4. **Set up environment variables**:
    ```bash
-   git checkout -b feature/your-feature-name
+   cp .env.example .env.local
+   # Edit .env.local with your credentials
    ```
-
-4. **Start development server**
+5. **Start the development server**:
    ```bash
    npm run dev
    ```
 
-## 🔄 Development Workflow
+## Development Workflow
 
-### Branch Naming Convention
+### Branch Naming
 
-- **Features**: `feature/feature-name`
-- **Bug fixes**: `fix/bug-description`
-- **Documentation**: `docs/documentation-update`
-- **Refactoring**: `refactor/component-name`
-- **Hotfixes**: `hotfix/critical-fix`
+Use descriptive branch names with prefixes:
 
-### Commit Message Format
+- `feature/` - New features
+- `fix/` - Bug fixes
+- `docs/` - Documentation updates
+- `refactor/` - Code refactoring
+- `test/` - Test additions or updates
 
-We use conventional commits:
+Examples:
+- `feature/user-onboarding-flow`
+- `fix/authentication-bug`
+- `docs/api-documentation`
+
+### Commit Messages
+
+Follow the conventional commits specification:
 
 ```
 type(scope): description
 
 [optional body]
 
-[optional footer]
+[optional footer(s)]
 ```
 
-**Types:**
+Types:
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
-- `style`: Code style changes
+- `style`: Code style changes (formatting, etc.)
 - `refactor`: Code refactoring
-- `test`: Adding tests
+- `test`: Adding or updating tests
 - `chore`: Maintenance tasks
 
-**Examples:**
+Examples:
 ```
-feat(auth): add JWT token refresh mechanism
-fix(dashboard): resolve data loading issue
+feat(auth): add multi-factor authentication support
+fix(dashboard): resolve chart rendering issue
 docs(readme): update installation instructions
 ```
 
-## 🎯 Coding Standards
+### Pull Request Process
 
-### TypeScript
+1. **Create a feature branch** from `main`
+2. **Make your changes** following our coding standards
+3. **Write tests** for new functionality
+4. **Update documentation** if needed
+5. **Run the test suite** to ensure everything passes
+6. **Submit a pull request** with a clear description
 
-- **Strict mode** enabled
-- **Explicit types** for all function parameters and return values
-- **Interface definitions** for all data structures
-- **No `any` types** without explicit justification
-
-### React
-
-- **Functional components** with hooks
-- **Custom hooks** for reusable logic
-- **Proper prop types** with TypeScript interfaces
-- **Memoization** for performance optimization
-
-### CSS/Styling
-
-- **Tailwind CSS** for styling
-- **Mobile-first** responsive design
-- **Consistent spacing** using Tailwind utilities
-- **Dark mode** support for all components
-
-### Component Structure
-
-```typescript
-// Component imports
-import React from 'react';
-import { motion } from 'framer-motion';
-
-// Type definitions
-interface ComponentProps {
-  title: string;
-  description?: string;
-}
-
-// Component definition
-const Component: React.FC<ComponentProps> = ({ title, description }) => {
-  // Hooks
-  const [state, setState] = useState(false);
-  
-  // Event handlers
-  const handleClick = () => {
-    setState(!state);
-  };
-  
-  // Render
-  return (
-    <div className="component-container">
-      {/* Component JSX */}
-    </div>
-  );
-};
-
-export default Component;
-```
-
-## 📝 Pull Request Process
-
-### Before Submitting
-
-1. **Run tests** and ensure they pass
-   ```bash
-   npm run lint
-   npm run type-check
-   npm run test:security
-   ```
-
-2. **Update documentation** if needed
-3. **Add tests** for new functionality
-4. **Ensure responsive design** works on all devices
-
-### PR Template
+### Pull Request Template
 
 ```markdown
 ## Description
@@ -178,180 +104,160 @@ Brief description of changes
 - [ ] Documentation update
 
 ## Testing
-- [ ] Unit tests pass
-- [ ] Integration tests pass
+- [ ] Tests pass locally
+- [ ] New tests added for new functionality
 - [ ] Manual testing completed
-- [ ] Responsive design verified
 
 ## Screenshots (if applicable)
 Add screenshots to help explain your changes
 
 ## Checklist
-- [ ] Code follows project style guidelines
+- [ ] Code follows style guidelines
 - [ ] Self-review completed
 - [ ] Documentation updated
-- [ ] No breaking changes (or clearly documented)
+- [ ] No breaking changes (or documented)
 ```
 
-### Review Process
+## Coding Standards
 
-1. **Automated checks** must pass
-2. **Code review** by maintainers
-3. **Testing** on staging environment
-4. **Approval** and merge
+### TypeScript
 
-## 🐛 Issue Reporting
+- Use TypeScript for all new code
+- Define proper types and interfaces
+- Avoid `any` type unless absolutely necessary
+- Use strict type checking
 
-### Bug Reports
+### React
 
-When reporting bugs, please include:
+- Use functional components with hooks
+- Follow React best practices
+- Use proper prop types and interfaces
+- Implement proper error boundaries
 
-- **Clear description** of the issue
-- **Steps to reproduce**
-- **Expected behavior**
-- **Actual behavior**
-- **Screenshots** if applicable
-- **Environment details** (browser, OS, etc.)
+### Styling
 
-### Issue Template
+- Use Tailwind CSS utility classes
+- Follow our design system guidelines
+- Use CSS custom properties for theming
+- Ensure responsive design
 
-```markdown
-## Bug Description
-[Clear description of the bug]
+### Component Structure
 
-## Steps to Reproduce
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+```tsx
+// Component imports
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 
-## Expected Behavior
-[What you expected to happen]
+// Types
+interface ComponentProps {
+  title: string;
+  onAction: () => void;
+}
 
-## Actual Behavior
-[What actually happened]
+// Component
+export const Component: React.FC<ComponentProps> = ({ title, onAction }) => {
+  // Hooks
+  const [state, setState] = useState('');
 
-## Environment
-- OS: [e.g., macOS, Windows, Linux]
-- Browser: [e.g., Chrome, Firefox, Safari]
-- Version: [e.g., 22]
+  // Event handlers
+  const handleClick = () => {
+    // Implementation
+  };
 
-## Additional Context
-[Any other context about the problem]
+  // Render
+  return (
+    <div className="component-container">
+      {/* JSX */}
+    </div>
+  );
+};
 ```
 
-## 💡 Feature Requests
+## Testing
 
-### Feature Request Template
+### Unit Tests
 
-```markdown
-## Feature Description
-[Clear description of the feature]
+- Write unit tests for utility functions
+- Test component behavior with different props
+- Use React Testing Library for component tests
 
-## Problem Statement
-[What problem does this solve?]
+### Integration Tests
 
-## Proposed Solution
-[How should this be implemented?]
+- Test component interactions
+- Test API integrations
+- Test user workflows
 
-## Alternatives Considered
-[What other solutions have you considered?]
+### E2E Tests
 
-## Additional Context
-[Any other context about the feature request]
-```
+- Test critical user journeys
+- Test authentication flows
+- Test dashboard functionality
 
-## 🧪 Testing
+## Security Guidelines
 
-### Running Tests
+### Authentication & Authorization
 
-```bash
-# Lint checking
-npm run lint
+- Never hardcode credentials
+- Use environment variables for sensitive data
+- Implement proper input validation
+- Follow OWASP security guidelines
 
-# Type checking
-npm run type-check
+### Data Handling
 
-# Security validation
-npm run test:security
+- Sanitize user inputs
+- Use parameterized queries
+- Implement proper error handling
+- Log security events
 
-# Build verification
-npm run build
-```
+## Performance Guidelines
 
-### Writing Tests
+### Bundle Size
 
-- **Unit tests** for utility functions
-- **Integration tests** for API endpoints
-- **Component tests** for React components
-- **E2E tests** for critical user flows
+- Keep bundle size under 500KB
+- Use dynamic imports for large components
+- Optimize images and assets
+- Implement code splitting
 
-## 📚 Documentation
+### Runtime Performance
+
+- Optimize re-renders with React.memo
+- Use useMemo and useCallback appropriately
+- Implement virtual scrolling for large lists
+- Use skeleton loading states
+
+## Documentation
 
 ### Code Documentation
 
-- **JSDoc comments** for all public functions
-- **README updates** for new features
-- **Type definitions** for all interfaces
-- **Inline comments** for complex logic
+- Add JSDoc comments for complex functions
+- Document component props and usage
+- Include examples in component documentation
 
-### API Documentation
+### README Updates
 
-- **Endpoint documentation** with examples
-- **Request/response schemas**
-- **Authentication requirements**
-- **Error handling** documentation
+- Update README when adding new features
+- Include setup instructions for new dependencies
+- Document breaking changes
 
-## 🔒 Security
+## Release Process
 
-### Security Guidelines
+1. **Version bumping** follows semantic versioning
+2. **Changelog** is automatically generated
+3. **Tests** must pass before release
+4. **Documentation** is updated for new features
 
-- **Never commit** API keys or secrets
-- **Validate all inputs** from external sources
-- **Use environment variables** for configuration
-- **Follow security best practices** in all code
+## Getting Help
 
-### Reporting Security Issues
+- **Discord**: Join our community Discord server
+- **GitHub Issues**: Create an issue for bugs or feature requests
+- **Email**: Contact us at dev@mozawave.ai
 
-For security vulnerabilities, please email: security@mozawave.ai
-
-## 🎨 Design Guidelines
-
-### UI/UX Standards
-
-- **Consistent design language** across all components
-- **Accessibility compliance** (WCAG 2.1 AA)
-- **Mobile-first** responsive design
-- **Performance optimization** for all interactions
-
-### Component Design
-
-- **Reusable components** with clear APIs
-- **Proper error boundaries** and loading states
-- **Smooth animations** with Framer Motion
-- **Professional styling** with Tailwind CSS
-
-## 📞 Getting Help
-
-### Resources
-
-- **Documentation**: Check the README and code comments
-- **Issues**: Search existing issues before creating new ones
-- **Discussions**: Use GitHub Discussions for questions
-- **Email**: Contact us at hello@mozawave.ai
-
-### Community
-
-- **Slack**: Join our developer community
-- **Twitter**: Follow @mozawave for updates
-- **LinkedIn**: Connect with the team
-
-## 🙏 Recognition
+## Recognition
 
 Contributors will be recognized in:
-- **README contributors section**
-- **Release notes**
-- **Project documentation**
-- **Community highlights**
+- README contributors section
+- Release notes
+- Annual contributor spotlight
 
 Thank you for contributing to MozaWave! 🚀

@@ -31,7 +31,7 @@ import {
   ArrowDown,
   ExternalLink
 } from 'lucide-react';
-import AuthModal from '../components/auth/AuthModal';
+import { AuthModal } from '../components/auth/AuthModal';
 
 export const WorkingOnePage: React.FC = () => {
   // Version 2.0 - Enterprise One-Scroll Design

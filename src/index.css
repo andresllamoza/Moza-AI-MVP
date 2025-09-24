@@ -17,41 +17,45 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Enterprise-Grade FAANG-Inspired Color System */
-    --background: 220 30% 97%;
-    --foreground: 215 25% 15%;
+    /* MozaWave Design System - Modern SaaS Colors */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 15%;
+    --card-foreground: 240 10% 3.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 15%;
+    --popover-foreground: 240 10% 3.9%;
 
-    /* Professional Blue - Google-inspired */
-    --primary: 214 100% 47%;
+    /* Primary - #4F46E5 (Indigo) */
+    --primary: 238 100% 67%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 214 100% 47%;
-    --primary-light: 214 100% 95%;
+    --primary-glow: 238 100% 67%;
+    --primary-light: 238 100% 95%;
 
-    /* Neutral Secondary - Stripe-inspired */
-    --secondary: 210 15% 96%;
-    --secondary-foreground: 215 25% 20%;
+    /* Secondary - Neutral Gray */
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
 
-    /* Soft Muted Tones - Notion-inspired */
-    --muted: 210 10% 95%;
-    --muted-foreground: 215 15% 45%;
+    /* Muted - Soft Gray */
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
 
-    /* Electric Accent */
-    --accent: 191 100% 50%;
+    /* Accent - Primary Blue */
+    --accent: 238 100% 67%;
     --accent-foreground: 0 0% 100%;
 
-    /* Success Green */
-    --success: 145 100% 39%;
+    /* Success - #10B981 (Emerald) */
+    --success: 160 84% 39%;
     --success-foreground: 0 0% 100%;
 
-    /* Warning Amber */
-    --warning: 44 100% 50%;
-    --warning-foreground: 222 47% 17%;
+    /* Warning - #F59E0B (Amber) */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Error - #EF4444 (Red) */
+    --error: 0 84% 60%;
+    --error-foreground: 0 0% 100%;
 
     /* Contractor Orange */
     --urgent: 18 100% 60%;
@@ -82,12 +86,90 @@ All colors MUST be HSL.
     --restaurant-accent: 15 100% 70%;
     --restaurant-bg: 345 25% 5%;
 
-    --destructive: 0 85% 60%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 15% 90%;
-    --input: 210 10% 98%;
-    --ring: 214 100% 47%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 238 100% 67%;
+
+    /* MozaWave Design Tokens */
+    /* Typography Scale - Inter Font Family */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    
+    /* Text Sizes (6 variants) */
+    --text-xs: 0.75rem;     /* 12px */
+    --text-sm: 0.875rem;    /* 14px */
+    --text-base: 1rem;      /* 16px */
+    --text-lg: 1.125rem;    /* 18px */
+    --text-xl: 1.25rem;     /* 20px */
+    --text-2xl: 1.5rem;     /* 24px */
+    --text-3xl: 1.875rem;   /* 30px */
+    --text-4xl: 2.25rem;    /* 36px */
+    
+    /* Font Weights */
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    
+    /* Line Heights */
+    --leading-tight: 1.25;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.75;
+    
+    /* Spacing Scale - 4px base unit */
+    --space-1: 0.25rem;     /* 4px */
+    --space-2: 0.5rem;      /* 8px */
+    --space-3: 0.75rem;     /* 12px */
+    --space-4: 1rem;        /* 16px */
+    --space-6: 1.5rem;      /* 24px */
+    --space-8: 2rem;        /* 32px */
+    --space-12: 3rem;       /* 48px */
+    --space-16: 4rem;       /* 64px */
+    --space-20: 5rem;       /* 80px */
+    --space-24: 6rem;       /* 96px */
+    
+    /* Border Radius Scale */
+    --radius-sm: 0.25rem;   /* 4px */
+    --radius-md: 0.5rem;    /* 8px */
+    --radius-lg: 0.75rem;   /* 12px */
+    --radius-xl: 1rem;      /* 16px */
+    --radius-2xl: 1.5rem;   /* 24px */
+    --radius-full: 9999px;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-glow: 0 0 20px rgba(79, 70, 229, 0.3);
+    --shadow-glow-success: 0 0 20px rgba(16, 185, 129, 0.3);
+    --shadow-glow-warning: 0 0 20px rgba(245, 158, 11, 0.3);
+    --shadow-glow-error: 0 0 20px rgba(239, 68, 68, 0.3);
+    
+    /* Glassmorphism Effects */
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-backdrop: blur(16px) saturate(180%);
+    
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Z-Index Scale */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+    --z-toast: 1080;
 
     /* Enterprise Gradients - FAANG-inspired */
     --gradient-primary: linear-gradient(135deg, hsl(214 100% 47%), hsl(214 95% 52%));
@@ -129,39 +211,48 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Dark Mode Premium Colors */
-    --background: 222 47% 5%;
-    --foreground: 210 20% 98%;
+    /* Dark Mode - Modern SaaS Colors */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
 
-    --card: 222 47% 8%;
-    --card-foreground: 210 20% 95%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
 
-    /* Dark Mode Electric Blue */
-    --primary: 191 100% 50%;
-    --primary-foreground: 222 47% 5%;
-    --primary-glow: 220 100% 70%;
-    --primary-light: 220 100% 20%;
+    /* Primary - #4F46E5 (Indigo) - Dark Mode */
+    --primary: 238 100% 67%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 238 100% 67%;
+    --primary-light: 238 100% 20%;
 
-    --secondary: 222 47% 15%;
-    --secondary-foreground: 210 20% 95%;
+    /* Secondary - Dark Gray */
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 222 47% 15%;
-    --muted-foreground: 215 16% 70%;
+    /* Muted - Dark Gray */
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
 
-    --accent: 220 100% 50%;
-    --accent-foreground: 210 20% 98%;
+    /* Accent - Primary Blue */
+    --accent: 238 100% 67%;
+    --accent-foreground: 0 0% 98%;
 
-    --success: 145 100% 45%;
-    --success-foreground: 210 20% 98%;
+    /* Success - #10B981 (Emerald) - Dark Mode */
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 98%;
 
-    --warning: 44 100% 60%;
-    --warning-foreground: 222 47% 5%;
+    /* Warning - #F59E0B (Amber) - Dark Mode */
+    --warning: 38 92% 50%;
+    --warning-foreground: 240 10% 3.9%;
+
+    /* Error - #EF4444 (Red) - Dark Mode */
+    --error: 0 84% 60%;
+    --error-foreground: 0 0% 98%;
 
     --urgent: 18 100% 65%;
-    --urgent-foreground: 210 20% 98%;
+    --urgent-foreground: 0 0% 98%;
 
     /* Industry-Specific Dark Mode Colors */
     --contractor-primary: 18 100% 65%;
@@ -185,11 +276,16 @@ All colors MUST be HSL.
     --restaurant-bg: 345 25% 5%;
 
     --destructive: 0 84% 65%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 222 47% 20%;
-    --input: 222 47% 20%;
-    --ring: 191 100% 50%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 238 100% 67%;
+    
+    /* Dark Mode Glassmorphism Effects */
+    --glass-bg: rgba(0, 0, 0, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-backdrop: blur(16px) saturate(180%);
     
     --sidebar-background: 222 47% 4%;
     --sidebar-foreground: 210 20% 95%;
@@ -209,5 +305,96 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground transition-colors duration-300;
+    font-family: var(--font-family);
   }
+}
+
+/* MozaWave Design System Utility Classes */
+@layer components {
+  /* Typography Utilities */
+  .text-xs { font-size: var(--text-xs); }
+  .text-sm { font-size: var(--text-sm); }
+  .text-base { font-size: var(--text-base); }
+  .text-lg { font-size: var(--text-lg); }
+  .text-xl { font-size: var(--text-xl); }
+  .text-2xl { font-size: var(--text-2xl); }
+  .text-3xl { font-size: var(--text-3xl); }
+  .text-4xl { font-size: var(--text-4xl); }
+  
+  .font-light { font-weight: var(--font-light); }
+  .font-normal { font-weight: var(--font-normal); }
+  .font-medium { font-weight: var(--font-medium); }
+  .font-semibold { font-weight: var(--font-semibold); }
+  .font-bold { font-weight: var(--font-bold); }
+  
+  .leading-tight { line-height: var(--leading-tight); }
+  .leading-normal { line-height: var(--leading-normal); }
+  .leading-relaxed { line-height: var(--leading-relaxed); }
+
+  /* Spacing Utilities */
+  .space-1 { margin: var(--space-1); }
+  .space-2 { margin: var(--space-2); }
+  .space-3 { margin: var(--space-3); }
+  .space-4 { margin: var(--space-4); }
+  .space-6 { margin: var(--space-6); }
+  .space-8 { margin: var(--space-8); }
+  .space-12 { margin: var(--space-12); }
+  .space-16 { margin: var(--space-16); }
+  .space-20 { margin: var(--space-20); }
+  .space-24 { margin: var(--space-24); }
+
+  .p-1 { padding: var(--space-1); }
+  .p-2 { padding: var(--space-2); }
+  .p-3 { padding: var(--space-3); }
+  .p-4 { padding: var(--space-4); }
+  .p-6 { padding: var(--space-6); }
+  .p-8 { padding: var(--space-8); }
+  .p-12 { padding: var(--space-12); }
+  .p-16 { padding: var(--space-16); }
+  .p-20 { padding: var(--space-20); }
+  .p-24 { padding: var(--space-24); }
+
+  /* Border Radius Utilities */
+  .rounded-sm { border-radius: var(--radius-sm); }
+  .rounded-md { border-radius: var(--radius-md); }
+  .rounded-lg { border-radius: var(--radius-lg); }
+  .rounded-xl { border-radius: var(--radius-xl); }
+  .rounded-2xl { border-radius: var(--radius-2xl); }
+  .rounded-full { border-radius: var(--radius-full); }
+
+  /* Glassmorphism Card */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition-normal);
+  }
+  
+  .glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary);
+  }
+
+  /* Glow Effects */
+  .glow-primary { box-shadow: var(--shadow-glow); }
+  .glow-success { box-shadow: var(--shadow-glow-success); }
+  .glow-warning { box-shadow: var(--shadow-glow-warning); }
+  .glow-error { box-shadow: var(--shadow-glow-error); }
+
+  /* Pulse Animation */
+  .pulse-animation {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* Smooth Transitions */
+  .transition-fast { transition: var(--transition-fast); }
+  .transition-normal { transition: var(--transition-normal); }
+  .transition-slow { transition: var(--transition-slow); }
 }

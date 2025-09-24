@@ -1,21 +1,27 @@
 {
   "name": "mozawave",
   "version": "2.0.0",
-  "description": "AI-Powered Business Intelligence Platform for Competitive Analysis, Reputation Management, and Market Insights",
+  "description": "Enterprise AI Intelligence Platform - Competitive Intelligence, Reputation Management & Business Analytics",
   "type": "module",
   "private": false,
   "keywords": [
+    "enterprise",
+    "ai",
     "business-intelligence",
     "competitive-analysis",
     "reputation-management",
-    "ai-powered",
     "saas",
     "react",
     "typescript",
     "supabase",
-    "real-time-analytics"
+    "security",
+    "compliance",
+    "soc2",
+    "gdpr",
+    "dashboard",
+    "analytics"
   ],
-  "homepage": "https://github.com/andresllamoza/Moza-AI-MVP#readme",
+  "homepage": "https://mozawave.ai",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andresllamoza/Moza-AI-MVP.git"
@@ -29,6 +35,10 @@
     "url": "https://mozawave.ai"
   },
   "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
