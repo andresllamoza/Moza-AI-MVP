@@ -78,6 +78,7 @@ VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 ## 📱 Live Demo
 
 - **Main Application**: [https://mozawave.vercel.app](https://mozawave.vercel.app)
+- **Industry Selector**: [https://mozawave.vercel.app/industry-selector](https://mozawave.vercel.app/industry-selector)
 - **Design System**: [https://mozawave.vercel.app/design-system](https://mozawave.vercel.app/design-system)
 - **Modern Dashboard**: [https://mozawave.vercel.app/modern-dashboard](https://mozawave.vercel.app/modern-dashboard)
 
